@@ -4,11 +4,11 @@
             <div class="brand">
                 <a href="javascript:void;" class="logo">
                     <span>
-                        <img src="assets/images/logo-sm.png" alt="logo-small" class="logo-xl">
+                        <!-- <img src="assets/images/rslogo.jpg" alt="logo-small" class="logo-sm"> -->
                     </span>
                     <span class="">
-                        <img src="assets/images/logo-light.png" alt="logo-large" class="logo-lg logo-light">
-                        <!-- <img src="assets/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark"> -->
+                        <!-- <img src="assets/images/logo-sm.png" alt="logo-large" class="logo-lg logo-light"> -->
+                        <img src="assets/images/recsteplogo.jpg" alt="logo-large" class="logo-lg logo-dark">
                     </span>
                 </a>
             </div>

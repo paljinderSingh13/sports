@@ -8,6 +8,26 @@ use Illuminate\Http\Request;
 
 class ClubController extends Controller
 {
+    public function designfour()
+    {
+        //
+        return view('club.designfour');
+    }
+    public function designthree()
+    {
+        //
+        return view('club.designthree');
+    }
+    public function designtwo()
+    {
+        //
+        return view('club.designtwo');
+    }
+    public function design()
+    {
+        //
+        return view('club.design');
+    }
     /**
      * Display a listing of the resource.
      */
