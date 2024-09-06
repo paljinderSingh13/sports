@@ -73,7 +73,29 @@
                                  <input class="form-control form-control-lg" type="text"  id="Name">
                               </div>
                         </div>
-                           
+                        <div class="mb-3 row">
+                              <label for="City" class="col-sm-2 col-form-label text-end">City</label>
+                              <div class="col-sm-10">
+                                 <input class="form-control form-control-lg" type="text"  id="City">
+                              </div>
+                        </div>
+                        <div class="mb-3 row">
+                              <label for="ContactName" class="col-sm-2 col-form-label text-end">Contact Name</label>
+                              <div class="col-sm-10">
+                                 <input class="form-control form-control-lg" type="text"  id="ContactName">
+                              </div>
+                        </div>
+                        <div class="mb-3 row">
+                              <label class="col-sm-2 col-form-label text-end">Country</label>
+                              <div class="col-sm-10">
+                                 <select class="form-select form-select-lg" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                 </select>
+                              </div>
+                           </div>
                            <div class="mb-3 row">
                               <label for="example-month-input" class="col-sm-2 col-form-label text-end">Month</label>
                               <div class="col-sm-10">

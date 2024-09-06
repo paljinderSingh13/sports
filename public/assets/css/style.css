@@ -88,3 +88,11 @@
 .page-content.designfour{
     background-color: #085e96;
 }
+
+/* Login page */
+.page-content.login{
+    background-color: #085e96;
+}
+.form-control:focus{
+    border-color: #085e95;
+}

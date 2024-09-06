@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ClubController extends Controller
 {
+    public function login()
+    {
+        //
+        return view('club.login');
+    }
     public function designfour()
     {
         //

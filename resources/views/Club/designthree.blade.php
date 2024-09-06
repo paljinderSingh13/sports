@@ -1,18 +1,16 @@
 @extends('layouts.master')
 @section('content')
 
-
-
 <div class="page-wrapper">
 
 <!-- Page Content-->
 <div class="page-content designthree">
 <div class="container-xxl"> 
 
-<div class="row mt-3">
+<div class="row ">
    
-    <div class="col-md-6 col-lg-12">
-        <div class="card rounded-5">
+    <div class="col-md-12 col-lg-12">
+        <div class="card rounded-5 mt-3">
             <div class="card-header rounded-5">
                 <div class="row align-items-center">
                     <div class="col">                      
@@ -86,10 +84,12 @@
                         <input class="form-control form-control-lg" type="email" id="Email" placeholder="Email">
                         <small>Error Message</small>
                     </div>
-                    <div class="row mt-4">
-                        <div class="col-sm-12 msx-auto text-center">
-                            <button type="submit" class="btn btn-lg btn-blue fs-18 px-5 py-2 me-3">Submit</button>
-                            <button type="button" class="btn btn-light btn-lg fs-18 px-5 py-2">Cancel</button>
+                    <div class="row mt-3">
+                        <div class="col-lg-6 col-sm-12  text-lg-end mb-2">                            
+                            <button type="submit" class="btn btn-lg btn-blue fs-18 px-5 py-2 ">Submit</button>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 mb-2">
+                        <button type="button" class="btn btn-light btn-lg fs-18 px-5 py-2">Cancel</button>
                         </div>
                     </div> 
 
