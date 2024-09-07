@@ -13,7 +13,7 @@
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
                 <!-- App favicon -->
-                <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
+                <link rel="shortcut icon" href="{{asset('assets/images/favicon1.ico')}}">
 
        
 
@@ -22,13 +22,17 @@
          <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{asset('assets/libs/simple-datatables/style.css')}}" rel="stylesheet" type="text/css" />
+         <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
          <style>
           /* .topbar,   .page-content{
                 background-color:#081762;
+                background-color:#2ca272;
             }
             .text-truncate{
                 color:white;
             } */
+
+            
          </style>
 
     </head>
@@ -73,12 +77,12 @@
                         </li> -->
                         <!--end topbar-language-->
         
-                        <li class="topbar-item">
+                        <!-- <li class="topbar-item">
                             <a class="nav-link nav-icon" href="javascript:void(0);" id="light-dark-mode">
                                 <i class="icofont-moon dark-mode"></i>
                                 <i class="icofont-sun light-mode"></i>
                             </a>                    
-                        </li>
+                        </li> -->
     
                         
     
