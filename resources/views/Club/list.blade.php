@@ -19,61 +19,36 @@
                                             <table class="table datatable" id="datatable_1">
                                                 <thead class="table-light">
                                                 <tr>
+                                                    <th>Logo</th>
                                                     <th>Name</th>
-                                                    <th>Id.</th>
+                                                    <th>Address</th>
                                                     <th>City</th>
-                                                    <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                                                    <th>Action</th>
+                                                    <th>Contact Name</th>
+                                                    <th>Phone</th>
+                                                    <th>Email</th>
+                                                    <!-- <th>Status</th> -->
+                                                    <th>Actions</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                     @foreach($clubs as $club)
                                                     <tr>
-                                                        <td>Unity Pugh</td>
-                                                        <td>9958</td>
-                                                        <td>Curicó</td>
-                                                        <td>2005/02/11</td>
-                                                        <td><a class="btn btn-primary py-0 px-1" href="{{route('team.list')}}">Teams </a></td>
+                                                        <td><img src="{{asset($club->logo)}}" alt="Logo" width="50"></td>
+                                                        <td>{{ $club->name }}</td>
+                                                        <td>{{ $club->address }}</td>
+                                                        <td>{{ $club->city }}</td>
+                                                        <td>{{ $club->contact_name }}</td>
+                                                        <td>{{ $club->phone }}</td>
+                                                        <td>{{ $club->email }}</td>
+                                                        <!-- <td>{{ $club->status }}</td> -->
+                                                        <td><a class="btn btn-primary py-0 px-1" href="{{route('team.list',$club->id)}}">Teams </a><a href="{{ route('club.edit', $club->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('club.destroy', $club->id) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this club?');">Delete</button>
+                    </form></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Theodore Duran</td><td>8971</td><td>Dhanbad</td><td>1999/04/07</td><td>97%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Kylie Bishop</td><td>3147</td><td>Norman</td><td>2005/09/08</td><td>63%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Willow Gilliam</td><td>3497</td><td>Amqui</td><td>2009/29/11</td><td>30%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Blossom Dickerson</td><td>5018</td><td>Kempten</td><td>2006/11/09</td><td>17%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Elliott Snyder</td><td>3925</td><td>Enines</td><td>2006/03/08</td><td>57%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Castor Pugh</td><td>9488</td><td>Neath</td><td>2014/23/12</td><td>93%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Pearl Carlson</td><td>6231</td><td>Cobourg</td><td>2014/31/08</td><td>100%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Deirdre Bridges</td><td>1579</td><td>Eberswalde-Finow</td><td>2014/26/08</td><td>44%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Daniel Baldwin</td><td>6095</td><td>Moircy</td><td>2000/11/01</td><td>33%</td>
-                                                    </tr>  
-                                                    <tr>
-                                                        <td>Pearl Carlson</td><td>6231</td><td>Cobourg</td><td>2014/31/08</td><td>100%</td>
-                                                    </tr>  
-                                                    <tr>
-                                                        <td>Unity Pugh</td>
-                                                        <td>9958</td>
-                                                        <td>Curicó</td>
-                                                        <td>2005/02/11</td>
-                                                        <td>37%</td>
-                                                    </tr>    
-                                                     <tr>
-                                                        <td>Elliott Snyder</td><td>3925</td><td>Enines</td><td>2006/03/08</td><td>57%</td>
-                                                    </tr>
+                                                   @endforeach
                                                 </tbody>
                                             </table>
                                         </div>   

@@ -21,32 +21,32 @@
                 </div>  <!--end row-->                                  
             </div><!--end card-header-->
             <div class="card-body pt-0">
-                <form id="form-validation-2" class="form row">
-                    
+                <form id="form-validation-2" class="form row" enctype="multipart/form-data" method="POST">
+                    @csrf
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label for="logo" class="form-label">Logo</label>
-                        <input class="form-control" type="file" id="logo" placeholder="Logo">
+                        <input class="form-control" type="file" name="logo" id="logo" placeholder="Logo">
                         <small>Error Message</small>
                     </div>
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label for="Name" class="form-label">Name</label>
-                        <input class="form-control" type="text" id="Name" placeholder="Name">
+                        <input class="form-control" type="text" name="name" id="Name" placeholder="Name">
                         <small>Error Message</small>
                     </div>
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label for="Address" class="form-label">Address</label>
-                        <input class="form-control" type="text" id="Address" placeholder="Address">
+                        <input class="form-control" type="text" name="address" id="Address" placeholder="Address">
                         <small>Error Message</small>
                     </div>
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label for="City" class="form-label">City</label>
-                        <input class="form-control" type="text" id="City" placeholder="City">
+                        <input class="form-control" type="text" name="city" id="City" placeholder="City">
                         <small>Error Message</small>
                     </div>
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label class="col-form-label">State</label>
                        
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" aria-label="Default select example" name="state">
                                 <option selected>State</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -58,7 +58,7 @@
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label class="col-form-label">Country</label>
                        
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" aria-label="Default select example" name="country">
                                 <option selected>Country</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -68,22 +68,22 @@
                     </div>
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label for="PostalCode" class="form-label">Postal Code</label>
-                        <input class="form-control" type="text" id="PostalCode" placeholder="Postal Code">
+                        <input class="form-control" type="text" name="postal_code" id="PostalCode" placeholder="Postal Code">
                         <small>Error Message</small>
                     </div>
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label for="ContactName" class="form-label">Contact Name</label>
-                        <input class="form-control" type="text" id="ContactName" placeholder="Contact Name">
+                        <input class="form-control" type="text" name="contact_name" id="ContactName" placeholder="Contact Name">
                         <small>Error Message</small>
                     </div>
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label for="Phone" class="form-label">Phone</label>
-                        <input class="form-control" type="text" id="Phone" placeholder="Phone">
+                        <input class="form-control" type="text" name="phone" id="Phone" placeholder="Phone">
                         <small>Error Message</small>
                     </div>
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label for="Email" class="form-label">Email</label>
-                        <input class="form-control" type="email" id="Email" placeholder="Email">
+                        <input class="form-control" type="email" name="email" id="Email" placeholder="Email">
                         <small>Error Message</small>
                     </div>
                     <div class="row mt-4">
@@ -103,35 +103,5 @@
 </div><!-- container -->
 
     
-    <!--end Rightbar/offcanvas-->
-    <!--end Rightbar-->
-    <!--Start Footer-->
     
-    <footer class="footer text-center text-sm-start d-print-none">
-        <div class="container-xxl">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card mb-0 rounded-bottom-0">
-                        <div class="card-body">
-                            <!-- <p class="text-muted mb-0">
-                                ©
-                                <script> document.write(new Date().getFullYear()) </script>
-                                Rizz
-                                <span
-                                    class="text-muted d-none d-sm-inline-block float-end">
-                                    Crafted with
-                                    <i class="iconoir-heart text-danger"></i>
-                                    by Mannatthemes</span>
-                            </p> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <!--end footer-->
-</div>
-<!-- end page content -->
-</div>
 @endsection

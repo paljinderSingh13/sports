@@ -10,7 +10,7 @@
                                     <div class="card-header">
                                         <div class="row align-items-center">
                                             <div class="col">                      
-                                                <h4 class="card-title">Teams</h4>                      
+                                                <h4 class="card-title">Teams <a href="{{route('team.create',$id)}}"><span>+</span>Add</a></h4>                      
                                             </div><!--end col-->
                                         </div>  <!--end row-->                                  
                                     </div><!--end card-header-->
@@ -19,61 +19,30 @@
                                             <table class="table datatable" id="datatable_1">
                                                 <thead class="table-light">
                                                 <tr>
-                                                    <th>Team</th>
-                                                    <th>Team Id.</th>
+                                                     <th>Club ID</th>
+                                                    <th>Name</th>
+                                                    <th>Age Group</th>
                                                     <th>Season</th>
-                                                    <th >Age Group</th>
-                                                    <th>View</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @foreach ($teams as $team)
                                                     <tr>
-                                                        <td>Team A</td>
-                                                        <td>9958</td>
-                                                        <td>Fall 2024/Spring 2025</td>
-                                                        <td>under 18</td>
-                                                        <td><a href="{{route('team.info')}}" class="btn btn-primary py-0 px-1">Teams Info </a></td>
+                                                        <td>{{ $team->club_id }}</td>
+                                                        <td>{{ $team->name }}</td>
+                                                        <td>{{ $team->age_group }}</td>
+                                                        <td>{{ $team->season }}</td>
+                                                        <td>{{ ucfirst($team->status) }}</td>
+                                                        <td><a href="{{ route('team.edit', $team->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('team.destroy', $team->id) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this club?');">Delete</button>
+                    </form></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Theodore Duran</td><td>8971</td><td>Dhanbad</td><td>under 16</td><td>97%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Kylie Bishop</td><td>3147</td><td>Norman</td><td>2005/09/08</td><td>63%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Willow Gilliam</td><td>3497</td><td>Amqui</td><td>2009/29/11</td><td>30%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Blossom Dickerson</td><td>5018</td><td>Kempten</td><td>2006/11/09</td><td>17%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Elliott Snyder</td><td>3925</td><td>Enines</td><td>2006/03/08</td><td>57%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Castor Pugh</td><td>9488</td><td>Neath</td><td>2014/23/12</td><td>93%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Pearl Carlson</td><td>6231</td><td>Cobourg</td><td>2014/31/08</td><td>100%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Deirdre Bridges</td><td>1579</td><td>Eberswalde-Finow</td><td>2014/26/08</td><td>44%</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Daniel Baldwin</td><td>6095</td><td>Moircy</td><td>2000/11/01</td><td>33%</td>
-                                                    </tr>  
-                                                    <tr>
-                                                        <td>Pearl Carlson</td><td>6231</td><td>Cobourg</td><td>2014/31/08</td><td>100%</td>
-                                                    </tr>  
-                                                    <tr>
-                                                        <td>Unity Pugh</td>
-                                                        <td>9958</td>
-                                                        <td>Curicó</td>
-                                                        <td>2005/02/11</td>
-                                                        <td>37%</td>
-                                                    </tr>    
-                                                     <tr>
-                                                        <td>Elliott Snyder</td><td>3925</td><td>Enines</td><td>2006/03/08</td><td>57%</td>
-                                                    </tr>
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>   
