@@ -4,8 +4,18 @@ namespace App\Models\Club;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Team extends Model
 {
-    use HasFactory;
+   use HasFactory, SoftDeletes;
+    protected $fillable = [
+        'club_id',
+        'name',
+        'age_group',
+        'season',
+        'status',
+    ];
+
+    protected $dates = ['deleted_at'];
 }

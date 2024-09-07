@@ -35,11 +35,11 @@
     
     <!-- Top Bar Start -->
     <body>
+
         <!-- Top Bar Start -->
         <div class="topbar d-print-none">
             <div class="container-xxl">
                 <nav class="topbar-custom d-flex justify-content-between" id="topbar-custom">    
-        
 
                     <ul class="topbar-item list-unstyled d-inline-flex align-items-center mb-0">                        
                         <li>
@@ -114,6 +114,20 @@
                 <!-- end navbar-->
             </div>
         </div>
+        @if(session('success'))
+            <div class="alert alert-success text-center">
+                {{ session('success') }}
+            </div>
+        @endif
+          @if ($errors->any())
+            <div class="alert alert-danger text-center">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <!-- Top Bar End -->
 
     

@@ -11,9 +11,10 @@ class TeamController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        return view('team.list');
+         $teams = Team::where('club_id',$id)->get();
+        return view('team.list',compact('id','teams'));
     }
 
     public function info()
@@ -24,9 +25,10 @@ class TeamController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
         //
+        return view('team.create',compact('id'));
     }
 
     /**
@@ -34,7 +36,26 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the incoming request data
+        $request->validate([
+            'club_id'   => 'required|integer',
+            'name'      => 'required|string|max:255',
+            'age_group' => 'required|string|max:255',
+            'season'    => 'required|string|max:255',
+            'status'    => 'required|string|in:1,0',
+        ]);
+
+        // Create a new Team instance and save the data
+        Team::create([
+            'club_id'   => $request->club_id,
+            'name'      => $request->name,
+            'age_group' => $request->age_group,
+            'season'    => $request->season,
+            'status'    => $request->status,
+        ]);
+
+        // Redirect with success message
+        return redirect()->route('team.list',$request->club_id)->with('success', 'Team created successfully!');
     }
 
     /**
@@ -64,8 +85,12 @@ class TeamController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Team $team)
+    public function destroy($id)
     {
-        //
+        $team = Team::find($id);
+        $team->delete();
+
+        // Redirect back with a success message
+        return back()->with('success', 'Team deleted successfully.');
     }
 }

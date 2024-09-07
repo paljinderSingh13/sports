@@ -4,10 +4,10 @@
             <div class="brand">
                 <a href="javascript:void;" class="logo">
                     <span>
-                        <img src="assets/images/logo-sm.png" alt="logo-small" class="logo-xl">
+                        <img src="{{asset('assets/images/logo-sm.png')}}" alt="logo-small" class="logo-xl">
                     </span>
                     <span class="">
-                        <img src="assets/images/logo-light.png" alt="logo-large" class="logo-lg logo-light">
+                        <img src="{{asset('assets/images/logo-light.png')}}" alt="logo-large" class="logo-lg logo-light">
                         <!-- <img src="assets/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark"> -->
                     </span>
                 </a>
