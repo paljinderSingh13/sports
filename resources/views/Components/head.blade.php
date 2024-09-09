@@ -23,6 +23,7 @@
          <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{asset('assets/libs/simple-datatables/style.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
+         
          <style>
           /* .topbar,   .page-content{
                 background-color:#081762;
