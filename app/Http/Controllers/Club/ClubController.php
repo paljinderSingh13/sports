@@ -62,7 +62,7 @@ class ClubController extends Controller
 
             $fileName = time() . '_' . $logo->getClientOriginalName();
             $logo->move($targetPath, $fileName);
-            $logoPath = 'logos/' . $fileName;
+            $logoPath = 'club/logos/' . $fileName;
         }
 
         // Create a new club record
