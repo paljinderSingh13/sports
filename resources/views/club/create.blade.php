@@ -96,7 +96,8 @@
                 </form><!--end form-->            
             </div><!--end card-body--> 
         </div><!--end card--> 
-    </div> <!--end col-->                                                         <div class="col-md-6 col-lg-2">
+    </div> <!--end col-->
+    <div class="col-md-6 col-lg-2">
     </div>                      
 </div><!--end row-->
 

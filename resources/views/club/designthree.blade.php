@@ -14,7 +14,7 @@
             <div class="card-header rounded-5">
                 <div class="row align-items-center">
                     <div class="col">                      
-                        <h3 class="card-title">Club Form</h3>                      
+                        <h3 class="card-title text-center text-primary fs-1">Club Form</h3>                      
                     </div><!--end col-->
                 </div>  <!--end row-->                                  
             </div><!--end card-header-->
@@ -85,53 +85,20 @@
                         <small>Error Message</small>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-lg-6 col-sm-12  text-lg-end mb-2">                            
-                            <button type="submit" class="btn btn-lg btn-blue fs-18 px-5 py-2 ">Submit</button>
+                        <div class="col-lg-6 col-sm-6 col-6 text-end mb-2">                            
+                            <button type="submit" class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2 ">Submit</button>
                         </div>
-                        <div class="col-lg-6 col-sm-12 mb-2">
-                        <button type="button" class="btn btn-light btn-lg fs-18 px-5 py-2">Cancel</button>
+                        <div class="col-lg-6 col-6 col-sm-6 mb-2">
+                        <button type="button" class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</button>
                         </div>
                     </div> 
 
                 </form><!--end form-->            
             </div><!--end card-body--> 
         </div><!--end card--> 
-    </div> <!--end col-->                                                         <div class="col-md-6 col-lg-2">
-    </div>                      
+    </div> <!--end col-->
+                       
 </div><!--end row-->
 
 </div><!-- container -->
-
-    
-    <!--end Rightbar/offcanvas-->
-    <!--end Rightbar-->
-    <!--Start Footer-->
-    
-    <footer class="footer text-center text-sm-start d-print-none">
-        <div class="container-xxl">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card mb-0 rounded-bottom-0">
-                        <div class="card-body">
-                            <!-- <p class="text-muted mb-0">
-                                ©
-                                <script> document.write(new Date().getFullYear()) </script>
-                                Rizz
-                                <span
-                                    class="text-muted d-none d-sm-inline-block float-end">
-                                    Crafted with
-                                    <i class="iconoir-heart text-danger"></i>
-                                    by Mannatthemes</span>
-                            </p> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <!--end footer-->
-</div>
-<!-- end page content -->
-</div>
 @endsection

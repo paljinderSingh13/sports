@@ -34,27 +34,27 @@
             <div class="col-12 align-self-center">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-4 mx-auto">
+                        <div class="col-lg-5 mx-auto">
                             <div class="card">
                                 <div class="card-body p-0  auth-header-box rounded-top">
                                     <div class="text-center p-3">
                                         <a href="index.html" class="logo logo-admin">
                                             <img src="assets/images/recsteplogo.png" height="50" alt="logo" class="auth-logo">
                                         </a>
-                                        <h4 class="mt-2 mb-1 fw-semibold fs-18">Let's Get Started RECSTEP</h4>   
-                                        <p class="text-muted fw-medium mb-0">Login to Your Account</p>  
+                                        <h4 class="mt-2 mb-1 fw-semibold fs-18">Login to Your Account</h4>   
+                                        <!-- <p class="text-muted fw-medium mb-0">Login to Your Account</p>   -->
                                     </div>
                                 </div>
                                 <div class="card-body pt-0">                                    
                                     <form class="my-2">            
                                         <div class="form-group mb-2">
                                             <label class="form-label" for="username">Username</label>
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">                               
+                                            <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Enter username">                               
                                         </div><!--end form-group--> 
             
                                         <div class="form-group">
                                             <label class="form-label" for="userpassword">Password</label>                                            
-                                            <input type="password" class="form-control" name="password" id="userpassword" placeholder="Enter password">                            
+                                            <input type="password" class="form-control form-control-lg" name="password" id="userpassword" placeholder="Enter password">                            
                                         </div><!--end form-group--> 
             
                                         <div class="form-group row mt-3">
@@ -72,13 +72,13 @@
                                         <div class="form-group mb-0 row">
                                             <div class="col-12">
                                                 <div class="d-grid mt-3">
-                                                    <button class="btn btn-blue" type="button">Log In <i class="fas fa-sign-in-alt ms-1"></i></button>
+                                                    <button class="btn btn-blue btn-lg" type="button">Log In <i class="fas fa-sign-in-alt ms-1"></i></button>
                                                 </div>
                                             </div><!--end col--> 
                                         </div> <!--end form-group-->                           
                                     </form><!--end form-->
                                     <div class="text-center  mb-2">
-                                        <p class="text-muted">Don't have an account ?  <a href="#" class="text-primary ms-2">Free Register</a></p>
+                                        <p class="text-muted">Don't have an account ?  <a href="#" class="text-primary ms-2">Sign up</a></p>
                                         <!-- <h6 class="px-3 d-inline-block">Or Login With</h6> -->
                                     </div>
                                     <!-- <div class="d-flex justify-content-center">

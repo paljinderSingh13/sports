@@ -281,210 +281,75 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{route('club.list')}}">List</a>
                                         </li>
-                                        <!-- <li class="nav-item">
-                                            <a class="nav-link" href="forms-advanced.html">Advance Elements</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="forms-validation.html">Validation</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="forms-wizard.html">Wizard</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="forms-editors.html">Editors</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="forms-uploads.html">File Upload</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="forms-img-crop.html">Image Crop</a>
-                                        </li> -->
-                                    </ul>
-                                </div>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="#sidebarCharts" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarCharts">
-                                    <i class="iconoir-candlestick-chart menu-icon"></i>
-                                    <span>Charts</span>
-                                </a>
-                                <div class="collapse " id="sidebarCharts">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="charts-apex.html">Apex</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="charts-justgage.html">JustGage</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="charts-chartjs.html">Chartjs</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="charts-toast-ui.html">Toast</a>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#sidebarTables" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarTables">
-                                    <i class="iconoir-table-rows menu-icon"></i>
-                                    <span>Tables</span>
+                                <a class="nav-link" href="#"  role="button"
+                                    aria-expanded="false" aria-controls="sidebarForms">
+                                    <i class="iconoir-community menu-icon"></i>
+                                    <span>Team</span>
                                 </a>
-                                <div class="collapse " id="sidebarTables">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="tables-basic.html">Basic</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="tables-datatable.html">Datatables</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="tables-editable.html">Editable</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#sidebarIcons" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarIcons">
-                                    <i class="iconoir-trophy menu-icon"></i>
-                                    <span>Icons</span>
+                                <a class="nav-link" href="#"  role="button"
+                                    aria-expanded="false" aria-controls="sidebarForms">
+                                    <i class="iconoir-home-user menu-icon"></i>
+                                    <span>Administrator</span>
                                 </a>
-                                <div class="collapse " id="sidebarIcons">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="icons-fontawesome.html">Font Awesome</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="icons-lineawesome.html">Line Awesome</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="icons-icofont.html">Icofont</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="icons-iconoir.html">Iconoir</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarMaps">
-                                    <i class="iconoir-navigator-alt menu-icon"></i>
-                                    <span>Maps</span>
+                                <a class="nav-link" href="#"  role="button"
+                                    aria-expanded="false" aria-controls="sidebarForms">
+                                    <i class="iconoir-calendar menu-icon"></i>
+                                    <span>Roster</span>
                                 </a>
-                                <div class="collapse " id="sidebarMaps">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="maps-google.html">Google Maps</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="maps-leaflet.html">Leaflet Maps</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="maps-vector.html">Vector Maps</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#sidebarEmailTemplates" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarEmailTemplates">
-                                    <i class="iconoir-send-mail menu-icon"></i>
-                                    <span>Email Templates</span>
+                                <a class="nav-link" href="#"  role="button"
+                                    aria-expanded="false" aria-controls="sidebarForms">
+                                    <i class="iconoir-money-square menu-icon"></i>
+                                    <span>Payments</span>
                                 </a>
-                                <div class="collapse " id="sidebarEmailTemplates">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="email-templates-basic.html">Basic Action Email</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="email-templates-alert.html">Alert Email</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="email-templates-billing.html">Billing Email</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="menu-label mt-2">
-                                <small class="label-border">
-                                    <div class="border_left hidden-xs"></div>
-                                    <div class="border_right"></div>
-                                </small>
-                                <span>Crafted</span>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#sidebarPages" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarPages">
-                                    <i class="iconoir-page-star menu-icon"></i>
-                                    <span>Pages</span>
+                                <a class="nav-link" href="#"  role="button"
+                                    aria-expanded="false" aria-controls="sidebarForms">
+                                    <i class="iconoir-bell-notification menu-icon"></i>
+                                    <span>Notifications</span>
                                 </a>
-                                <div class="collapse " id="sidebarPages">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages-profile.html">Profile</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages-notifications.html">Notifications</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages-timeline.html">Timeline</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages-treeview.html">Treeview</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages-starter.html">Starter Page</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages-pricing.html">Pricing</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages-blogs.html">Blogs</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages-faq.html">FAQs</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages-gallery.html">Gallery</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#sidebarAuthentication" data-bs-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="sidebarAuthentication">
-                                    <i class="iconoir-fingerprint-lock-circle menu-icon"></i>
-                                    <span>Authentication</span>
+                                <a class="nav-link" href="#"  role="button"
+                                    aria-expanded="false" aria-controls="sidebarForms">
+                                    <i class="iconoir-calendar-plus menu-icon"></i>
+                                    <span>Events</span>
                                 </a>
-                                <div class="collapse " id="sidebarAuthentication">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="auth-login.html">Log in</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="auth-register.html">Register</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="auth-recover-pw.html">Re-Password</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="auth-lock-screen.html">Lock Screen</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="auth-maintenance.html">Maintenance</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="auth-404.html">Error 404</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="auth-500.html">Error 500</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li> -->
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  role="button"
+                                    aria-expanded="false" aria-controls="sidebarForms">
+                                    <i class="iconoir-clock menu-icon"></i>
+                                    <span>Schedule</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  role="button"
+                                    aria-expanded="false" aria-controls="sidebarForms">
+                                    <i class="iconoir-chat-bubble menu-icon"></i>
+                                    <span>Chat</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"  role="button"
+                                    aria-expanded="false" aria-controls="sidebarForms">
+                                    <i class="iconoir-headset-help menu-icon"></i>
+                                    <span>Contact Us</span>
+                                </a>
+                            </li>
+
+
                         </ul>
                     </div>
                 </div>
