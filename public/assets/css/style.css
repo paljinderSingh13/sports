@@ -14,7 +14,8 @@ body{
 
 }
 h1,h2,h3,h4,h5,h6{
-    font-family: 'good_timesregular';
+    font-family: "Roboto", sans-serif;
+    /* font-family: 'good_timesregular'; */
     letter-spacing: 0.5px;
 }
 
@@ -165,5 +166,8 @@ h1,h2,h3,h4,h5,h6{
 }
 .startbar .startbar-menu .navbar-nav .nav-item .nav-link,
 .startbar .startbar-menu .navbar-nav .nav-item .nav-link .menu-icon{
+    color: #085e96;
+}
+.welcome-text h3{
     color: #085e96;
 }
