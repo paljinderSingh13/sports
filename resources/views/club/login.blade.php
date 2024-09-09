@@ -78,7 +78,7 @@
                                         </div> <!--end form-group-->                           
                                     </form><!--end form-->
                                     <div class="text-center  mb-2">
-                                        <p class="text-muted">Don't have an account ?  <a href="#" class="text-primary ms-2">Free Resister</a></p>
+                                        <p class="text-muted">Don't have an account ?  <a href="#" class="text-primary ms-2">Free Register</a></p>
                                         <!-- <h6 class="px-3 d-inline-block">Or Login With</h6> -->
                                     </div>
                                     <!-- <div class="d-flex justify-content-center">

@@ -3,6 +3,8 @@
 /public/build
 /public/hot
 /public/storage
+/phpmyadmin
+/public/phpmyadmin
 /storage/*.key
 /vendor
 .env
