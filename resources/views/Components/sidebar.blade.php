@@ -31,7 +31,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button"
                                     aria-expanded="false" aria-controls="sidebarDashboards">
-                                    <i class="iconoir-home-simple menu-icon text-primary"></i>
+                                    <i class="iconoir-home-simple menu-icon"></i>
                                     <span>Dashboards</span>
                                 </a>
                                 <div class="collapse " id="sidebarDashboards">
@@ -48,7 +48,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#sidebarApplications" data-bs-toggle="collapse" role="button"
                                     aria-expanded="false" aria-controls="sidebarApplications">
-                                    <i class="iconoir-view-grid menu-icon text-primary"></i>
+                                    <i class="iconoir-view-grid menu-icon"></i>
                                     <span>Applications</span>
                                 </a>
                                 <div class="collapse " id="sidebarApplications">
@@ -157,7 +157,7 @@
                             <!-- <li class="nav-item">
                                 <a class="nav-link" href="#sidebarElements" data-bs-toggle="collapse" role="button"
                                     aria-expanded="false" aria-controls="sidebarElements">
-                                    <i class="iconoir-compact-disc menu-icon text-primary"></i>
+                                    <i class="iconoir-compact-disc menu-icon"></i>
                                     <span>UI Elements</span>
                                 </a>
                                 <div class="collapse " id="sidebarElements">
@@ -228,7 +228,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#sidebarAdvancedUI" data-bs-toggle="collapse" role="button"
                                     aria-expanded="false" aria-controls="sidebarAdvancedUI">
-                                    <i class="iconoir-peace-hand menu-icon text-primary"></i>
+                                    <i class="iconoir-peace-hand menu-icon"></i>
                                     <span>Advanced UI</span><span class="badge rounded text-success bg-success-subtle ms-1">New</span>
                                 </a>
                                 <div class="collapse " id="sidebarAdvancedUI">
@@ -270,7 +270,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#sidebarForms" data-bs-toggle="collapse" role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
-                                    <i class="iconoir-journal-page menu-icon text-primary"></i>
+                                    <i class="iconoir-journal-page menu-icon"></i>
                                     <span>Club</span>
                                 </a>
                                 <div class="collapse " id="sidebarForms">
@@ -288,63 +288,63 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#"  role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
-                                    <i class="iconoir-community menu-icon text-primary"></i>
+                                    <i class="iconoir-community menu-icon"></i>
                                     <span>Team</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"  role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
-                                    <i class="iconoir-home-user menu-icon text-primary"></i>
+                                    <i class="iconoir-home-user menu-icon"></i>
                                     <span>Administrator</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"  role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
-                                    <i class="iconoir-calendar menu-icon text-primary"></i>
+                                    <i class="iconoir-calendar menu-icon"></i>
                                     <span>Roster</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"  role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
-                                    <i class="iconoir-money-square menu-icon text-primary"></i>
+                                    <i class="iconoir-money-square menu-icon"></i>
                                     <span>Payments</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"  role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
-                                    <i class="iconoir-bell-notification menu-icon text-primary"></i>
+                                    <i class="iconoir-bell-notification menu-icon"></i>
                                     <span>Notifications</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"  role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
-                                    <i class="iconoir-calendar-plus menu-icon text-primary"></i>
+                                    <i class="iconoir-calendar-plus menu-icon"></i>
                                     <span>Events</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"  role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
-                                    <i class="iconoir-clock menu-icon text-primary"></i>
+                                    <i class="iconoir-clock menu-icon"></i>
                                     <span>Schedule</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"  role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
-                                    <i class="iconoir-chat-bubble menu-icon text-primary"></i>
+                                    <i class="iconoir-chat-bubble menu-icon"></i>
                                     <span>Chat</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"  role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
-                                    <i class="iconoir-headset-help menu-icon text-primary"></i>
+                                    <i class="iconoir-headset-help menu-icon"></i>
                                     <span>Contact Us</span>
                                 </a>
                             </li>
