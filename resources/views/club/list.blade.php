@@ -1,76 +1,97 @@
 @extends('layouts.master')
 @section('content')
-    <div class="page-wrapper">
-        <!-- Page Content-->
-        <div class="page-content">
-            <div class="container-xxl">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h4 class="card-title">Club List</h4>
-                                    </div><!--end col-->
-                                </div> <!--end row-->
-                            </div><!--end card-header-->
-                            <div class="card-body pt-0">
-                                <div class="table-responsive">
-                                    <table class="table datatable" id="datatable_1">
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th>Logo</th>
-                                                <th>Name</th>
-                                                <th>Address</th>
-                                                <th>City</th>
-                                                <th>Contact Name</th>
-                                                <th>Phone</th>
-                                                <th>Email</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($clubs as $club)
+<div class="page-wrapper">
+    <!-- Page Content-->
+    <div class="page-content">
+        <div class="container-xxl">
+            <div class="row justify-content-center">
+                            <div class="col-12">
+                                <div class="card rounded-5 mt-3">
+                                    <div class="card-header rounded-5">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-md-6 mb-3 mb-lg-0">                      
+                                                <h3 class="card-title fs-1 text-primary text-uppercase">List of Club</h4>                      
+                                            </div><!--end col-->
+                                            <div class="col-12 col-md-6 mb-3 mb-lg-0 text-end">                      
+                                                <a href="{{route('club.create')}}" class="mb-1 mb-md-0 btn btn-lg btn-blue fs-4"><i class="far fa-plus-square"></i> Create a Club</a>                      
+                                            </div><!--end col-->
+
+                                        </div>  <!--end row-->                                  
+                                    </div><!--end card-header-->
+                                    <div class="card-body pt-0">
+                                        <div class="table-responsive">
+                                            <table class="table datatable" id="datatable_1">
+                                                <thead class="table-light">
+                                                <tr>
+                                                    
+                                                    <th>Logo</th>
+                                                    <th>Name</th>
+                                                    <th>Address</th>                
+                                                    <th>City</th>
+                                                    <th>Phone</th>
+                                                    <th>Email</th>              
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>                                                   
+                                                  <!--   <tr>                                                   
+                                                        <td>Sahil </td>
+                                                        <td>Amritsar</td> 
+                                                        <td>123456987</td> 
+                                                        <td>abc@gmail.com</td> 
+                                                        <td> 
+                                                            <span class="badge fs-14 bg-primary">Active</span> 
+                                                            <span class="badge fs-14 bg-danger">Inactive</span> 
+                                                        </td>
+                                                        <td>
+                                                        <button class="mb-1 mb-md-0 btn btn-sm btn-primary"><i class="fas fa-users"></i> Team</button>
+                                                            <button class="mb-1 mb-md-0 btn btn-sm btn-blue"><i class="far fa-edit"></i> Edit</button>
+                                                            <button class="mb-1 mb-md-0 btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> Delete</button>
+                                                        </td>
+                                                    </tr> -->
+                                                   @foreach ($clubs as $club)
                                                 <tr>
                                                     <td><img src="{{ asset($club->logo) }}" alt="Logo" width="50">
                                                     </td>
                                                     <td>{{ $club->name }}</td>
                                                     <td>{{ $club->address }}</td>
                                                     <td>{{ $club->city }}</td>
-                                                    <td>{{ $club->contact_name }}</td>
                                                     <td>{{ $club->phone }}</td>
                                                     <td>{{ $club->email }}</td>
                                                     <!-- <td>{{ $club->status }}</td> -->
                                                     <td>
-                                                        {{ $club->status ? 'Activate' : 'Deactivate' }}
+                                                        {{ $club->status ? 'Active' : 'Inactive' }}
                                                     </td>
                                                     <td>
-                                                        <button type="button" class="btn btn-sm {{ $club->status ? 'btn-danger' : 'btn-success' }} btn-status" data-form-action="{{ route('club.updateStatus', $club->id) }}">{{ $club->status ? 'Deactivate' : 'Activate' }}
+                                                        <button type="button" class="btn btn-sm {{ $club->status ? 'badge fs-14 bg-danger' : 'badge fs-14 bg-primary' }} btn-status" data-form-action="{{ route('club.updateStatus', $club->id) }}">{{ $club->status ? 'Inactive' : 'Active' }}
                                                     </button>
-                                                    <a class="btn btn-primary py-0 px-1"
-                                                            href="{{ route('team.list', base64_encode($club->id)) }}"><i class="fa fa-list" title="Team"></i> </a><a
+                                                    <a class="mb-1 mb-md-0 btn btn-sm btn-primary"
+                                                            href="{{ route('team.list', base64_encode($club->id)) }}"><i class="fas fa-users"></i> Team</a>
+                                                            <a
                                                             href="{{ route('club.edit', base64_encode($club->id)) }}"
-                                                            class="btn btn-warning btn-sm"><i class="fa fa-edit" title="Edit"></i></a><button type="button"
-                                                            class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                            class="mb-1 mb-md-0 btn btn-sm btn-blue"><i class="far fa-edit"></i> Edit</a>
+                                                            <button type="button"
+                                                            class="mb-1 mb-md-0 btn btn-sm btn-danger" data-bs-toggle="modal"
                                                             data-bs-target="#deleteModal"
-                                                            data-id="{{ base64_encode($club->id) }}"><i class="fa fa-trash" title="Delete"></i></button></td>
+                                                            data-id="{{ base64_encode($club->id) }}"><i class="far fa-trash-alt"></i> Delete</button></td>
                                                 </tr>
                                             @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div><!--end card-body-->
-                        </div><!--end card-->
-                    </div> <!--end col-->
-                </div><!--end row-->
+                                                 
+                                                </tbody>
+                                            </table>
+                                        </div>   
+                                    </div><!--end card-body--> 
+                                </div><!--end card--> 
+                            </div> <!--end col-->                                                        
+                        </div><!--end row-->
+
+                                                        
+                    </div><!-- container -->
+        
 
 
-            </div><!-- container -->
-        </div>
-    </div>
-    <!-- Modal HTML -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
