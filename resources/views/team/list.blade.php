@@ -35,7 +35,7 @@
                                                         <td>{{ $team->age_group }}</td>
                                                         <td>{{ $team->season }}</td>
                                                         <td>{{ ucfirst($team->status) }}</td>
-                                                        <td><a href="{{ route('team.edit', $team->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <td><a href="{{ route('administrator.create', $team->id) }}" class="btn btn-success btn-sm">Administrator</a><a href="{{ route('team.edit', $team->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('team.destroy', $team->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')

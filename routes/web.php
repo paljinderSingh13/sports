@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Club\ClubController;
 use App\Http\Controllers\Club\TeamController;
+use App\Http\Controllers\Club\AdministratorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,4 +28,9 @@ Route::get('/team-list/{id}', [TeamController::class, 'index'])->name('team.list
 Route::get('/team/edit/{id}', [TeamController::class, 'edit'])->name('team.edit');
 Route::delete('/team/destroy/{id}', [TeamController::class, 'destroy'])->name('team.destroy');
 Route::get('/team-info', [TeamController::class, 'info'])->name('team.info');
+
+
+Route::get('/administrator/create/{id}', [AdministratorController::class, 'create'])->name('administrator.create');
+Route::post('/administrator/store', [AdministratorController::class, 'store'])->name('administrator.store');
+
 
