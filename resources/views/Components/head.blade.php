@@ -25,6 +25,8 @@
          <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
          <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
          
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+         
          <style>
           /* .topbar,   .page-content{
                 background-color:#081762;
@@ -91,7 +93,7 @@
                         <li class="dropdown topbar-item">
                             <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="false" aria-expanded="false">
-                                <img src="assets/images/users/avatar-1.jpg" alt="" class="thumb-lg rounded-circle">
+                                <img src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="" class="thumb-lg rounded-circle">
                             </a>
                             <!-- <div class="dropdown-menu dropdown-menu-end py-0">
                                 <div class="d-flex align-items-center dropdown-item py-2 bg-secondary-subtle">
@@ -120,20 +122,13 @@
                 <!-- end navbar-->
             </div>
         </div>
-        @if(session('success'))
-            <div class="alert alert-success text-center">
-                {{ session('success') }}
-            </div>
-        @endif
-          @if ($errors->any())
-            <div class="alert alert-danger text-center">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+      @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show position-absolute top-0 end-0 m-3" role="alert" style="z-index: 1051;">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+        
         <!-- Top Bar End -->
 
     

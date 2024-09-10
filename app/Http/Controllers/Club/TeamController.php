@@ -13,6 +13,7 @@ class TeamController extends Controller
      */
     public function index($id)
     {
+        $id = base64_decode($id);
          $teams = Team::where('club_id',$id)->get();
         return view('team.list',compact('id','teams'));
     }

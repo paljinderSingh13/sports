@@ -9,7 +9,7 @@
                     </span>
                     <span class="">
                         <!-- <img src="assets/images/logo-sm.png" alt="logo-large" class="logo-lg logo-light"> -->
-                        <img src="assets/images/recsteplogo.jpg" alt="logo-large" class="logo-lg logo-dark">
+                        <img src="{{asset('assets/images/recsteplogo.jpg')}}" alt="logo-large" class="logo-lg logo-dark">
 
                     </span>
                 </a>
