@@ -4,9 +4,9 @@
 <head>
 
         <meta charset="utf-8" />
-                <title>Recstep - Admin & Dashboard Login</title>
+                <title>Recstep - Admin Login</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+                <meta content="Sports" name="description" />
                 <meta content="" name="author" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
@@ -19,6 +19,7 @@
          <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
+         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
          
 
     </head>
@@ -73,7 +74,7 @@
                                         <div class="form-group mb-0 row">
                                             <div class="col-12">
                                                 <div class="d-grid mt-3">
-                                                    <button class="btn btn-blue btn-lg" type="button">Log In <i class="fas fa-sign-in-alt ms-1"></i></button>
+                                                    <button class="btn btn-primary btn-lg" type="button">Log In <i class="fas fa-sign-in-alt ms-1"></i></button>
                                                 </div>
                                             </div><!--end col--> 
                                         </div> <!--end form-group-->                           

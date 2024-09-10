@@ -9,8 +9,13 @@
     font-style: normal;
 
 }
+body{
+    font-family: "Roboto", sans-serif;
+
+}
 h1,h2,h3,h4,h5,h6{
-    font-family: 'good_timesregular';
+    font-family: "Roboto", sans-serif;
+    /* font-family: 'good_timesregular'; */
     letter-spacing: 0.5px;
 }
 
@@ -122,7 +127,7 @@ h1,h2,h3,h4,h5,h6{
 .col-form-label{
     font-size: 18px;
     color: #414141;
-    font-weight: 400;
+    font-weight: 500;
 }
 .page-content.designthree .card-title{
     font-size: 40px;
@@ -147,7 +152,22 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .startbar .startbar-menu .navbar-nav .nav-item .nav-link{
-    font-size: 13px;
-    font-family: 'good_timesregular';
+    font-size: 15px;
+    /* font-family: 'good_timesregular'; */
     letter-spacing: 0.5px;
+}
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link.active, 
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link:hover {
+    color: #2ca372;
+}
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link.active .menu-icon, 
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link:hover .menu-icon{
+    color: #2ca372;
+}
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link,
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link .menu-icon{
+    color: #085e96;
+}
+.welcome-text h3{
+    color: #085e96;
 }

@@ -8,7 +8,7 @@
         <meta charset="utf-8" />
                 <title>Sports Club</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+                <meta content="Sports Club" name="description" />
                 <meta content="" name="author" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
@@ -23,6 +23,7 @@
          <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{asset('assets/libs/simple-datatables/style.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
+         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
          
          <style>
           /* .topbar,   .page-content{
@@ -53,7 +54,7 @@
                             </button>
                         </li> 
                         <li class="mx-3 welcome-text">
-                            <h3 class="mb-0 fw-bold text-truncate">Good Morning ! </h3>
+                            <h3 class="mb-0 ">Welcome to RecStep </h3>
                             <!-- <h6 class="mb-0 fw-normal text-muted text-truncate fs-14">Here's your overview this week.</h6> -->
                         </li>                   
                     </ul>
