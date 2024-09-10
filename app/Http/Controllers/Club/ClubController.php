@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ClubController extends Controller
 {
+    public function listtwo()
+    {
+        //
+        return view('club.listtwo');
+    }
     public function login()
     {
         //
@@ -37,11 +42,13 @@ class ClubController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
         $clubs = Club::all();
         return view('club.list',compact('clubs'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

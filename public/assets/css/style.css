@@ -11,6 +11,9 @@
 }
 body{
     font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    color: #414141;
 
 }
 h1,h2,h3,h4,h5,h6{
@@ -63,7 +66,9 @@ h1,h2,h3,h4,h5,h6{
 .page-content.design{
     background-color: #2ca372;
 }
-.page-content.designthree{
+
+.page-content.team-form,
+.page-content{
     background-color: #085e96;
 }
 .btn-primary {
@@ -117,11 +122,18 @@ h1,h2,h3,h4,h5,h6{
 .form-control:focus{
     border-color: #085e95;
 }
+.form-select:focus {
+    border-color: #085e96;
+}
 /* ------------------------------------------------ */
 
 .text-primary {
     --bs-text-opacity: 1;
     color: #2CA372 !important;
+}
+.bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: #2CA372 !important;
 }
 .form-label,
 .col-form-label{
@@ -170,4 +182,9 @@ h1,h2,h3,h4,h5,h6{
 }
 .welcome-text h3{
     color: #085e96;
+}
+.datatable-table > tbody > tr > td, .datatable-table > tbody > tr > th, 
+.datatable-table > tfoot > tr > td, .datatable-table > tfoot > tr > th, 
+.datatable-table > thead > tr > td, .datatable-table > thead > tr > th{
+    /* font-size: 15px; */
 }
