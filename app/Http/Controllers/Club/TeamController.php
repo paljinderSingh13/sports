@@ -21,7 +21,14 @@ class TeamController extends Controller
     {
         return view('team.info');
     }
-
+    public function tform()
+    {
+        return view('team.tform');
+    }
+    public function tlist()
+    {
+        return view('team.tlist');
+    }
     /**
      * Show the form for creating a new resource.
      */

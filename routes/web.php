@@ -15,6 +15,7 @@ Route::post('/club', [ClubController::class, 'store'])->name('club.store');
 Route::get('/club/edit/{id}', [ClubController::class, 'edit'])->name('club.edit');
 Route::delete('/club/destroy/{id}', [ClubController::class, 'destroy'])->name('club.destroy');
 Route::get('/club-list', [ClubController::class, 'index'])->name('club.list');
+Route::get('/club-listtwo', [ClubController::class, 'listtwo'])->name('club.listtwo');
 Route::get('/club-design', [ClubController::class, 'design'])->name('club.design');
 Route::get('/club-designtwo', [ClubController::class, 'designtwo'])->name('club.designtwo');
 Route::get('/club-designthree', [ClubController::class, 'designthree'])->name('club.designthree');
@@ -27,4 +28,6 @@ Route::get('/team-list/{id}', [TeamController::class, 'index'])->name('team.list
 Route::get('/team/edit/{id}', [TeamController::class, 'edit'])->name('team.edit');
 Route::delete('/team/destroy/{id}', [TeamController::class, 'destroy'])->name('team.destroy');
 Route::get('/team-info', [TeamController::class, 'info'])->name('team.info');
+Route::get('/team-tform', [TeamController::class, 'tform'])->name('team.tform');
+Route::get('/team-tlist', [TeamController::class, 'tlist'])->name('team.tlist');
 
