@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Club\ClubController;
 use App\Http\Controllers\Club\TeamController;
+use App\Http\Controllers\Club\PlayerController;
 use App\Http\Controllers\Club\AdministratorController;
 
 Route::get('/', function () {
@@ -31,10 +32,20 @@ Route::get('/team/create/{id}', [TeamController::class, 'create'])->name('team.c
 Route::post('/team/store/', [TeamController::class, 'store'])->name('team.store');
 Route::get('/team-list/{id}', [TeamController::class, 'index'])->name('team.list');
 Route::get('/team/edit/{id}', [TeamController::class, 'edit'])->name('team.edit');
+Route::put('/team/update/{id}', [TeamController::class, 'update'])->name('team.update');
 Route::delete('/team/destroy/{id}', [TeamController::class, 'destroy'])->name('team.destroy');
-Route::get('/team-info', [TeamController::class, 'info'])->name('team.info');
+Route::get('/team-info/{id}', [TeamController::class, 'info'])->name('team.info');
 Route::get('/team-tform', [TeamController::class, 'tform'])->name('team.tform');
 Route::get('/team-tlist', [TeamController::class, 'tlist'])->name('team.tlist');
+Route::post('/team/{id}/status', [TeamController::class, 'updateStatus'])->name('team.updateStatus');
+
+
+
+Route::get('/players/create/{id}', [PlayerController::class, 'create'])->name('player.create');
+Route::post('/players/store', [PlayerController::class, 'store'])->name('player.store');
+Route::get('/players/edit/{id}', [PlayerController::class, 'edit'])->name('player.edit');
+Route::put('/players/update/{id}', [PlayerController::class, 'update'])->name('player.update');
+Route::delete('/players/destroy/{id}', [PlayerController::class, 'destroy'])->name('player.destroy');
 
 
 Route::get('/administrator/create/{id}', [AdministratorController::class, 'create'])->name('administrator.create');
