@@ -103,14 +103,15 @@
                                 <small class="text-danger error">{{ $message }}</small>
                             @enderror
                         </div>
-
+                         <div class="container">   
                         <div class="row mt-3">
                             <div class="col-lg-6 col-sm-6 col-6 text-end mb-2">                            
-                                <button type="submit" class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2">Update</button>
+                                <button type="submit" onclick="executeExample('clubupdate')" class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2">Update</button>
                             </div>
                             <div class="col-lg-6 col-6 col-sm-6 mb-2">
                                 <a href="{{ route('club.list') }}" class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
                             </div>
+                        </div>
                         </div>
                     </form>
 <!--end form-->            
