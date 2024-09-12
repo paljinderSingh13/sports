@@ -5,6 +5,7 @@ use App\Http\Controllers\Club\ClubController;
 use App\Http\Controllers\Club\TeamController;
 use App\Http\Controllers\Club\PlayerController;
 use App\Http\Controllers\Club\AdministratorController;
+use App\Http\Controllers\Club\ScheduleController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -52,4 +53,5 @@ Route::delete('/players/destroy/{id}', [PlayerController::class, 'destroy'])->na
 Route::get('/administrator/create/{id}', [AdministratorController::class, 'create'])->name('administrator.create');
 Route::post('/administrator/store', [AdministratorController::class, 'store'])->name('administrator.store');
 
+Route::get('/schedule-form', [ScheduleController::class, 'form'])->name('schedule.form');
 

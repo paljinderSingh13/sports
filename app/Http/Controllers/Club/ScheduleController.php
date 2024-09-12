@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
+
+    public function form()
+    {
+        //
+        return view('schedule.form');
+    }
     /**
      * Display a listing of the resource.
      */
