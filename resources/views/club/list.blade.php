@@ -34,22 +34,7 @@
                                                     <th>Actions</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>                                                   
-                                                  <!--   <tr>                                                   
-                                                        <td>Sahil </td>
-                                                        <td>Amritsar</td> 
-                                                        <td>123456987</td> 
-                                                        <td>abc@gmail.com</td> 
-                                                        <td> 
-                                                            <span class="badge fs-14 bg-primary">Active</span> 
-                                                            <span class="badge fs-14 bg-danger">Inactive</span> 
-                                                        </td>
-                                                        <td>
-                                                        <button class="mb-1 mb-md-0 btn btn-sm btn-primary"><i class="fas fa-users"></i> Team</button>
-                                                            <button class="mb-1 mb-md-0 btn btn-sm btn-blue"><i class="far fa-edit"></i> Edit</button>
-                                                            <button class="mb-1 mb-md-0 btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> Delete</button>
-                                                        </td>
-                                                    </tr> -->
+                                                <tbody>
                                                    @foreach ($clubs as $club)
                                                 <tr>
                                                     <td><img src="{{ asset($club->logo) }}" alt="Logo" width="50">

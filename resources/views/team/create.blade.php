@@ -5,7 +5,7 @@
 <div class="page-wrapper">
 
 <!-- Page Content-->
-<div class="page-content">
+<div class="page-content team-form">
 <div class="container-xxl"> 
 
 <div class="row">
@@ -52,11 +52,10 @@
                             <button type="submit" class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2 ">Submit</button>
                         </div>
                         <div class="col-lg-6 col-6 col-sm-6 mb-2">
-                        <button type="button" class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</button>
+                        <a href="{{route('team.list',base64_encode($id))}}" type="button" class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
                         </div>
                     </div>  
-                </div>  
-
+                </div>   
                 </form><!--end form-->            
             </div><!--end card-body--> 
         </div><!--end card--> 
