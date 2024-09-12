@@ -49,17 +49,14 @@
                                                         {{ $club->status ? 'Active' : 'Inactive' }}
                                                     </td>
                                                     <td>
-                                                        <button type="button" class="btn btn-sm {{ $club->status ? 'badge fs-14 bg-danger' : 'badge fs-14 bg-primary' }} btn-status" data-form-action="{{ route('club.updateStatus', $club->id) }}">{{ $club->status ? 'Inactive' : 'Active' }}
+                                                        <button type="button" onclick="executeExample('clubstatus')" class="btn btn-sm {{ $club->status ? ' fs-14 btn-danger' : ' fs-14 btn-primary' }} btn-status" data-form-action="{{ route('club.updateStatus', $club->id) }}">{{ $club->status ? 'Inactive' : 'Active' }}
                                                     </button>
                                                     <a class="mb-1 mb-md-0 btn btn-sm btn-primary"
                                                             href="{{ route('team.list', base64_encode($club->id)) }}"><i class="fas fa-users"></i> Team</a>
                                                             <a
                                                             href="{{ route('club.edit', base64_encode($club->id)) }}"
                                                             class="mb-1 mb-md-0 btn btn-sm btn-blue"><i class="far fa-edit"></i> Edit</a>
-                                                            <button type="button"
-                                                            class="mb-1 mb-md-0 btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                            data-bs-target="#deleteModal"
-                                                            data-id="{{ base64_encode($club->id) }}"><i class="far fa-trash-alt"></i> Delete</button></td>
+                                                            <button type="button" onclick="executeExample('warningConfirm')"  class="mb-1 mb-md-0 btn btn-sm btn-danger" data-bs-toggle="modal" data-id="{{ base64_encode($club->id) }}"><i class="far fa-trash-alt"></i> Delete</button></td>
                                                 </tr>
                                             @endforeach
                                                  

@@ -6,9 +6,14 @@
         <div class="container-xxl">
             <div class="row justify-content-center">
                             <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
+                                <div class="card rounded-5 mt-3">
+                                    <div class="card-header rounded-5">
                                         <div class="row align-items-center">
+                                            <div class="col-12 col-md-6 mb-3 mb-lg-0">                      
+                                                <h4 class="card-title fs-1 text-primary text-uppercase">Teams </h4>                      
+                                            </div><!--end col-->
+                                            <div class="col-12 col-md-6 mb-3 mb-lg-0 text-end">
+                                            <a class="mb-1 mb-md-0 btn btn-lg btn-blue fs-4" href="{{route('team.create',$id)}}"><i class="far fa-plus-square"></i> Add Team</a>
                                             <div class="col">                      
                                                 <h4 class="card-title">Teams </h4>                      
                                             </div><!--end col-->
@@ -35,6 +40,15 @@
                                                         <td>{{ $team->name }}</td>
                                                         <td>{{ $team->age_group }}</td>
                                                         <td>{{ $team->season }}</td>
+                                                        <td>{{ ucfirst($team->status) }}</td>
+                                                        <td>
+                                                            <a href="{{ route('administrator.create', $team->id) }}" class="btn btn-success btn-sm"> <i class="far fa-user"></i> Administrator</a>
+                                                            <a href="{{ route('team.edit', $team->id) }}" class="btn btn-blue btn-sm"><i class="far fa-edit"></i> Edit</a>
+                    <form action="{{ route('team.destroy', $team->id) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="executeExample('teamdelete')"  onclick="return confirm('Are you sure you want to delete this club?');"><i class="far fa-trash-alt"></i> Delete</button>
+                    </form></td>
                                                         <td>
                                                         {{ $team->status ? 'Active' : 'Inactive' }}
                                                     </td><td>
@@ -62,8 +76,7 @@
 
                                                         
                     </div><!-- container -->
-        </div>
-</div>
+        
 
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
