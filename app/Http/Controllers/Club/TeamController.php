@@ -33,6 +33,10 @@ class TeamController extends Controller
     {
         return view('team.tlist');
     }
+    public function adminlist()
+    {
+        return view('team.adminlist');
+    }
     /**
      * Show the form for creating a new resource.
      */
