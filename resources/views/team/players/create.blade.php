@@ -27,7 +27,7 @@
                                         <label for="picture" class="form-label">Picture</label>
                                         <input type="file" name="picture" id="picture"
                                             class="form-control form-control-lg" accept="image/*"
-                                            onchange="previewImage(event)">
+                                            onchange="previewImage(event)" required>
                                         <img id="picturePreview" src="#" alt="Picture Preview"
                                             style="display: none; max-width: 300px; margin-top: 10px;">
                                         @error('picture')
@@ -84,7 +84,7 @@
                                     <div class="mb-2 col-lg-6 col-sm-12">
                                         <label for="dob" class="form-label">Date of Birth</label>
                                         <input type="date" name="dob" id="dob"
-                                            class="form-control form-control-lg" value="{{ old('dob') }}" required>
+                                            class="form-control form-control-lg" value="{{ old('dob') }}" max="{{ date('Y-m-d') }}" required>
                                         @error('dob')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -93,7 +93,7 @@
                                     <div class="mb-2 col-lg-6 col-sm-12">
                                         <label for="proof_id" class="form-label">Proof ID </label>
                                         <input type="file" name="proof_id" id="proof_id"
-                                            class="form-control form-control-lg">
+                                            class="form-control form-control-lg" required>
 
                                     </div>
                                     @error('proof_id')
@@ -139,7 +139,7 @@
                                                     class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2">Submit</button>
                                             </div>
                                             <div class="col-lg-6 col-6 col-sm-6 mb-2">
-                                                <a href="{{ route('team.list', base64_encode($id)) }}" type="button"
+                                                <a href="{{ route('team.list',base64_encode($id)) }}" type="button"
                                                     class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
                                             </div>
                                         </div>

@@ -60,7 +60,14 @@
                                                         <td>{{ $player->status == 1 ? 'Active' : 'Inactive' }}</td>
                                                         <td>
                                                             <a href="{{ route('player.edit',base64_encode($player->id)) }}" class="mb-1 mb-md-0 btn btn-sm btn-blue"><i class="far fa-edit"></i> Edit</a>
-                                                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal" onclick="setDeleteFormAction('{{ route('player.destroy', base64_encode($player->id)) }}')">Delete</button>
+                                                             
+                                                              <form action="{{route('player.destroy', base64_encode($player->id)) }}" method="POST" style="display:inline-block;" id="delete-form-{{ $player->id }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $player->id }}')">
+                                                                    <i class="far fa-trash-alt"></i> Delete
+                                                                </button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -74,37 +81,30 @@
 
                                                         
                     </div><!-- container -->
-        
-<!-- Bootstrap Confirmation Modal -->
-    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete this player? This action cannot be undone.
-      </div>
-      <div class="modal-footer">
-        <form id="deleteForm" method="POST" style="display: inline;">
-          @csrf
-          @method('DELETE')
-          <button type="submit" class="btn btn-danger">Delete</button>
-        </form>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-      </div>
-    </div>
-  </div>
-    </div>
 
 
 @endsection
 @section('js')
-<script>
-  function setDeleteFormAction(actionUrl) {
-    var deleteForm = document.getElementById('deleteForm');
-    deleteForm.action = actionUrl;
-  }
+  <script>
+    // Function to show the SweetAlert2 confirmation dialog for delete
+    function confirmDelete(event, teamId) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure you want to delete this player?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#085e96',
+            cancelButtonColor: '#dd3333',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + teamId).submit();
+            }
+        });
+    }
+
+   
 </script>
 @endsection

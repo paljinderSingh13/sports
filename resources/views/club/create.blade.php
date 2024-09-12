@@ -23,7 +23,7 @@
                     @csrf
                     <div class="mb-2 col-lg-6 col-sm-12">
                         <label for="logo" class="form-label">Logo <span class="text-danger">*</span></label>
-                        <input class="form-control form-control-lg" type="file" name="logo" id="logo" placeholder="Logo">
+                        <input class="form-control form-control-lg" type="file" name="logo" id="logo" placeholder="Logo" required>
                         <img id="preview-image" src="#" alt="Image Preview" style="display: none; max-width: 300px; margin-top: 10px;">
                         @error('logo')
                             <small class="text-danger error">{{ $message }}</small>

@@ -13,13 +13,7 @@
                                                 <h4 class="card-title fs-1 text-primary text-uppercase">Teams </h4>                      
                                             </div><!--end col-->
                                             <div class="col-12 col-md-6 mb-3 mb-lg-0 text-end">
-                                            <a class="mb-1 mb-md-0 btn btn-lg btn-blue fs-4" href="{{route('team.create',$id)}}"><i class="far fa-plus-square"></i> Add Team</a>
-                                            <div class="col">                      
-                                                <h4 class="card-title fs-1 text-primary text-uppercase">Teams </h4>                      
-                                            </div><!--end col-->
-                                            <div class="col-12 col-md-6 mb-3 mb-lg-0 text-end">                      
-                                                <a href="{{route('team.create',base64_encode($id))}}" class="mb-1 mb-md-0 btn btn-lg btn-blue fs-4"><i class="far fa-plus-square"></i> Create a Team</a>                      
-                                            </div>
+                                            <a class="mb-1 mb-md-0 btn btn-lg btn-blue fs-4" href="{{route('team.create',base64_encode($id))}}"><i class="far fa-plus-square"></i> Add Team</a>
                                         </div>  <!--end row-->                                  
                                     </div><!--end card-header-->
                                     <div class="card-body pt-0">
@@ -40,28 +34,34 @@
                                                         <td>{{ $team->name }}</td>
                                                         <td>{{ $team->age_group }}</td>
                                                         <td>{{ $team->season }}</td>
-                                                        <td>{{ ucfirst($team->status) }}</td>
-                                                        <td>
-                                                            <a href="{{ route('administrator.create', $team->id) }}" class="btn btn-success btn-sm"> <i class="far fa-user"></i> Administrator</a>
-                                                            <a href="{{ route('team.edit', $team->id) }}" class="btn btn-blue btn-sm"><i class="far fa-edit"></i> Edit</a>
-                    <form action="{{ route('team.destroy', $team->id) }}" method="POST" style="display:inline-block;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="executeExample('teamdelete')"  onclick="return confirm('Are you sure you want to delete this club?');"><i class="far fa-trash-alt"></i> Delete</button>
-                    </form></td>
                                                         <td>
                                                         {{ $team->status ? 'Active' : 'Inactive' }}
-                                                    </td><td>
-                                                        <button type="button" class="btn btn-sm {{ $team->status ? 'badge fs-14 bg-danger' : 'badge fs-14 bg-primary' }} btn-status" data-form-action="{{ route('team.updateStatus', $team->id) }}">{{ $team->status ? 'Inactive' : 'Active' }}
-                                                    </button>&nbsp;
-                                                    <a href="{{ route('team.info', base64_encode($team->id)) }}" class="mb-1 mb-md-0 btn btn-sm btn-success">Team Info</a>
-                                                            <a
-                                                            href="{{ route('team.edit', base64_encode($team->id)) }}"
-                                                            class="mb-1 mb-md-0 btn btn-sm btn-blue"><i class="far fa-edit"></i> Edit</a>
-                                                            <button type="button"
-                                                            class="mb-1 mb-md-0 btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                            data-bs-target="#deleteModal"
-                                                            data-id="{{ base64_encode($team->id) }}"><i class="far fa-trash-alt"></i> Delete</button></td>
+                                                    </td>
+                                                        <td>
+                                                            <form action="{{ route('team.updateStatus', $team->id) }}" method="POST" style="display:inline-block;" id="status-form-{{ $team->id }}">
+                                                                @csrf
+                                                                <button type="button" class="btn btn-sm {{ $team->status ? 'badge fs-14 bg-danger' : 'badge fs-14 bg-primary' }} btn-status" 
+                                                                    onclick="confirmStatusChange(event, '{{ $team->id }}')">
+                                                                    {{ $team->status ? 'Inactive' : 'Active' }}
+                                                                </button>
+                                                            </form>
+                                                            &nbsp;
+                                                            <a href="{{ route('administrator.create', $team->id) }}" class="btn btn-success btn-sm">
+                                                                <i class="far fa-user"></i> Administrator
+                                                            </a>
+                                                            &nbsp;
+                                                            <a href="{{ route('team.info', base64_encode($team->id)) }}" class="mb-1 mb-md-0 btn btn-sm btn-success">Team Info</a>
+                                                            <a href="{{ route('team.edit', $team->id) }}" class="btn btn-blue btn-sm">
+                                                                <i class="far fa-edit"></i> Edit
+                                                            </a>
+                                                            <form action="{{ route('team.destroy',base64_encode($team->id)) }}" method="POST" style="display:inline-block;" id="delete-form-{{ $team->id }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $team->id }}')">
+                                                                    <i class="far fa-trash-alt"></i> Delete
+                                                                </button>
+                                                            </form>
+                                                        </td>
 
                                                     </tr>
                                                 @endforeach
@@ -76,77 +76,45 @@
 
                                                         
                     </div><!-- container -->
-        
 
-
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this team?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <form id="deleteForm" action="" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="statusModalLabel">Confirm Status Change</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Are you sure you want to change the status of this team?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <form id="statusForm" action="" method="POST">
-              @csrf
-              <button type="submit" class="btn btn-danger" id="confirmButton">Confirm</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
 @endsection
 @section('js')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var deleteModal = document.getElementById('deleteModal');
-            deleteModal.addEventListener('show.bs.modal', function(event) {
-                var button = event.relatedTarget; // Button that triggered the modal
-                var teamId = button.getAttribute('data-id'); // Extract info from data-* attributes
-                var form = deleteModal.querySelector('form');
-                form.action = '/team/destroy/' + teamId; // Set form action dynamically
-            });
+    // Function to show the SweetAlert2 confirmation dialog for delete
+    function confirmDelete(event, teamId) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure you want to delete this club?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#085e96',
+            cancelButtonColor: '#dd3333',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + teamId).submit();
+            }
         });
-    </script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        // When the form button is clicked, show the modal and set the form action
-        document.querySelectorAll('.btn-status').forEach(function (button) {
-          button.addEventListener('click', function () {
-            // Get the form action from the button's data attribute
-            var formAction = this.getAttribute('data-form-action');
-            document.getElementById('statusForm').action = formAction;
-            
-            // Show the modal
-            var statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
-            statusModal.show();
-          });
+    }
+
+    // Function to show the SweetAlert2 confirmation dialog for status change
+    function confirmStatusChange(event, teamId) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure you want to change this team status?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#085e96',
+            cancelButtonColor: '#dd3333',
+            confirmButtonText: 'Yes, change it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('status-form-' + teamId).submit();
+            }
         });
-      });
-    </script>
+    }
+</script>
 @endsection

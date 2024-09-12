@@ -52,7 +52,7 @@
                             <button type="submit" class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2 ">Submit</button>
                         </div>
                         <div class="col-lg-6 col-6 col-sm-6 mb-2">
-                        <a href="{{route('team.list',base64_encode($id))}}" type="button" class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
+                        <a href="{{route('team.list',base64_encode($id))}}"  class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
                         </div>
                     </div>  
                 </div>   

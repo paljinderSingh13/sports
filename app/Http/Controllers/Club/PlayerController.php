@@ -95,8 +95,8 @@ class PlayerController extends Controller
         //
         $id = base64_decode($id);
         $player = Player::where('id',$id)->first();
-        $players['permanent'] = Player::select('priority')->where('type','permanent')->where('team_id',$id)->pluck('priority')->toArray();
-        $players['substitute'] = Player::select('priority')->where('type','substitute')->where('team_id',$id)->pluck('priority')->toArray();
+        $players['permanent'] = Player::select('priority')->where('type','permanent')->where('team_id',$player->team_id)->pluck('priority')->toArray();
+        $players['substitute'] = Player::select('priority')->where('type','substitute')->where('team_id',$player->team_id)->pluck('priority')->toArray();
         return view('team.players.edit',compact('player','players'));
     }
 

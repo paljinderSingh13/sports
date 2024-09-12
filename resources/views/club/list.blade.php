@@ -49,14 +49,27 @@
                                                         {{ $club->status ? 'Active' : 'Inactive' }}
                                                     </td>
                                                     <td>
-                                                        <button type="button" onclick="executeExample('clubstatus')" class="btn btn-sm {{ $club->status ? ' fs-14 btn-danger' : ' fs-14 btn-primary' }} btn-status" data-form-action="{{ route('club.updateStatus', $club->id) }}">{{ $club->status ? 'Inactive' : 'Active' }}
-                                                    </button>
+                                                    <form action="{{ route('club.updateStatus', $club->id) }}" method="POST" style="display:inline-block;" id="status-form-{{ $club->id }}">
+                                                                @csrf
+                                                                <button type="button" class="btn btn-sm {{ $club->status ? 'badge fs-14 bg-danger' : 'badge fs-14 bg-primary' }} btn-status" 
+                                                                    onclick="confirmStatusChange(event, '{{ $club->id }}')">
+                                                                    {{ $club->status ? 'Inactive' : 'Active' }}
+                                                                </button>
+                                                    </form>
                                                     <a class="mb-1 mb-md-0 btn btn-sm btn-primary"
                                                             href="{{ route('team.list', base64_encode($club->id)) }}"><i class="fas fa-users"></i> Team</a>
                                                             <a
                                                             href="{{ route('club.edit', base64_encode($club->id)) }}"
                                                             class="mb-1 mb-md-0 btn btn-sm btn-blue"><i class="far fa-edit"></i> Edit</a>
-                                                            <button type="button" onclick="executeExample('warningConfirm')"  class="mb-1 mb-md-0 btn btn-sm btn-danger" data-bs-toggle="modal" data-id="{{ base64_encode($club->id) }}"><i class="far fa-trash-alt"></i> Delete</button></td>
+
+                                                            <form action="{{ route('club.destroy',base64_encode($club->id)) }}" method="POST" style="display:inline-block;" id="delete-form-{{ $club->id }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $club->id }}')">
+                                                                    <i class="far fa-trash-alt"></i> Delete
+                                                                </button>
+                                                            </form>
+                                                        </td>
                                                 </tr>
                                             @endforeach
                                                  
@@ -73,74 +86,44 @@
         
 
 
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this club?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <form id="deleteForm" action="" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="statusModalLabel">Confirm Status Change</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Are you sure you want to change the status of this club?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <form id="statusForm" action="" method="POST">
-              @csrf
-              <button type="submit" class="btn btn-danger" id="confirmButton">Confirm</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
 @endsection
 @section('js')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var deleteModal = document.getElementById('deleteModal');
-            deleteModal.addEventListener('show.bs.modal', function(event) {
-                var button = event.relatedTarget; // Button that triggered the modal
-                var clubId = button.getAttribute('data-id'); // Extract info from data-* attributes
-                var form = deleteModal.querySelector('form');
-                form.action = '/club/destroy/' + clubId; // Set form action dynamically
-            });
+      <script>
+    // Function to show the SweetAlert2 confirmation dialog for delete
+    function confirmDelete(event, Id) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure you want to delete this club?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#085e96',
+            cancelButtonColor: '#dd3333',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + Id).submit();
+            }
         });
-    </script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        // When the form button is clicked, show the modal and set the form action
-        document.querySelectorAll('.btn-status').forEach(function (button) {
-          button.addEventListener('click', function () {
-            // Get the form action from the button's data attribute
-            var formAction = this.getAttribute('data-form-action');
-            document.getElementById('statusForm').action = formAction;
-            
-            // Show the modal
-            var statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
-            statusModal.show();
-          });
+    }
+
+    // Function to show the SweetAlert2 confirmation dialog for status change
+    function confirmStatusChange(event, Id) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure you want to change this club status?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#085e96',
+            cancelButtonColor: '#dd3333',
+            confirmButtonText: 'Yes, change it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('status-form-' + Id).submit();
+            }
         });
-      });
-    </script>
+    }
+</script>
 @endsection

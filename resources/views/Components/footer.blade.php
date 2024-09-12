@@ -41,6 +41,35 @@
 
         <script src="{{asset('assets/js/app.js')}}"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+ @if(session('success'))
+       <!--  <div class="alert alert-success alert-dismissible fade show position-absolute top-0 end-0 m-3" role="alert" style="z-index: 1051;">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div> -->
+        <input type="hidden" id="successMsg" value="{{ session('success') }}">
+        <button id="success" onclick="executeExample('customPositions')" >&nbsp</button>
+       
+    @endif
+       <script >
+            function executeExample(t) {
+                var msg = $('#successMsg').val();
+
+                switch (t) {
+                    case "customPositions":
+                        return void Swal.fire({ position: "top-end", icon: "success", title: msg, showConfirmButton: !1, timer: 3000 });
+                }
+            }
+            
+       </script>
+       <script>
+           $(document).ready(function() {
+                // Set a timeout to delay the execution of the code inside
+                setTimeout(function() {
+                        $('#success').click();
+                    
+                }, 800); // 3000 milliseconds = 3 seconds
+            });
+       </script>
         @yield('js')
     </body>
     <!--end body-->
