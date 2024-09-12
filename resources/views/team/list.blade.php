@@ -6,11 +6,11 @@
         <div class="container-xxl">
             <div class="row justify-content-center">
                             <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
+                                <div class="card rounded-5 mt-3">
+                                    <div class="card-header rounded-5">
                                         <div class="row align-items-center">
                                             <div class="col">                      
-                                                <h4 class="card-title">Teams </h4>                      
+                                                <h4 class="card-title fs-1 text-primary text-uppercase">Teams </h4>                      
                                             </div><!--end col-->
                                             <div class="col-12 col-md-6 mb-3 mb-lg-0 text-end">                      
                                                 <a href="{{route('team.create',base64_encode($id))}}" class="mb-1 mb-md-0 btn btn-lg btn-blue fs-4"><i class="far fa-plus-square"></i> Create a Team</a>                      
