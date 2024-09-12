@@ -38,6 +38,7 @@ Route::get('/team-info/{id}', [TeamController::class, 'info'])->name('team.info'
 Route::get('/team-tform', [TeamController::class, 'tform'])->name('team.tform');
 Route::get('/team-tlist', [TeamController::class, 'tlist'])->name('team.tlist');
 Route::post('/team/{id}/status', [TeamController::class, 'updateStatus'])->name('team.updateStatus');
+Route::get('/team-adminlist', [TeamController::class, 'adminlist'])->name('team.adminlist');
 
 
 
