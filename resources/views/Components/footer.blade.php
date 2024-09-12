@@ -33,6 +33,12 @@
         <script src="{{asset('assets/libs/simple-datatables/umd/simple-datatables.js')}}"></script>
         <script src="{{asset('assets/js/pages/datatable.init.js')}}"></script> 
 
+         <!-- Sweet-Alert  -->
+        <script src="{{asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script> 
+        <!-- <script src="{{asset('assets/js/pages/sweet-alert.init.js')}}"></script>  -->
+        <script src="{{asset('assets/js/pages/mysweet-alert.init.js')}}"></script> 
+        <script src="{{asset('assets/js/app.js')}}"></script> 
+
         <script src="{{asset('assets/js/app.js')}}"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
         @yield('js')
