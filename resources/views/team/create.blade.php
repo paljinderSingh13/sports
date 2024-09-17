@@ -35,8 +35,16 @@
                     </div>
 
                     <div class="mb-2 col-lg-6 col-sm-12">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control form-control-lg" id="email" name="email" required placeholder="Email">
+                    </div>
+                    <div class="mb-2 col-lg-6 col-sm-12">
                         <label for="season" class="form-label">Season</label>
                         <input type="text" class="form-control form-control-lg" id="season" name="season" required placeholder="Season">
+                    </div>
+                    <div class="mb-2 col-lg-6 col-sm-12">
+                        <label for="password" class="form-label">password</label>
+                        <input type="password" class="form-control form-control-lg" id="password" name="password" required placeholder="Password">
                     </div>
 
                     <div class="mb-2 col-lg-6 col-sm-12">

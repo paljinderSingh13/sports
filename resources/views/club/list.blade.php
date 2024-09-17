@@ -37,7 +37,8 @@
                                                 <tbody>
                                                    @foreach ($clubs as $club)
                                                 <tr>
-                                                    <td><img src="{{ asset($club->logo) }}" alt="Logo" width="50">
+                                                    <td>
+                                                        <img src="{{ asset($club->logo) }}" alt="logo" class="rounded-circle thumb-md me-1 d-inline">
                                                     </td>
                                                     <td>{{ $club->name }}</td>
                                                     <td>{{ $club->address }}</td>
@@ -52,7 +53,7 @@
                                                     <form action="{{ route('club.updateStatus', $club->id) }}" method="POST" style="display:inline-block;" id="status-form-{{ $club->id }}">
                                                                 @csrf
                                                                 <button type="button" class="btn btn-sm {{ $club->status ? 'badge fs-14 bg-danger' : 'badge fs-14 bg-primary' }} btn-status" 
-                                                                    onclick="confirmStatusChange(event, '{{ $club->id }}')">
+                                                                    onclick="confirmStatusChange(event, '{{ $club->id }}')" style="width: 70px;" onmouseover="this.style.color='white'" >
                                                                     {{ $club->status ? 'Inactive' : 'Active' }}
                                                                 </button>
                                                     </form>

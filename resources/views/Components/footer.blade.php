@@ -47,7 +47,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div> -->
         <input type="hidden" id="successMsg" value="{{ session('success') }}">
-        <button id="success" onclick="executeExample('customPositions')" >&nbsp</button>
+        <a id="success" onclick="executeExample('customPositions')" >&nbsp;</a>
        
     @endif
        <script >

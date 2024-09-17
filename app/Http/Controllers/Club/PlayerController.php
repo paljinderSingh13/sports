@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Club;
 
 use App\Http\Controllers\Controller;
 use App\Models\Club\Player;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Hash;
 
 class PlayerController extends Controller
 {
@@ -47,9 +49,18 @@ class PlayerController extends Controller
             'status' => 'required|boolean',
         ]);
 
+         $pass = Hash::make($request->password);
+        $user = User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'role' => 'player',
+                'password' => $pass,
+
+        ]);
         $player = new Player();
         $player->team_id = $request->team_id;
         $player->name = $request->name;
+        $player->user_id = $user->id;
         $player->type = $request->type;
         $player->priority = $request->priority;
         $player->dob = $request->dob;
@@ -163,6 +174,15 @@ class PlayerController extends Controller
         return back()->with('success', 'Player updated successfully.');
 
 
+    }
+
+      public function updateStatus(Request $request, $id)
+    {
+        $player = Player::findOrFail($id);
+        $player->status = !$player->status; // Toggle status
+        $player->save();
+
+        return back()->with('success', 'Player status updated successfully.');
     }
 
     /**

@@ -266,7 +266,7 @@
                                     </ul>
                                 </div>
                             </li> -->
-                            
+                            @if(auth()->user()->role == 'master')
                             <li class="nav-item">
                                 <a class="nav-link" href="#sidebarForms" data-bs-toggle="collapse" role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">
@@ -285,6 +285,7 @@
                                     </ul>
                                 </div>
                             </li>
+                            @endif
                             <li class="nav-item">
                                 <a class="nav-link" href="#"  role="button"
                                     aria-expanded="false" aria-controls="sidebarForms">

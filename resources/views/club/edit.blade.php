@@ -26,7 +26,7 @@
                         <div class="mb-2 col-lg-6 col-sm-12">
                             <label for="logo" class="form-label">Logo <span class="text-danger">*</span></label>
                             <input class="form-control form-control-lg" type="file" name="logo" id="logo" placeholder="Logo">
-                            <img id="preview-image" src="{{asset($club->logo)}}" alt="Image Preview" style="display: {{ $club->logo ? 'block' : 'none' }}; max-width: 200px; margin-top: 10px;">
+                            <img id="preview-image" src="{{asset($club->logo)}}" alt="Image Preview" style="display: {{ $club->logo ? 'block' : 'none' }}; max-height: 100px;max-width: 200px; margin-top: 10px;">
                             @error('logo')
                                 <small class="text-danger error">{{ $message }}</small>
                             @enderror

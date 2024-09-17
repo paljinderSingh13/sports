@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Club extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = [ 'logo', 'name', 'address', 'city', 'state', 'country', 'postal_code', 'contact_name', 'phone', 'email'];
+    protected $fillable = [ 'logo','user_id','name', 'address', 'city', 'state', 'country', 'postal_code', 'contact_name', 'phone', 'email'];
 
-     protected $dates = ['deleted_at'];
+    
+    protected $dates = ['deleted_at'];
 }

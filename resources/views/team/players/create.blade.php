@@ -131,7 +131,14 @@
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-
+                                    <div class="mb-2 col-lg-6 col-sm-12">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" name="password" id="password"
+                                            class="form-control form-control-lg" value="{{ old('password') }}" required>
+                                        @error('password')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
                                     <div class="container">
                                         <div class="row mt-3">
                                             <div class="col-lg-6 col-sm-6 col-6 text-end mb-2">
@@ -139,7 +146,7 @@
                                                     class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2">Submit</button>
                                             </div>
                                             <div class="col-lg-6 col-6 col-sm-6 mb-2">
-                                                <a href="{{ route('team.list',base64_encode($id)) }}" type="button"
+                                                <a href="{{ route('team.info',base64_encode($id)) }}" type="button"
                                                     class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
                                             </div>
                                         </div>

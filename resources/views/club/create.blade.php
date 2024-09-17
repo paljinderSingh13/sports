@@ -101,13 +101,20 @@
                             <small class="text-danger error">{{ $message }}</small>
                         @enderror
                     </div>
+                    <div class="mb-2 col-lg-6 col-sm-12">
+                        <label for="Email" class="form-label">Password <span class="text-danger">*</span></label>
+                        <input class="form-control form-control-lg" type="password" name="password" id="Password" placeholder="Password" min="8" max="20" value="{{ old('password') }}" required>
+                        @error('password')
+                            <small class="text-danger error">{{ $message }}</small>
+                        @enderror
+                    </div>
                     <div class="container">
                     <div class="row mt-3">
                         <div class="col-lg-6 col-sm-6 col-6 text-end mb-2">                            
                             <button type="submit" class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2">Submit</button>
                         </div>
                         <div class="col-lg-6 col-6 col-sm-6 mb-2">
-                            <button type="button" class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</button>
+                            <a href="{{route('club.list')}}" class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
                         </div>
                     </div>
                     </div>

@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Club;
 
 use App\Http\Controllers\Controller;
 use App\Models\Club\Team;
+use App\Models\Club\Club;
 use App\Models\Club\Player;
+use App\Models\Club\Administrator;
+use App\Models\Club\Schedule;
+use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -23,7 +28,11 @@ class TeamController extends Controller
     {
         $id = base64_decode($id);
         $players = Player::where('team_id',$id)->get();
-        return view('team.info',compact('id','players'));
+        $administrators = Administrator::where('team_id',$id)->get();
+        $scheduleTournaments = Schedule::where('team_id',$id)->where('type','Tournaments')->get();
+        $scheduleGame = Schedule::where('team_id',$id)->where('type','Game')->get();
+        $schedulePractice = Schedule::where('team_id',$id)->where('type','Practice')->get();
+        return view('team.info',compact('id','players','administrators','scheduleTournaments','scheduleGame','schedulePractice'));
     }
     public function tform()
     {
@@ -60,11 +69,21 @@ class TeamController extends Controller
             'season'    => 'required|string|max:255',
             'status'    => 'required|string|in:1,0',
         ]);
+        $pass = Hash::make($request->password);
+        $user = User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'role' => 'team',
+                'password' => $pass,
+
+        ]);
 
         // Create a new Team instance and save the data
         Team::create([
             'club_id'   => $request->club_id,
             'name'      => $request->name,
+            'email'      => $request->email,
+            'user_id' => $user->id,
             'age_group' => $request->age_group,
             'season'    => $request->season,
             'status'    => $request->status,

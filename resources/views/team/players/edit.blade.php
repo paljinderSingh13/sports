@@ -28,7 +28,7 @@
                                             onchange="previewImage(event, 'picturePreview')" >
                                         <!-- Display the current image if exists -->
                                         <img id="picturePreview" src="{{ $player->picture ? asset($player->picture) : '#' }}" 
-                                             alt="Picture Preview" style="display: {{ $player->picture ? 'block' : 'none' }}; max-width: 300px; margin-top: 10px;">
+                                             alt="Picture Preview" style="display: {{ $player->picture ? 'block' : 'none' }}; max-height: 100px;max-width: 200px; margin-top: 10px;">
                                         @error('picture')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -144,7 +144,7 @@
                                                 <button type="submit" class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2">Submit</button>
                                             </div>
                                             <div class="col-lg-6 col-6 col-sm-6 mb-2">
-                                                <a href="{{ route('team.list', base64_encode( $player->team_id)) }}" type="button" class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
+                                                <a href="{{ route('team.info',base64_encode($player->team_id)) }}" type="button" class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
                                             </div>
                                         </div>
                                     </div>

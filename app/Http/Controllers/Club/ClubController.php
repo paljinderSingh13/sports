@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Club;
 
 use App\Http\Controllers\Controller;
 use App\Models\Club\Club;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Hash;
 
 class ClubController extends Controller
 {
@@ -46,7 +48,8 @@ class ClubController extends Controller
     
     public function index()
     {
-        $clubs = Club::all();
+        $clubs = Club::get();
+        
         return view('club.list',compact('clubs'));
     }
     
@@ -73,12 +76,18 @@ class ClubController extends Controller
             'city' => 'required|string|max:100',
             'state' => 'required|string|max:100',
             'country' => 'required|string|max:100',
-            'postal_code' => 'required|string|max:20',
+            'postal_code' => 'required|regex:/^[A-Za-z0-9]{3,10}$/',
             'contact_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
+            'phone' => 'required|string|min:10|max:13',
             'email' => 'required|email|max:255|unique:clubs,email',
         ]);
+          $validator->sometimes('postal_code', 'regex:/^\d{5}(-\d{4})?$/', function ($input) {
+        return strtolower($input->country) == 'usa';
+        });
 
+        $validator->sometimes('postal_code', 'regex:/^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/', function ($input) {
+            return strtolower($input->country) == 'canada';
+        });
         // Check if validation fails
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
@@ -97,10 +106,18 @@ class ClubController extends Controller
             $logo->move($targetPath, $fileName);
             $logoPath = 'logos/' . $fileName;
         }
+        $pass = Hash::make($request->password);
+        $user = User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'role' => 'club',
+                'password' => $pass,
 
+        ]);
         // Create a new club record
         $club = new Club();
         $club->logo = $logoPath;
+        $club->user_id = $user->id;
         $club->name = $request->input('name');
         $club->address = $request->input('address');
         $club->city = $request->input('city');
@@ -113,7 +130,7 @@ class ClubController extends Controller
         $club->save();
 
         // Redirect with success message
-        return redirect()->route('club.create')->with('success', 'Club created successfully!');
+        return redirect()->route('club.list')->with('success', 'Club created successfully!');
     }
 
     /**
@@ -178,7 +195,7 @@ class ClubController extends Controller
         $club->update($validatedData);
 
         // Redirect back with a success message
-        return back()->with('success', 'Club details updated successfully!');
+        return redirect()->route('club.list')->with('success', 'Club details updated successfully!');
     }
 
     public function updateStatus(Request $request, $id)

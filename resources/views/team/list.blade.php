@@ -41,17 +41,13 @@
                                                             <form action="{{ route('team.updateStatus', $team->id) }}" method="POST" style="display:inline-block;" id="status-form-{{ $team->id }}">
                                                                 @csrf
                                                                 <button type="button" class="btn btn-sm {{ $team->status ? 'badge fs-14 bg-danger' : 'badge fs-14 bg-primary' }} btn-status" 
-                                                                    onclick="confirmStatusChange(event, '{{ $team->id }}')">
+                                                                    onclick="confirmStatusChange(event, '{{ $team->id }}')" style="width: 70px;" onmouseover="this.style.color='white'">
                                                                     {{ $team->status ? 'Inactive' : 'Active' }}
                                                                 </button>
                                                             </form>
                                                             &nbsp;
-                                                            <a href="{{ route('administrator.create', $team->id) }}" class="btn btn-success btn-sm">
-                                                                <i class="far fa-user"></i> Administrator
-                                                            </a>
-                                                            &nbsp;
                                                             <a href="{{ route('team.info', base64_encode($team->id)) }}" class="mb-1 mb-md-0 btn btn-sm btn-success">Team Info</a>
-                                                            <a href="{{ route('team.edit', $team->id) }}" class="btn btn-blue btn-sm">
+                                                            <a href="{{ route('team.edit', base64_encode($team->id)) }}" class="btn btn-blue btn-sm">
                                                                 <i class="far fa-edit"></i> Edit
                                                             </a>
                                                             <form action="{{ route('team.destroy',base64_encode($team->id)) }}" method="POST" style="display:inline-block;" id="delete-form-{{ $team->id }}">
@@ -84,7 +80,7 @@
     function confirmDelete(event, teamId) {
         event.preventDefault();
         Swal.fire({
-            title: 'Are you sure you want to delete this club?',
+            title: 'Are you sure you want to delete this team?',
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,

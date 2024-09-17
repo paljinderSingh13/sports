@@ -11,9 +11,11 @@ class Team extends Model
    use HasFactory, SoftDeletes;
     protected $fillable = [
         'club_id',
+        'user_id',
         'name',
         'age_group',
         'season',
+        'password',
         'status',
     ];
 
