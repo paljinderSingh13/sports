@@ -2,76 +2,80 @@
 @section('content')
 
 
-<div class="page-wrapper">
+ <div class="content-body">
+               <div class="container-fluid">
 
-<!-- Page Content-->
-<div class="page-content team-form">
-<div class="container-xxl"> 
 
-<div class="row">
-   
-    <div class="col-md-6 col-lg-12">
-        <div class="card rounded-5 mt-3">
-            <div class="card-header rounded-5">
-                <div class="row align-items-center">
-                    <div class="col">                      
-                        <h3 class="card-title fs-1 text-primary text-center text-uppercase">Team Form</h3>                      
-                    </div><!--end col-->
-                </div>  <!--end row-->                                  
-            </div><!--end card-header-->
-            <div class="card-body pt-0">
-                <form id="form-validation-2" class="form row" enctype="multipart/form-data" action="{{ route('team.store') }}" method="POST">
-                    @csrf
+                <div class="row">           
 
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="name" class="form-label">Team Name</label>
-                        <input type="text" class="form-control form-control-lg" id="name" name="name" required placeholder="Team Name">
-                        <input type="hidden" class="form-control form-control-lg" id="club_id" value="{{$id}}" name="club_id" required>
-                    </div>
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Create Team</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form enctype="multipart/form-data" action="{{ route('team.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" class="form-control form-control-lg" id="club_id" value="{{$id}}" name="club_id" required>
 
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="age_group" class="form-label">Age Group</label>
-                        <input type="text" class="form-control form-control-lg" id="age_group" name="age_group" required placeholder="Age Group">
-                    </div>
+                                        <div class="row">
+                                            <!-- Team Name Field -->
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">Team Name <span class="text-danger ms-1">*</span></label>
+                                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Team Name" required>
+                                                @error('name')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </div>
 
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control form-control-lg" id="email" name="email" required placeholder="Email">
-                    </div>
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="season" class="form-label">Season</label>
-                        <input type="text" class="form-control form-control-lg" id="season" name="season" required placeholder="Season">
-                    </div>
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="password" class="form-label">password</label>
-                        <input type="password" class="form-control form-control-lg" id="password" name="password" required placeholder="Password">
-                    </div>
+                                            <!-- Age Group Field -->
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">Age Group <span class="text-danger ms-1">*</span></label>
+                                                <input type="text" class="form-control @error('age_group') is-invalid @enderror" placeholder="Age Group" id="age_group" name="age_group" required>
+                                                @error('age_group')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </div>
+                                        </div>
 
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="status" class="form-label">Status</label>
-                        <select class="form-select form-select-lg" id="status" name="status" required placeholder="Status">
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
-                        </select>
-                    </div>
-                    <div class="container">
-                    <div class="row mt-3">
-                        <div class="col-lg-6 col-sm-6 col-6 text-end mb-2">                            
-                            <button type="submit" class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2 ">Submit</button>
+                                        <div class="row">
+                                            <!-- Season Field -->
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">Season <span class="text-danger ms-1">*</span></label>
+                                                <input type="text" class="form-control @error('season') is-invalid @enderror" id="season" name="season" placeholder="Season" required>
+                                                @error('season')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </div>
+
+                                            <!-- Status Field -->
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">Status</label>
+                                                <select id="inputState" name="status" class="default-select form-control wide @error('status') is-invalid @enderror">
+                                                    <option selected>Choose...</option>
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Deactive</option>
+                                                </select>
+                                                @error('status')
+                                                    <small class="text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <a href="{{ route('team.list', base64_encode($id)) }}" class="btn btn-danger">Cancel</a>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-6 col-6 col-sm-6 mb-2">
-                        <a href="{{route('team.list',base64_encode($id))}}"  class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
-                        </div>
-                    </div>  
-                </div>   
-                </form><!--end form-->            
-            </div><!--end card-body--> 
-        </div><!--end card--> 
-    </div> <!--end col-->                                                         <div class="col-md-6 col-lg-2">
-    </div>                      
-</div><!--end row-->
+                    </div>
 
-</div><!-- container -->
+                </div>
+            </div>
 
     
     

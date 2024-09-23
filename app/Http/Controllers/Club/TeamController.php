@@ -69,21 +69,12 @@ class TeamController extends Controller
             'season'    => 'required|string|max:255',
             'status'    => 'required|string|in:1,0',
         ]);
-        $pass = Hash::make($request->password);
-        $user = User::create([
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
-                'role' => 'team',
-                'password' => $pass,
-
-        ]);
+        
 
         // Create a new Team instance and save the data
         Team::create([
             'club_id'   => $request->club_id,
             'name'      => $request->name,
-            'email'      => $request->email,
-            'user_id' => $user->id,
             'age_group' => $request->age_group,
             'season'    => $request->season,
             'status'    => $request->status,

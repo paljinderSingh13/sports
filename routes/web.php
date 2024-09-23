@@ -15,6 +15,7 @@ Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::get('password/request', [LoginController::class, 'passwordRequest'])->name('password.request');
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [LoginController::class, 'logoutGet'])->name('logout');
 Route::middleware('auth')->group(function () {
 	Route::middleware(['role:master'])->group(function () {
 		Route::get('/club', [ClubController::class, 'create'])->name('club.create');
@@ -34,7 +35,7 @@ Route::middleware('auth')->group(function () {
 		Route::post('club/get-location', [ClubController::class, 'getLocation'])->name('club.get.location');
 	});
 
-	Route::middleware(['role:team,player,club,master'])->group(function () {
+	Route::middleware(['role:administrator,player,club,master'])->group(function () {
 		Route::get('/team/create/{id}', [TeamController::class, 'create'])->name('team.create');
 		Route::post('/team/store/', [TeamController::class, 'store'])->name('team.store');
 		Route::get('/team-list/{id}', [TeamController::class, 'index'])->name('team.list');
@@ -48,7 +49,7 @@ Route::middleware('auth')->group(function () {
 
 	 });
 
-	Route::middleware(['role:player,team,club,master'])->group(function () {
+	Route::middleware(['role:player,administrator,club,master'])->group(function () {
 		Route::get('/players/create/{id}', [PlayerController::class, 'create'])->name('player.create');
 		Route::post('/players/store', [PlayerController::class, 'store'])->name('player.store');
 		Route::get('/players/edit/{id}', [PlayerController::class, 'edit'])->name('player.edit');
@@ -57,7 +58,7 @@ Route::middleware('auth')->group(function () {
 		Route::post('/player/{id}/status', [PlayerController::class, 'updateStatus'])->name('player.updateStatus');
 	 });
 
-	Route::middleware(['role:administrator,team,club,master'])->group(function () {
+	Route::middleware(['role:administrator,club,master'])->group(function () {
 		Route::get('/administrator/create/{id}', [AdministratorController::class, 'create'])->name('administrator.create');
 		Route::post('/administrator/store', [AdministratorController::class, 'store'])->name('administrator.store');
 		Route::get('/administrator/edit/{id}', [AdministratorController::class, 'edit'])->name('administrator.edit');

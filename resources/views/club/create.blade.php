@@ -1,203 +1,211 @@
 @extends('layouts.master')
 @section('content')
+    <div class="content-body">
+        <div class="container-fluid">
 
-<div class="page-wrapper">
 
-<!-- Page Content-->
-<div class="page-content designthree">
-<div class="container-xxl"> 
+            <div class="row">
 
-<div class="row ">
-   
-    <div class="col-md-12 col-lg-12">
-        <div class="card rounded-5 mt-3">
-            <div class="card-header rounded-5">
-                <div class="row align-items-center">
-                    <div class="col">                      
-                        <h3 class="card-title text-center text-primary fs-1">Create a Club </h3>                      
-                    </div><!--end col-->
-                </div>  <!--end row-->                                  
-            </div><!--end card-header-->
-            <div class="card-body pt-0">
-                <form id="form-validation-2" class="form row" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="logo" class="form-label">Logo <span class="text-danger">*</span></label>
-                        <input class="form-control form-control-lg" type="file" name="logo" id="logo" placeholder="Logo" required>
-                        <img id="preview-image" src="#" alt="Image Preview" style="display: none; max-width: 300px; margin-top: 10px;">
-                        @error('logo')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="Name" class="form-label">Name <span class="text-danger">*</span></label>
-                        <input class="form-control form-control-lg" type="text" name="name" id="Name" placeholder="Name" value="{{ old('name') }}" required>
-                        @error('name')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="Address" class="form-label">Address <span class="text-danger">*</span></label>
-                        <input class="form-control form-control-lg" type="text" name="address" id="Address" placeholder="Address" value="{{ old('address') }}" required>
-                        @error('address')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="City" class="form-label">City <span class="text-danger">*</span></label>
-                          <input class="form-control form-control-lg" type="text" name="city" id="City" placeholder="City" value="{{ old('city') }}" required>
-                        @error('city')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label class="col-form-label">State <span class="text-danger">*</span></label>
-                        <input class="form-control form-control-lg" type="text" name="state" id="State" placeholder="State" value="{{ old('state') }}" readonly required>
-                        @error('state')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label class="col-form-label">Country <span class="text-danger">*</span></label>
-                         <input class="form-control form-control-lg" type="text" name="country" id="Country" placeholder="Country" value="{{ old('country') }}" readonly required>
-                        @error('country')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="PostalCode" class="form-label">Postal Code <span class="text-danger">*</span></label>
-                        <input class="form-control form-control-lg" type="text" name="postal_code" id="PostalCode" placeholder="Postal Code" value="{{ old('postal_code') }}" required>
-                        @error('postal_code')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="ContactName" class="form-label">Contact Name <span class="text-danger">*</span></label>
-                        <input class="form-control form-control-lg" type="text" name="contact_name" id="ContactName" placeholder="Contact Name" value="{{ old('contact_name') }}" required>
-                        @error('contact_name')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="Phone" class="form-label">Phone <span class="text-danger">*</span></label>
-                        <input class="form-control form-control-lg" type="text" name="phone" id="Phone" placeholder="Phone" value="{{ old('phone') }}" required>
-                        @error('phone')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="Email" class="form-label">Email <span class="text-danger">*</span></label>
-                        <input class="form-control form-control-lg" type="email" name="email" id="Email" placeholder="Email" value="{{ old('email') }}" required>
-                        @error('email')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="mb-2 col-lg-6 col-sm-12">
-                        <label for="Email" class="form-label">Password <span class="text-danger">*</span></label>
-                        <input class="form-control form-control-lg" type="password" name="password" id="Password" placeholder="Password" min="8" max="20" value="{{ old('password') }}" required>
-                        @error('password')
-                            <small class="text-danger error">{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="container">
-                    <div class="row mt-3">
-                        <div class="col-lg-6 col-sm-6 col-6 text-end mb-2">                            
-                            <button type="submit" class="btn btn-lg btn-primary fs-18 px-md-5 px-4 px-lg-5 py-2">Submit</button>
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Create a Club</h4>
                         </div>
-                        <div class="col-lg-6 col-6 col-sm-6 mb-2">
-                            <a href="{{route('club.list')}}" class="btn btn-danger btn-lg fs-18 px-md-5 px-4 px-lg-5 py-2">Cancel</a>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">Name <span class="text-danger ms-1">*</span></label>
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                                name="name" placeholder="Name" value="{{ old('name') }}" required>
+                                            @error('name')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">Address <span
+                                                    class="text-danger ms-1">*</span></label>
+                                            <input type="text"
+                                                class="form-control @error('address') is-invalid @enderror" name="address"
+                                                placeholder="Address" value="{{ old('address') }}" required>
+                                            @error('address')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3 col-md-4">
+                                            <label>City <span class="text-danger ms-1">*</span></label>
+                                            <input type="text" class="form-control @error('city') is-invalid @enderror"
+                                                name="city" placeholder="City" value="{{ old('city') }}" id="City"
+                                                required>
+                                            @error('city')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">Country </label>
+                                            <input type="text"
+                                                class="form-control @error('country') is-invalid @enderror" name="country"
+                                                id="Country">
+
+                                            @error('country')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">State </label>
+                                            <input type="text" class="form-control @error('state') is-invalid @enderror"
+                                                name="state" id="State">
+
+                                            @error('state')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">Postal Code <span
+                                                    class="text-danger ms-1">*</span></label>
+                                            <input type="text"
+                                                class="form-control @error('postal_code') is-invalid @enderror"
+                                                name="postal_code" placeholder="Postal Code"
+                                                value="{{ old('postal_code') }}" id="PostalCode" required>
+                                            @error('postal_code')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">Contact Name <span
+                                                    class="text-danger ms-1">*</span></label>
+                                            <input type="text"
+                                                class="form-control @error('contact_name') is-invalid @enderror"
+                                                name="contact_name" placeholder="Contact Name"
+                                                value="{{ old('contact_name') }}" required>
+                                            @error('contact_name')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">Phone <span class="text-danger ms-1">*</span></label>
+                                            <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                                                name="phone" placeholder="Phone" value="{{ old('phone') }}" required>
+                                            @error('phone')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">Email <span class="text-danger ms-1">*</span></label>
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                                name="email" placeholder="Email" value="{{ old('email') }}" required>
+                                            @error('email')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="logo" class="form-label">Logo <span
+                                                class="text-danger ms-1">*</span></label>
+                                        <input class="form-control @error('logo') is-invalid @enderror" type="file"
+                                            name="logo" id="logo" required>
+                                        @error('logo')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                        <img id="preview-image" src="#" alt="Image Preview"
+                                            style="display: none; max-width: 300px; margin-top: 10px;">
+                                    </div>
+
+                                    <div class="mt-3">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="button" class="btn btn-danger">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </form><!--end form-->            
-            </div><!--end card-body--> 
-        </div><!--end card--> 
-    </div> <!--end col-->
-                       
-</div><!--end row-->
+                </div>
 
-</div><!-- container -->
+            </div>
+        </div>
+    @endsection
+    @section('js')
+        <script>
+            $(document).ready(function() {
+                // Event listener for file input change
+                $('#logo').change(function(event) {
+                    // Get the selected file
+                    var input = event.target;
+                    // Check if a file is selected and it's an image
+                    if (input.files && input.files[0]) {
+                        // Create a FileReader to read the selected file
+                        var reader = new FileReader();
+                        // Event listener for when the file is read
+                        reader.onload = function(e) {
+                            // Set the src attribute of the img element to display the image
+                            $('#preview-image').attr('src', e.target.result).show();
+                        };
+                        // Read the selected file as a Data URL
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                });
+            });
+        </script>
 
-    
-    
-@endsection
-@section('js')
+        <script>
+            $(document).ready(function() {
+                // Autocomplete setup
+                $('#City').autocomplete({
+                    source: function(request, response) {
+                        $.ajax({
+                            url: "{{ route('club.get.city.suggestions') }}",
+                            type: "POST",
+                            data: {
+                                _token: "{{ csrf_token() }}",
+                                query: request.term
+                            },
+                            success: function(data) {
+                                response(data);
+                            }
+                        });
+                    },
+                    minLength: 2, // Minimum characters to trigger suggestions
+                    select: function(event, ui) {
+                        $('#City').val(ui.item.value);
+                        // Trigger AJAX to get state and country after selecting a city
+                        getLocation(ui.item.value);
+                        return false;
+                    }
+                });
 
-<script>
-    $(document).ready(function () {
-        // Event listener for file input change
-        $('#logo').change(function (event) {
-            // Get the selected file
-            var input = event.target;
-            // Check if a file is selected and it's an image
-            if (input.files && input.files[0]) {
-                // Create a FileReader to read the selected file
-                var reader = new FileReader();
-                // Event listener for when the file is read
-                reader.onload = function (e) {
-                    // Set the src attribute of the img element to display the image
-                    $('#preview-image').attr('src', e.target.result).show();
-                };
-                // Read the selected file as a Data URL
-                reader.readAsDataURL(input.files[0]);
-            }
-        });
-    });
-</script>
-
-<script>
-$(document).ready(function() {
-    // Autocomplete setup
-    $('#City').autocomplete({
-        source: function(request, response) {
-            $.ajax({
-                url: "{{ route('club.get.city.suggestions') }}",
-                type: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    query: request.term
-                },
-                success: function(data) {
-                    response(data);
+                // Function to get state and country based on city
+                function getLocation(city) {
+                    $.ajax({
+                        url: "{{ route('club.get.location') }}",
+                        type: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            city: city
+                        },
+                        success: function(response) {
+                            $('#State').val(response.state);
+                            $('#Country').val(response.country);
+                        },
+                        error: function(xhr) {
+                            console.log(xhr.responseText);
+                        }
+                    });
                 }
             });
-        },
-        minLength: 2, // Minimum characters to trigger suggestions
-        select: function(event, ui) {
-            $('#City').val(ui.item.value);
-            // Trigger AJAX to get state and country after selecting a city
-            getLocation(ui.item.value);
-            return false;
-        }
-    });
-
-    // Function to get state and country based on city
-    function getLocation(city) {
-        $.ajax({
-            url: "{{ route('club.get.location') }}",
-            type: "POST",
-            data: {
-                _token: "{{ csrf_token() }}",
-                city: city
-            },
-            success: function(response) {
-                $('#State').val(response.state);
-                $('#Country').val(response.country);
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText);
-            }
-        });
-    }
-});
-</script>
-@endsection
+        </script>
+    @endsection

@@ -45,7 +45,7 @@ class PlayerController extends Controller
             'dob' => 'required|date',
             'proof_id' => 'nullable|file|mimes:pdf,jpg,jpeg,png,doc,docx|max:2048',
             'phone' => 'required|string|max:15',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|max:255|unique:players,email',
             'status' => 'required|boolean',
         ]);
 
@@ -178,6 +178,7 @@ class PlayerController extends Controller
 
       public function updateStatus(Request $request, $id)
     {
+        $id = base64_decode($id);
         $player = Player::findOrFail($id);
         $player->status = !$player->status; // Toggle status
         $player->save();

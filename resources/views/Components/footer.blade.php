@@ -1,46 +1,77 @@
-<!-- <footer class="footer text-center text-sm-start d-print-none">
-        <div class="container-xxl">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card mb-0 rounded-bottom-0">
-                        <div class="card-body">
-                            <p class="text-muted mb-0">
-                                ©
-                                <script> document.write(new Date().getFullYear()) </script>
-                                Recstep
-                                <span
-                                    class="text-muted d-none d-sm-inline-block float-end">
-                                    Crafted with
-                                    <i class="iconoir-heart text-danger"></i>
-                                    </span>
-                            </p>
-                        </div>
-                    </div>
+<div class="footer">
+                <div class="copyright">
+                    <p>Copyright © 2024 - All Right Reserved By RECSTEP</p>
                 </div>
             </div>
-        </div>
-    </footer> -->
-    
-    <!--end footer-->
-</div>
-<!-- end page content -->
-</div>
- <!-- Javascript  -->  
-        <!-- vendor js -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{asset('assets/libs/simple-datatables/umd/simple-datatables.js')}}"></script>
-        <script src="{{asset('assets/js/pages/datatable.init.js')}}"></script> 
+            </div>
 
-         <!-- Sweet-Alert  -->
-        <script src="{{asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script> 
-        <!-- <script src="{{asset('assets/js/pages/sweet-alert.init.js')}}"></script>  -->
-        <script src="{{asset('assets/js/pages/mysweet-alert.init.js')}}"></script> 
-        <script src="{{asset('assets/js/app.js')}}"></script> 
 
-        <script src="{{asset('assets/js/app.js')}}"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+            <!-- Required vendors -->
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+       <script src="{{asset('assets/vendor/global/global.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+        <!-- Apex Chart -->
+        <script src="{{asset('assets/vendor/apexchart/apexchart.js')}}"></script>
+        <script src="{{asset('assets/vendor/chart-js/chart.bundle.min.js')}}"></script>
+        <!-- Chart piety plugin files -->
+        <script src="{{asset('assets/vendor/peity/jquery.peity.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('assets/js/plugins-init/datatables.init.js')}}"></script>
+        <script src="{{asset('assets/vendor/jqvmap/js/jquery.vmap.min.js')}}"></script>
+        <script src="{{asset('assets/vendor/jqvmap/js/jquery.vmap.world.js')}}"></script>
+        <script src="{{asset('assets/vendor/jqvmap/js/jquery.vmap.usa.js')}}"></script>
+        <!-- Dashboard 1 -->
+        <script src="{{asset('assets/js/dashboard/dashboard-1.js')}}"></script>
+        <script src="{{asset('assets/vendor/swiper/js/swiper-bundle.min.js')}}"></script>
+        <script src="{{asset('assets/js/custom.js')}}"></script>
+        <script src="{{asset('assets/js/ic-sidenav-init.js')}}"></script>
+        <!-- <script src="js/demo.js"></script> -->
+        <!-- <script src="js/styleSwitcher.js"></script> -->
+
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1.5,
+                spaceBetween: 15,
+                navigation: {
+                    nextEl: "",
+                    prevEl: "",
+                },
+                breakpoints: {
+                    360: {
+                        slidesPerView: 1.5,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2.5,
+                        spaceBetween: 40,
+                    },
+                    1200: {
+                        slidesPerView: 1.5,
+                        spaceBetween: 20,
+                    },
+                },
+            });
+            var swiper = new Swiper(".mySwiper1", {
+                slidesPerView: 4,
+                spaceBetween: 15,
+                navigation: {
+                    nextEl: "",
+                    prevEl: "",
+                },
+                breakpoints: {
+                    360: {
+                        slidesPerView: 1.5,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2.5,
+                        spaceBetween: 20,
+                    },
+                },
+            });
+        </script>
+
  @if(session('success'))
        <!--  <div class="alert alert-success alert-dismissible fade show position-absolute top-0 end-0 m-3" role="alert" style="z-index: 1051;">
             {{ session('success') }}

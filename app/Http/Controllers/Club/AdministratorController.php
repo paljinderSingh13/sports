@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Club;
 
 use App\Http\Controllers\Controller;
 use App\Models\Club\Administrator;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Hash;
 
 class AdministratorController extends Controller
 {
@@ -41,12 +43,21 @@ class AdministratorController extends Controller
             'team_id' => 'required|exists:teams,id', // Assumes there is a 'teams' table
             'name' => 'required|string|max:255',
             'type' => 'required|string|max:50', // Customize as needed (e.g., 'admin', 'super-admin')
-            'phone' => 'required|string|max:15|unique:administrators,phone',
+            'phone' => 'required|string|max:15',
             'email' => 'required|email|max:255|unique:administrators,email',
             'status' => 'required|in:1,0',
         ]);
 
         // Create a new administrator record
+         $pass = Hash::make($request->password);
+        $user = User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'role' => 'administrator',
+                'password' => $pass,
+
+        ]);
+        $validatedData['user_id'] = $user->id;
         $administrator = Administrator::create($validatedData);
 
         // Redirect or return a response (customize as needed)
@@ -110,6 +121,7 @@ class AdministratorController extends Controller
 
       public function updateStatus(Request $request, $id)
     {
+        $id = base64_decode($id);
         $administrator = Administrator::findOrFail($id);
         $administrator->status = !$administrator->status; // Toggle status
         $administrator->save();

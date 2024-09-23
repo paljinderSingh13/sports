@@ -1,116 +1,171 @@
 @extends('layouts.master')
 @section('content')
-<div class="page-wrapper">
-    <!-- Page Content-->
-    <div class="page-content">
-        <div class="container-xxl">
-            <div class="row justify-content-center">
-                            <div class="col-12">
-                                <div class="card rounded-5 mt-3">
-                                    <div class="card-header rounded-5">
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-md-6 mb-3 mb-lg-0">                      
-                                                <h4 class="card-title fs-1 text-primary text-uppercase">Teams </h4>                      
-                                            </div><!--end col-->
-                                            <div class="col-12 col-md-6 mb-3 mb-lg-0 text-end">
-                                            <a class="mb-1 mb-md-0 btn btn-lg btn-blue fs-4" href="{{route('team.create',base64_encode($id))}}"><i class="far fa-plus-square"></i> Add Team</a>
-                                        </div>  <!--end row-->                                  
-                                    </div><!--end card-header-->
-                                    <div class="card-body pt-0">
-                                        <div class="table-responsive">
-                                            <table class="table datatable" id="datatable_1">
-                                                <thead class="table-light">
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Age Group</th>
-                                                    <th>Season</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($teams as $team)
-                                                    <tr>
-                                                        <td>{{ $team->name }}</td>
-                                                        <td>{{ $team->age_group }}</td>
-                                                        <td>{{ $team->season }}</td>
-                                                        <td>
-                                                        {{ $team->status ? 'Active' : 'Inactive' }}
-                                                    </td>
-                                                        <td>
-                                                            <form action="{{ route('team.updateStatus', $team->id) }}" method="POST" style="display:inline-block;" id="status-form-{{ $team->id }}">
-                                                                @csrf
-                                                                <button type="button" class="btn btn-sm {{ $team->status ? 'badge fs-14 bg-danger' : 'badge fs-14 bg-primary' }} btn-status" 
-                                                                    onclick="confirmStatusChange(event, '{{ $team->id }}')" style="width: 70px;" onmouseover="this.style.color='white'">
-                                                                    {{ $team->status ? 'Inactive' : 'Active' }}
-                                                                </button>
-                                                            </form>
-                                                            &nbsp;
-                                                            <a href="{{ route('team.info', base64_encode($team->id)) }}" class="mb-1 mb-md-0 btn btn-sm btn-success">Team Info</a>
-                                                            <a href="{{ route('team.edit', base64_encode($team->id)) }}" class="btn btn-blue btn-sm">
-                                                                <i class="far fa-edit"></i> Edit
-                                                            </a>
-                                                            <form action="{{ route('team.destroy',base64_encode($team->id)) }}" method="POST" style="display:inline-block;" id="delete-form-{{ $team->id }}">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(event, '{{ $team->id }}')">
-                                                                    <i class="far fa-trash-alt"></i> Delete
-                                                                </button>
-                                                            </form>
-                                                        </td>
+    <div class="content-body">
+        <div class="container-fluid">
+            <!-- Page Head -->
+            <!-- <div class="page-head">
+                        <div class="row">
+                            <div class="col-sm-6 mb-sm-4 mb-3">
+                                <h3 class="mb-0">List of team</h3>
+                                
+                            </div>
+                            <div class="col-sm-6 mb-4 text-sm-end">
+                                 <a href="javascript:voit(0);" class="btn btn-outline-secondary">Add Task</a>
+                                <a href="javascript:voit(0);" class="btn btn-primary ms-2">Create a Project</a>
+                            </div>
+                        </div>
+                    </div> -->
 
-                                                    </tr>
-                                                @endforeach
-                                                 
-                                                </tbody>
-                                            </table>
-                                        </div>   
-                                    </div><!--end card-body--> 
-                                </div><!--end card--> 
-                            </div> <!--end col-->                                                        
-                        </div><!--end row-->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">List of Teams</h4>
+                            <a href="{{ route('team.create', base64_encode($id)) }}" class="btn btn-primary ms-2">Create a
+                                Team</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="example3" class="display datatable2" style="min-width: 850px">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Age Group</th>
+                                            <th>Season</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($teams as $team)
+                                            <tr>
+                                                <td>{{ $team->name }}</td>
+                                                <td>{{ $team->age_group }}</td>
+                                                <td>{{ $team->season }}</td>
+                                                <td>{{ $team->status ? 'Active' : 'Inactive' }}</td>
+                                                <td>
+                                                    <div class="dropdown ms-auto c-pointer">
+                                                        <button type="button" class="btn btn-primary light sharp"
+                                                            data-bs-toggle="dropdown">
+                                                            <svg width="18px" height="18px" viewBox="0 0 24 24"
+                                                                version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none"
+                                                                    fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" cx="5" cy="12"
+                                                                        r="2" />
+                                                                    <circle fill="#000000" cx="12" cy="12"
+                                                                        r="2" />
+                                                                    <circle fill="#000000" cx="19" cy="12"
+                                                                        r="2" />
+                                                                </g>
+                                                            </svg>
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                                data-bs-toggle="modal" data-bs-target="#activeModalCenter"
+                                                                data-team-id="{{ $team->id }}"
+                                                                data-team-name="{{ $team->name }}">Change Status</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('team.info', base64_encode($team->id)) }}">Team
+                                                                Info</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('team.edit', base64_encode($team->id)) }}">Edit</a>
+                                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteModalCenter"
+                                                                data-team-id="{{ $team->id }}"
+                                                                data-team-name="{{ $team->name }}">Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
 
-                                                        
-                    </div><!-- container -->
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <div class="m_icon"><i class="las la-exclamation-circle"></i></div>
+                                                <h3 id="delete-modal-title">Are you sure you want to delete this team?</h3>
+                                                <p>You won't be able to revert this!</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer justify-content-center">
+                                            <form method="POST" id="delete-form">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-primary">Yes, Delete It!</button>
+                                            </form>
+                                            <button type="button" class="btn btn-danger light"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-@endsection
-@section('js')
-    <script>
-    // Function to show the SweetAlert2 confirmation dialog for delete
-    function confirmDelete(event, teamId) {
-        event.preventDefault();
-        Swal.fire({
-            title: 'Are you sure you want to delete this team?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#085e96',
-            cancelButtonColor: '#dd3333',
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('delete-form-' + teamId).submit();
-            }
-        });
-    }
+                            <!-- Active Status Modal -->
+                            <div class="modal fade" id="activeModalCenter" tabindex="-1" role="dialog">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <div class="m_icon"><i class="las la-exclamation-circle"></i></div>
+                                                <h3 id="active-modal-title">Are you sure you want to change the status of
+                                                    this team?</h3>
+                                                <p>You won't be able to revert this!</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer justify-content-center">
+                                            <form method="POST" id="active-form">
+                                                @csrf
+                                                @method('POST')
+                                                <button type="submit" class="btn btn-primary">Yes!</button>
+                                            </form>
+                                            <button type="button" class="btn btn-danger light"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    // Function to show the SweetAlert2 confirmation dialog for status change
-    function confirmStatusChange(event, teamId) {
-        event.preventDefault();
-        Swal.fire({
-            title: 'Are you sure you want to change this team status?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#085e96',
-            cancelButtonColor: '#dd3333',
-            confirmButtonText: 'Yes, change it!',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('status-form-' + teamId).submit();
-            }
-        });
-    }
-</script>
-@endsection
+        </div>
+    @endsection
+    @section('js')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Delete modal
+                $('#deleteModalCenter').on('show.bs.modal', function(event) {
+                    var button = $(event.relatedTarget); // Button that triggered the modal
+                    var teamId = button.data('team-id'); // Extract team ID
+                    var teamName = button.data('team-name'); // Extract team name
+
+                    var modal = $(this);
+                    modal.find('#delete-modal-title').text('Are you sure you want to delete ' + teamName + '?');
+                    modal.find('#delete-form').attr('action', '{{ route('team.destroy', ':id') }}'.replace(
+                        ':id', btoa(teamId)));
+                });
+
+                // Active status modal
+                $('#activeModalCenter').on('show.bs.modal', function(event) {
+                    var button = $(event.relatedTarget); // Button that triggered the modal
+                    var teamId = button.data('team-id'); // Extract team ID
+                    var teamName = button.data('team-name'); // Extract team name
+
+                    var modal = $(this);
+                    modal.find('#active-modal-title').text('Are you sure you want to change the status of ' +
+                        teamName + '?');
+                    modal.find('#active-form').attr('action', '{{ route('team.updateStatus', ':id') }}'
+                        .replace(':id', teamId));
+                });
+            });
+        </script>
+    @endsection

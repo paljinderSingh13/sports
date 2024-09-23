@@ -11,6 +11,7 @@ class Administrator extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = [
         'team_id',
+        'user_id',
         'name',
         'type',
         'phone',

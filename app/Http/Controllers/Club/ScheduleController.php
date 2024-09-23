@@ -83,7 +83,8 @@ class ScheduleController extends Controller
         //
         $id = base64_decode($id);
         $schedule = Schedule::find($id);
-        return view('team.schedule.edit',compact('id','schedule'));
+        $teams = Team::get();
+        return view('team.schedule.edit',compact('id','schedule','teams'));
     }
 
     /**
@@ -118,6 +119,7 @@ class ScheduleController extends Controller
 
      public function updateStatus(Request $request, $id)
     {
+       $id = base64_decode($id);
         $schedule = Schedule::findOrFail($id);
         $schedule->status = !$schedule->status; // Toggle status
         $schedule->save();

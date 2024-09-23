@@ -213,6 +213,7 @@ class ClubController extends Controller
      */
     public function destroy($id)
     {
+       
         $id = base64_decode($id);
         $club = Club::find($id);
         $club->delete();
