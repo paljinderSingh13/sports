@@ -1,0 +1,190 @@
+@font-face {
+    font-family: 'good_timesregular';
+    src: url('../fontfam/good_times_rg-webfont.woff2') format('woff2'),
+         url('../fontfam/good_times_rg-webfont.woff') format('woff'),
+         url('../fontfam/good_times_rg-webfont.ttf') format('truetype'),
+         url('../fontfam/good_times_rg-webfont.svg#good_timesregular') format('svg');
+         
+    font-weight: normal;
+    font-style: normal;
+
+}
+body{
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    color: #414141;
+
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: "Roboto", sans-serif;
+    /* font-family: 'good_timesregular'; */
+    letter-spacing: 0.5px;
+}
+
+.datatable-search input{
+    border-radius: 2rem;
+}
+.datatable-table > thead > tr > th{
+    border-bottom: 1px solid #2ca372;
+    background: #2ca372;
+    color: #ffffff;
+    font-size: 16px;
+}
+.datatable-input {
+	padding: 10px 25px;
+    height: 50px;
+    font-size: 16px;
+}
+.datatable-sorter::before{
+    border-top: 4px solid #ffffff;
+    opacity: 0.8;
+    
+}
+.datatable-sorter::after {
+    border-bottom: 4px solid #ffffff;
+    opacity: 0.8;
+}
+.datatable-top .datatable-dropdown label{
+    font-size: 16px;
+}
+.dataTable-selector, .datatable-selector{
+    /* border-radius: 1rem; */
+    padding:10px
+}
+.datatable-pagination .datatable-active a, 
+.datatable-pagination .datatable-active a:focus, 
+.datatable-pagination .datatable-active a:hover, 
+.datatable-pagination .datatable-active button, 
+.datatable-pagination .datatable-active button:focus, 
+.datatable-pagination .datatable-active button:hover{
+    background-color: #2ca372;
+}
+.page-content.designtwo{
+    background-color: #2ca372;
+}
+.page-content.design{
+    background-color: #2ca372;
+}
+
+.page-content.team-form,
+.page-content{
+    background-color: #085e96;
+}
+.btn-primary {
+    --bs-btn-color: #ffffff;
+    --bs-btn-bg: #2ca372;
+    --bs-btn-border-color: #2ca372;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: #38b480;
+    --bs-btn-hover-border-color: #38b480;
+    --bs-btn-focus-shadow-rgb: 67, 206, 118;
+    --bs-btn-active-color: #ffffff;
+    --bs-btn-active-bg: #38b480;
+    --bs-btn-active-border-color: #38b480;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #ffffff;
+    --bs-btn-disabled-bg: #2ca372;
+    --bs-btn-disabled-border-color: #2ca372;
+}
+.btn-blue {
+    --bs-btn-color: #ffffff;
+    --bs-btn-bg: #085e96;
+    --bs-btn-border-color: #085e96;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: #024c7d;
+    --bs-btn-hover-border-color: #085e96;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #ffffff;
+    --bs-btn-active-bg: #024c7d;
+    --bs-btn-active-border-color: #024c7d;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #ffffff;
+    --bs-btn-disabled-bg: #085e96;
+    --bs-btn-disabled-border-color: #085e96;
+}
+
+/* form */
+.page-content.designthree .form-control:focus{
+    border-color: #085d96;
+}
+.page-content.designthree .form-select:focus {
+    border-color: #085e95;
+}
+.page-content.designfour{
+    background-color: #085e96;
+}
+
+/* Login page */
+.page-content.login{
+    background-color: #085e96;
+}
+.form-control:focus{
+    border-color: #085e95;
+}
+.form-select:focus {
+    border-color: #085e96;
+}
+/* ------------------------------------------------ */
+
+.text-primary {
+    --bs-text-opacity: 1;
+    color: #2CA372 !important;
+}
+.bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: #2CA372 !important;
+}
+.form-label,
+.col-form-label{
+    font-size: 18px;
+    color: #414141;
+    font-weight: 500;
+}
+.page-content.designthree .card-title{
+    font-size: 40px;
+    line-height: 50px;
+    text-transform: uppercase;
+}
+.btn-danger {
+    --bs-btn-color: #ffffff;
+    --bs-btn-bg: #cf142b;
+    --bs-btn-border-color: #cf142b;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: #e34952;
+    --bs-btn-hover-border-color: #d7454d;
+    --bs-btn-focus-shadow-rgb: 241, 104, 111;
+    --bs-btn-active-color: #ffffff;
+    --bs-btn-active-bg: #d7454d;
+    --bs-btn-active-border-color: #cb4149;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #ffffff;
+    --bs-btn-disabled-bg: #ef4d56;
+    --bs-btn-disabled-border-color: #ef4d56;
+}
+
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link{
+    font-size: 15px;
+    /* font-family: 'good_timesregular'; */
+    letter-spacing: 0.5px;
+}
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link.active, 
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link:hover {
+    color: #2ca372;
+}
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link.active .menu-icon, 
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link:hover .menu-icon{
+    color: #2ca372;
+}
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link,
+.startbar .startbar-menu .navbar-nav .nav-item .nav-link .menu-icon{
+    color: #085e96;
+}
+.welcome-text h3{
+    color: #085e96;
+}
+.datatable-table > tbody > tr > td, .datatable-table > tbody > tr > th, 
+.datatable-table > tfoot > tr > td, .datatable-table > tfoot > tr > th, 
+.datatable-table > thead > tr > td, .datatable-table > thead > tr > th{
+    /* font-size: 15px; */
+}

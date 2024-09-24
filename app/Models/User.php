@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Club\Team;
+use App\Models\Club\Club;
 
 class User extends Authenticatable
 {
@@ -55,6 +56,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function club()
+    {
+        return $this->belongsTo(Club::class,'id','user_id');
     }
 
     public function team()

@@ -81,7 +81,7 @@ class TeamController extends Controller
         ]);
 
         // Redirect with success message
-        return back()->with('success', 'Team created successfully!');
+        return redirect()->route('team.list', base64_encode($request->club_id))->with('success', 'Team created successfully!');
     }
 
     /**

@@ -55,7 +55,7 @@
                                                 <select id="inputState" name="status" class="default-select form-control wide @error('status') is-invalid @enderror">
                                                     <option selected>Choose...</option>
                                                     <option value="1">Active</option>
-                                                    <option value="0">Deactive</option>
+                                                    <option value="0">Inactive</option>
                                                 </select>
                                                 @error('status')
                                                     <small class="text-danger">{{ $message }}</small>

@@ -17,7 +17,7 @@
                     </div> -->
 
             <div class="row">
-
+                @if(auth()->user()->role != 'player')
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -88,6 +88,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -274,7 +275,7 @@
                         </div>
                     </div>
                 </div>
-
+                @if(auth()->user()->role != 'player')
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -488,7 +489,7 @@
                         </div>
                     </div>
                 </div>
-
+                @endif
             </div>
         </div>
         <!-- Delete Model  -->

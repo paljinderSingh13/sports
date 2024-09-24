@@ -86,7 +86,7 @@ class PlayerController extends Controller
 
         $player->save();
 
-        return back()->with('success', 'Player created successfully.');
+        return redirect()->route('team.info', base64_encode($player->team_id))->with('success', 'Player created successfully.');
     
     }
 

@@ -112,6 +112,13 @@
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
+                                        <div class="mb-3 col-md-4">
+                                            <label class="form-label">Password <span class="text-danger ms-1">*</span></label>
+                                            <input class="form-control " type="password" name="password" id="Password" placeholder="Password" min="8" max="20" value="{{ old('password') }}" required>
+                                            @error('password')
+                                                <small class="text-danger error">{{ $message }}</small>
+                                            @enderror
+                                        </div>
                                     </div>
 
                                     <div class="mb-3">

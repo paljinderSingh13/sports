@@ -56,7 +56,7 @@
                                                 <select id="inputState" name="status" class="default-select form-control wide @error('status') is-invalid @enderror">
                                                     <option value="" disabled>Choose...</option>
                                                     <option value="1" {{ old('status', $team->status) == 1 ? 'selected' : '' }}>Active</option>
-                                                    <option value="0" {{ old('status', $team->status) == 0 ? 'selected' : '' }}>Deactive</option>
+                                                    <option value="0" {{ old('status', $team->status) == 0 ? 'selected' : '' }}>Inactive</option>
                                                 </select>
                                                 @error('status')
                                                     <small class="text-danger">{{ $message }}</small>

@@ -33,13 +33,27 @@
         <!--*******************
         Preloader start
     ********************-->
-    <div id="preloader">
-        <div class="loading-wave">
+   <div id="preloader">
+        <!-- <div class="loading-wave">
             <div class="loading-bar"></div>
             <div class="loading-bar"></div>
             <div class="loading-bar"></div>
             <div class="loading-bar"></div>
+        </div> -->
+        
+
+        <!-- html section preloader -->
+        <div class="mainbox">
+            <div class="box_section">
+                <div class="image_box">
+                    <!--add  your site logo link in src -->
+                    <img alt="image_preloader" src="{{asset('assets/images/logo.png')}}" class="site_logo img-fluid"/>
+
+                </div>
+                <div class="img_filter"></div>
+            </div>
         </div>
+
     </div>
 
     <!--*******************

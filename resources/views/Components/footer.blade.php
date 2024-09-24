@@ -73,10 +73,10 @@
         </script>
 
  @if(session('success'))
-       <!--  <div class="alert alert-success alert-dismissible fade show position-absolute top-0 end-0 m-3" role="alert" style="z-index: 1051;">
+        <div class="alert alert-success alert-dismissible fade show position-absolute top-0 end-0 m-3" role="alert" style="z-index: 1051; background: white; padding: 2%; font-size: medium;">
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div> -->
+        </div>
         <input type="hidden" id="successMsg" value="{{ session('success') }}">
         <a id="success" onclick="executeExample('customPositions')" >&nbsp;</a>
        
