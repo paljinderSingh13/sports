@@ -11,6 +11,7 @@
                         <ul aria-expanded="false">
                             <li><a href="{{route('club.create')}}">Create </a></li>
                             <li><a href="{{route('club.list')}}">List</a></li>
+                            <li><a href="{{route('club.admform')}}">Club Administrator</a></li>
                             
                         </ul>
                     </li>

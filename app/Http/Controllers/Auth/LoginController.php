@@ -11,6 +11,8 @@ use App\Models\Club\Club;
 use App\Models\Club\Team;
 use App\Models\Club\Player;
 use App\Models\Club\Administrator;
+use App\Models\Club\ClubAdministrator as CA;
+
 
 class LoginController extends Controller
 {
@@ -110,10 +112,12 @@ class LoginController extends Controller
                 session(['user_roles' => ['team', 'player']]);
                 return redirect()->route('team.info',$adminsId);
             }elseif(auth()->user()->role == 'club'){
-                $clubid = Club::where('user_id',auth()->user()->id)->first();
+                $clubid = CA::where('user_id',auth()->user()->id)->first();
+              //  dd( $clubid);
+                session(['club_id' => $clubid->club_id]);
                 $cId = base64_encode($clubid->id);
                 session(['user_roles' => ['team', 'player']]);
-                return redirect()->route('team.list',$cId);
+                return redirect()->route('club.dashboard');
 
             }elseif(auth()->user()->role == 'player'){
                 $teamid = Player::where('user_id',auth()->user()->id)->first();

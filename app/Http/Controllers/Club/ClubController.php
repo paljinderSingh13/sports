@@ -150,7 +150,6 @@ class ClubController extends Controller
         $club = Club::where('id',$club_id)->first();
         return view('club.edit',compact('club_id','club'));
 
-        //
     }
 
     /**
@@ -171,7 +170,7 @@ class ClubController extends Controller
             'postal_code' => 'required|string|max:10',
             'contact_name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|max:255'
         ]);
         // Handle file upload for the logo if a new one is uploaded
         if ($request->hasFile('logo')) {

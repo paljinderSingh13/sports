@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Club\ClubController;
+use App\Http\Controllers\Club\ClubAdministrator;
 use App\Http\Controllers\Club\TeamController;
 use App\Http\Controllers\Club\PlayerController;
 use App\Http\Controllers\Club\AdministratorController;
@@ -11,6 +12,11 @@ use App\Http\Controllers\Auth\LoginController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/club-management', [ClubAdministrator::class, 'clubDashboard'])->name('club.dashboard');
+Route::get('/create-club-administrator', [ClubAdministrator::class, 'create'])->name('club.admform');
+Route::post('/club-administrator-store', [ClubAdministrator::class, 'store'])->name('club.admstore');
+
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::get('password/request', [LoginController::class, 'passwordRequest'])->name('password.request');
 Route::post('login', [LoginController::class, 'login']);
@@ -36,6 +42,9 @@ Route::middleware('auth')->group(function () {
 	});
 
 	Route::middleware(['role:administrator,player,club,master'])->group(function () {
+
+		Route::get('/club-administrator', [ClubAdministrator::class, 'create'])->name('club.admform');
+
 		Route::get('/team/create/{id}', [TeamController::class, 'create'])->name('team.create');
 		Route::post('/team/store/', [TeamController::class, 'store'])->name('team.store');
 		Route::get('/team-list/{id}', [TeamController::class, 'index'])->name('team.list');

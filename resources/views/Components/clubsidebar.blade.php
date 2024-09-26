@@ -6,13 +6,13 @@
             <div class="">
                 <h4 class="p-2 bg-success text-white text-center">Club</h4>
                 <ul class="metismenu" id="menu">
-                    <li><a class="" href="javascript:void(0);" aria-expanded="false">
+                    <li><a class="" href="{{ route('club.dashboard') }}" >
                             <i class="flaticon-home"></i>
-                            <span class="nav-text">Management</span>
+                            <span class="nav-text">Management </span>
                         </a>
                         
                     </li>
-                     <li><a href="javascript:void(0);" class="" aria-expanded="false">
+                     <li><a href="{{ route('club.dashboard') }}" class="" aria-expanded="false">
                             <i class="flaticon flaticon-user-1"></i>
                             <span class="nav-text">Club Administrator</span>
                         </a>                        
