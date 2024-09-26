@@ -5190,9 +5190,9 @@ textarea.form-control-lg
   --bs-btn-hover-bg: #2689ff;
   --bs-btn-hover-border-color: #1a82ff;
   --bs-btn-focus-shadow-rgb: 0, 99, 217;
-  --bs-btn-active-color: #000;
+  --bs-btn-active-color: #ffffff;
   --bs-btn-active-bg: #23b56f;
-  --bs-btn-active-border-color: #1a82ff;
+  --bs-btn-active-border-color: #23b56f;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #000;
   --bs-btn-disabled-bg: #006395;
@@ -58507,6 +58507,9 @@ input[type="date"]::-webkit-calendar-picker-indicator
     }
     .ic-sidenav .metismenu ul a{
       font-size: 13px;
+    }
+    [data-sidebar-style="full"][data-layout="vertical"] .ic-sidenav .metismenu > li > a{
+      background: #439dd047;
     }
     [data-sibebarbg="color_3"][data-theme-version="dark"] .ic-sidenav .metismenu > li.mm-active > a, 
     [data-sibebarbg="color_3"] .ic-sidenav .metismenu > li.mm-active a{
