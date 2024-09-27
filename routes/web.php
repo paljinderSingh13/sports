@@ -8,14 +8,24 @@ use App\Http\Controllers\Club\PlayerController;
 use App\Http\Controllers\Club\AdministratorController;
 use App\Http\Controllers\Club\ScheduleController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FrontController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+
+Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/about', [FrontController::class, 'about'])->name('front.about');
+Route::get('/join-now', [FrontController::class, 'join'])->name('front.join');
+Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
 
 Route::get('/club-management', [ClubAdministrator::class, 'clubDashboard'])->name('club.dashboard');
 Route::get('/create-club-administrator', [ClubAdministrator::class, 'create'])->name('club.admform');
 Route::post('/club-administrator-store', [ClubAdministrator::class, 'store'])->name('club.admstore');
+Route::get('/club-administrator', [ClubAdministrator::class, 'index'])->name('club.adm');
+
 
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::get('password/request', [LoginController::class, 'passwordRequest'])->name('password.request');
@@ -43,7 +53,7 @@ Route::middleware('auth')->group(function () {
 
 	Route::middleware(['role:administrator,player,club,master'])->group(function () {
 
-		Route::get('/club-administrator', [ClubAdministrator::class, 'create'])->name('club.admform');
+		Route::get('/club-administrator-form', [ClubAdministrator::class, 'create'])->name('club.admform');
 
 		Route::get('/team/create/{id}', [TeamController::class, 'create'])->name('team.create');
 		Route::post('/team/store/', [TeamController::class, 'store'])->name('team.store');

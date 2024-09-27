@@ -23,6 +23,9 @@
 
     <!-- STYLE CSS -->
     <link  href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
 </head>
     

@@ -14300,7 +14300,8 @@ textarea.form-control-lg
 {
 
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important; 
+  /* background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;  */
+  background-color: #23b56f;
 }
 
 
@@ -22274,16 +22275,15 @@ textarea.form-control
 }
 
 
-.nav-header 
-{
-
+.nav-header {
   height: var(--dz-header-height);
   width: var(--dz-sidebar-width);
   display: inline-block;
   text-align: left;
   position: absolute;
   top: 0;
-  background-color: var(--nav-headbg);
+  /* background-color: var(--nav-headbg); */
+  background-color: #ffffff;
   transition: all .2s ease;
   z-index: 7;
   border-right: 1px solid var(--border); 
@@ -22603,7 +22603,8 @@ textarea.form-control
   z-index: 1;
   position: var(--dz-header-pos);
   padding: 0rem;
-  background: var(--headerbg);
+  /* background: var(--headerbg); */
+  background: #ffffff;
   z-index: 3;
   top: 0;
   width: 100%;
@@ -58514,15 +58515,24 @@ input[type="date"]::-webkit-calendar-picker-indicator
     [data-sibebarbg="color_3"][data-theme-version="dark"] .ic-sidenav .metismenu > li.mm-active > a, 
     [data-sibebarbg="color_3"] .ic-sidenav .metismenu > li.mm-active a{
       /* background: rgba(255, 255, 255, 0.15) !important; */
-      background: #439dd0 !important;
+      background: #23b56f !important;
       color: #fff !important;
       border-color: transparent;
       box-shadow: none;
       border-radius: 8px;
-      margin-bottom: 2px;
     }
     .ic-sidenav .metismenu ul{
-      margin-left: 10px;
-      border-radius: 8px;
-      background: #439dd0 !important;
+      /* margin-left: 10px; */
+      border-radius: 0 0 8px 8px;
+      background: #23b56f !important;
+      margin-top: -6px;
+    }
+    .heading-menu{
+      border-bottom:1px solid #fdfeff1f;
+      padding:10px;
+      color:#ffffff;
+      text-align: center;
+    }
+    .cbtn{
+      min-width: 240px;
     }

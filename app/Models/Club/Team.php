@@ -19,4 +19,9 @@ class Team extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function players(): HasMany
+    {
+        return $this->hasMany(Player::class);
+    }
 }

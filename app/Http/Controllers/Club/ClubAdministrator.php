@@ -22,25 +22,30 @@ class ClubAdministrator extends Controller
 
         $id =  session('club_id');
        //echo session('club_id');
-       $players = Player::all();
        //dump($id);
        $club_administrator = CA::where('club_id',$id)->get();
-        $teams = Team::where('club_id',$id)->get();
-        $pluck_teams = Team::where('club_id',$id)->pluck('id');
-        
-        //dump($pluck_teams);
-        $scheduleTournaments = Schedule::whereIn('team_id',$pluck_teams)->where('type','Tournaments')->get();
-        $scheduleGame = Schedule::whereIn('team_id',$pluck_teams)->where('type','Game')->get();
-        $schedulePractice = Schedule::whereIn('team_id',$pluck_teams)->where('type','Practice')->get();
+       $teams = Team::where('club_id',$id)->get();
+       //dd($teams);
+       $pluck_teams = Team::where('club_id',$id)->pluck('id');
+       
+        $players = Player::with('team')->whereIn('team_id', $pluck_teams)->get();
+       
+        $scheduleTournaments = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Tournaments')->get();
 
-        return view('club.dashboard', compact('id','teams','club_administrator' , 'players', 'scheduleTournaments', 'scheduleGame','schedulePractice'));
+        $scheduleGame = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Game')->get();
+        $schedulePractice = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Practice')->get();
+        $title = "Management";
+
+        return view('club.dashboard', compact('id','title','teams','club_administrator' , 'players', 'scheduleTournaments', 'scheduleGame','schedulePractice'));
     }
 
 
     public function index()
     {
-        echo 123;
-        return view('club.dashboard');
+        $id =  session('club_id');
+        $club_administrator = CA::where('club_id',$id)->get();
+        $title = "Club Administrator";
+        return view('club.administrator.list', compact('id', 'title', 'club_administrator'));
     }
 
     /**

@@ -23,5 +23,9 @@ class Schedule extends Model
         'purpose_detail',
         'status',
     ];
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
     protected $dates = ['deleted_at'];
 }

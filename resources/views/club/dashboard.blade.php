@@ -11,7 +11,7 @@
                             </div>
                             <div class="col-sm-6 mb-4 text-sm-end">
                                  <a href="javascript:voit(0);" class="btn btn-outline-secondary">Add Task</a>
-                                <a href="javascript:voit(0);" class="btn btn-primary ms-2">Create a Project</a>
+                                <a href="javascript:voit(0);" class="btn btn-primary ms-2 cbtn">Create a Project</a>
                             </div>
                         </div>
                     </div> -->
@@ -19,8 +19,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">List of Club Administrator</h4>
-                            <a href="{{ route('club.admform', base64_encode($id)) }}" class="btn btn-primary ms-2">Create Club Administrator</a>
+                            <h4 class="card-title">Club Administrators</h4>
+                            <a href="{{ route('club.admform', base64_encode($id)) }}" class="btn btn-primary ms-2 cbtn">Create Administrator</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -144,9 +144,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">List of Teams</h4>
-                            <a href="{{ route('team.create', base64_encode($id)) }}" class="btn btn-primary ms-2">Create a
-                                Team</a>
+                            <h4 class="card-title">Teams</h4>
+                            <a href="{{ route('team.create', base64_encode($id)) }}" class="btn btn-primary ms-2 cbtn">Create Team</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -156,7 +155,8 @@
                                             <th>Name</th>
                                             <th>Age Group</th>
                                             <th>Season</th>
-                                            <th>Status</th>
+                                            <th>Status</th>                                            
+                                            <th>Number of Players</th>                                            
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -167,6 +167,7 @@
                                                 <td>{{ $team->age_group }}</td>
                                                 <td>{{ $team->season }}</td>
                                                 <td>{{ $team->status ? 'Active' : 'Inactive' }}</td>
+                                                <td></td>
                                                 <td>
                                                     <div class="dropdown ms-auto c-pointer">
                                                         <button type="button" class="btn btn-primary light sharp"
@@ -264,8 +265,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Players</h4>
-                            <a href="{{ route('player.create', base64_encode($id)) }}" class="btn btn-primary ms-2">Create
-                                Player</a>
+                            <a href="{{ route('player.create', base64_encode($id)) }}" class="btn btn-primary ms-2 cbtn">Create Player</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -273,6 +273,7 @@
                                     <thead>
                                         <tr>
                                             <th>Picture</th>
+                                            <th>Team</th>
                                             <th>Name</th>
                                             <th>Type</th>
                                             <th>Priority</th>
@@ -294,6 +295,7 @@
                                                             src="{{ asset($player->picture) }}" alt="logo">
                                                     @endif
                                                 </td>
+                                                <td>{{$player->team->name}}</td>
                                                 <td>{{ $player->name }}</td>
                                                 <td>{{ $player->type }}</td>
                                                 <td>{{ $player->priority }}</td>
@@ -450,9 +452,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Schedule</h4>
+                            <h4 class="card-title">Schedules</h4>
                             <a href="{{ route('schedule.create', base64_encode($id)) }}"
-                                class="btn btn-primary ms-2">Create Schedule</a>
+                                class="btn btn-primary ms-2 cbtn">Create Schedule</a>
                         </div>
                         <div class="card-body">
                             <h3>Tournament</h3>
@@ -461,6 +463,7 @@
                                     <thead>
                                         <tr>
                                             <th>Type</th>
+                                            <th>Team </th>
                                             <th>Opposing Team </th>
                                             <th>Location</th>
                                             <th>City</th>
@@ -474,6 +477,7 @@
                                         @foreach ($scheduleTournaments as $schedule)
                                             <tr>
                                                 <td>{{ $schedule->type }}</td>
+                                                <td> {{ $schedule->team->name }} </td>
                                                 <td>{{ $schedule->opposing_team_id }}</td>
                                                 <td>{{ $schedule->location }}</td>
                                                 <td>{{ $schedule->city }}</td>
@@ -530,12 +534,13 @@
                                 <table id="example3" class="display datatable2" style="min-width: 850px">
                                     <thead>
                                         <tr>
-                                            <th>Type</th>
-                                            <th>Purpose Detail</th>
-                                            <th>Date From</th>
-                                            <th>Date To</th>
-                                            <th>Time From</th>
-                                            <th>Time To</th>
+                                        <th>Type</th>
+                                            <th>Team </th>
+                                            <th>Opposing Team </th>
+                                            <th>Location</th>
+                                            <th>City</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
@@ -544,12 +549,13 @@
                                         @foreach ($schedulePractice as $practice)
                                             <tr>
                                                 <td>{{ $practice->type }}</td>
-                                                <td>{{ $practice->purpose_detail }}</td>
+                                                <td>{{ $practice->team->name }}</td>
+                                                <td>{{ $practice->opposing_team_id }}</td>
 
-                                                <td>{{ $practice->date_from }}</td>
-                                                <td>{{ $practice->date_to }}</td>
-                                                <td>{{ $practice->timing_from }}</td>
-                                                <td>{{ $practice->timing_to }}</td>
+                                                <td>{{ $practice->location }}</td>
+                                                <td>{{ $practice->city }}</td>
+                                                <td>{{ $practice->date }}</td>
+                                                <td>{{ $practice->time }}</td>
                                                 <td>{{ $practice->status == 1 ? 'Active' : 'Inactive' }}</td>
                                                 <td>
                                                     <div class="dropdown ms-auto c-pointer">
@@ -600,8 +606,11 @@
                                 <table id="example3" class="display datatable2" style="min-width: 850px">
                                     <thead>
                                         <tr>
-                                            <th>Type</th>
-                                            <th>Purpose Detail</th>
+                                        <th>Type</th>
+                                            <th>Team </th>
+                                            <th>Opposing Team </th>
+                                            <th>Location</th>
+                                            <th>City</th>
                                             <th>Date</th>
                                             <th>Time</th>
                                             <th>Status</th>
@@ -612,7 +621,10 @@
                                         @foreach ($scheduleGame as $game)
                                             <tr>
                                                 <td>{{ $game->type }}</td>
-                                                <td>{{ $game->purpose_detail }}</td>
+                                                <td>{{ $game->team->name }}</td>
+                                                <td>{{ $game->opposing_team_id }}</td>
+                                                <td>{{ $game->location }}</td>
+                                                <td>{{ $game->city }}</td>
                                                 <td>{{ $game->date }}</td>
                                                 <td>{{ $game->time }}</td>
                                                 <td>{{ $game->status == 1 ? 'Active' : 'Inactive' }}</td>
