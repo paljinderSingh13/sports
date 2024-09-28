@@ -82,7 +82,7 @@ class TeamController extends Controller
         ]);
 
         // Redirect with success message
-        return redirect()->route('team.list', base64_encode($request->club_id))->with('success', 'Team created successfully!');
+        return redirect()->route('club.dashboard', base64_encode($request->club_id))->with('success', 'Team created successfully!');
     }
 
     /**
@@ -128,7 +128,7 @@ class TeamController extends Controller
         ]);
 
         // Redirect with a success message
-        return redirect()->route('team.list', base64_encode($team->club_id))
+        return redirect()->route('club.dashboard', base64_encode($team->club_id))
             ->with('success', 'Team updated successfully.');
     }
 
@@ -138,7 +138,7 @@ class TeamController extends Controller
         $team->status = !$team->status; // Toggle status
         $team->save();
 
-        return back()->with('success', 'Team status updated successfully.');
+        return redirect()->route('club.dashboard')->with('success', 'Team status updated successfully.');
     }
 
     /**

@@ -89,11 +89,11 @@
                                         <label for="proof_id" class="form-label">Proof ID </label>
                                         <input type="file" name="proof_id" id="proof_id"
                                             class="form-control" required>
-
+                                            @error('proof_id')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
                                     </div>
-                                    @error('proof_id')
-                                        <small class="text-danger">{{ $message }}</small>
-                                    @enderror
+                                 
 
 
                                     <div class="mb-3 col-md-6">

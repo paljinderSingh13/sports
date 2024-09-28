@@ -25,6 +25,8 @@ class PlayerController extends Controller
     {
         //
         $id = base64_decode($id);
+        // dd($id);
+
         $player['permanent'] = Player::select('priority')->where('type','permanent')->where('team_id',$id)->pluck('priority')->toArray();
         $player['substitute'] = Player::select('priority')->where('type','substitute')->where('team_id',$id)->pluck('priority')->toArray();
          return view('team.players.create', compact('id','player'));
@@ -35,6 +37,7 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
+       // dd($request->all(););
          // Validation rules
         $request->validate([
             'team_id' => 'required|exists:teams,id',
@@ -86,7 +89,7 @@ class PlayerController extends Controller
 
         $player->save();
 
-        return redirect()->route('team.info', base64_encode($player->team_id))->with('success', 'Player created successfully.');
+        return redirect()->route('club.dashboard')->with('success', 'Player created successfully.');
     
     }
 
@@ -171,7 +174,7 @@ class PlayerController extends Controller
         $player->save();
 
         // Redirect with success message
-        return back()->with('success', 'Player updated successfully.');
+        return redirect()->route('club.dashboard')->with('success', 'Player updated successfully.');
 
 
     }
@@ -193,8 +196,10 @@ class PlayerController extends Controller
     {
         //
         $id = base64_decode($id);
-        $team = Player::find($id);
-        $team->delete();
+        $player = Player::find($id);
+        User::where('id',$player->user_id)->delete();
+
+        $player->delete();
 
         // Redirect back with a success message
         return back()->with('success', 'Player deleted successfully.');

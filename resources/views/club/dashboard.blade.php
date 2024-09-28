@@ -71,7 +71,7 @@
                                                                 data-team-name="{{ $admin->name }}">Change Status</a>
                                                           
                                                             <a class="dropdown-item"
-                                                                href="{{ route('team.edit', base64_encode($admin->id)) }}">Edit</a>
+                                                                href="{{ route('clubadm.edit', base64_encode($admin->id)) }}">Edit</a>
                                                             <a class="dropdown-item" href="javascript:void(0);"
                                                                 data-bs-toggle="modal" data-bs-target="#deleteModalCenter"
                                                                 data-team-id="{{ $admin->id }}"
@@ -188,7 +188,7 @@
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-end">
                                                             <a class="dropdown-item" href="javascript:void(0);"
-                                                                data-bs-toggle="modal" data-bs-target="#activeModalCenter"
+                                                                data-bs-toggle="modal" data-bs-target="#activeModalCenterTeam"
                                                                 data-team-id="{{ $team->id }}"
                                                                 data-team-name="{{ $team->name }}">Change Status</a>
                                                             <a class="dropdown-item"
@@ -197,7 +197,7 @@
                                                             <a class="dropdown-item"
                                                                 href="{{ route('team.edit', base64_encode($team->id)) }}">Edit</a>
                                                             <a class="dropdown-item" href="javascript:void(0);"
-                                                                data-bs-toggle="modal" data-bs-target="#deleteModalCenter"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteModalCenterTeam"
                                                                 data-team-id="{{ $team->id }}"
                                                                 data-team-name="{{ $team->name }}">Delete</a>
                                                         </div>
@@ -210,7 +210,7 @@
                             </div>
 
                             <!-- Delete Modal -->
-                            <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog">
+                            <div class="modal fade" id="deleteModalCenterTeam" tabindex="-1" role="dialog">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
@@ -234,7 +234,7 @@
                             </div>
 
                             <!-- Active Status Modal -->
-                            <div class="modal fade" id="activeModalCenter" tabindex="-1" role="dialog">
+                            <div class="modal fade" id="activeModalCenterTeam" tabindex="-1" role="dialog">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
@@ -678,9 +678,21 @@
     @endsection
     @section('js')
         <script>
+            
             document.addEventListener('DOMContentLoaded', function() {
                 // Delete modal
                 $('#deleteModalCenter').on('show.bs.modal', function(event) {
+                    var button = $(event.relatedTarget); // Button that triggered the modal
+                    var teamId = button.data('team-id'); // Extract team ID
+                    var teamName = button.data('team-name'); // Extract team name
+
+                    var modal = $(this);
+                    modal.find('#delete-modal-title').text('Are you sure you want to delete ' + teamName + '?');
+                    modal.find('#delete-form').attr('action', '{{ route('clubadm.destroy', ':id') }}'.replace(
+                        ':id', btoa(teamId)));
+                });
+
+                $('#deleteModalCenterTeam').on('show.bs.modal', function(event) {
                     var button = $(event.relatedTarget); // Button that triggered the modal
                     var teamId = button.data('team-id'); // Extract team ID
                     var teamName = button.data('team-name'); // Extract team name
@@ -693,16 +705,33 @@
 
                 // Active status modal
                 $('#activeModalCenter').on('show.bs.modal', function(event) {
+
                     var button = $(event.relatedTarget); // Button that triggered the modal
                     var teamId = button.data('team-id'); // Extract team ID
                     var teamName = button.data('team-name'); // Extract team name
+                    var modal = $(this);
+                    modal.find('#active-modal-title').text('Are you sure you want to change the status of ' +
+                        teamName + '?');
+                    modal.find('#active-form').attr('action', '{{ route('clubadm.updateStatus', ':id') }}'
+                        .replace(':id', teamId));
+                });
 
+                $('#activeModalCenterTeam').on('show.bs.modal', function(event) {
+
+                    var button = $(event.relatedTarget); // Button that triggered the modal
+                    var teamId = button.data('team-id'); // Extract team ID
+                    var teamName = button.data('team-name'); // Extract team name
                     var modal = $(this);
                     modal.find('#active-modal-title').text('Are you sure you want to change the status of ' +
                         teamName + '?');
                     modal.find('#active-form').attr('action', '{{ route('team.updateStatus', ':id') }}'
                         .replace(':id', teamId));
-                });
+                    });
+
+
+
+
+
             });
         </script>
     @endsection

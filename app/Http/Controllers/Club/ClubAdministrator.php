@@ -27,6 +27,7 @@ class ClubAdministrator extends Controller
        $teams = Team::where('club_id',$id)->get();
        //dd($teams);
        $pluck_teams = Team::where('club_id',$id)->pluck('id');
+    //    dd($pluck_teams->all());
        
         $players = Player::with('team')->whereIn('team_id', $pluck_teams)->get();
        
@@ -46,6 +47,64 @@ class ClubAdministrator extends Controller
         $club_administrator = CA::where('club_id',$id)->get();
         $title = "Club Administrator";
         return view('club.administrator.list', compact('id', 'title', 'club_administrator'));
+    }
+
+    public function edit($id)
+    {
+        //
+        $cadmin_id = base64_decode($id);
+        $cadmin = CA::where('id',$cadmin_id)->first();
+        $title = "Edit Cliub Administrator";
+        return view('club.administrator.edit',compact('cadmin_id','cadmin'));
+    }
+
+    public function update(Request $request)
+    {
+        //
+        // $id = base64_decode($id);
+        // $ca = CA::where('id',$request->id)->first();
+        $ca = CA::findOrFail($request->id);
+        // dd($request->all());
+        
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'role' => 'required|string|max:255',
+            'phone' => 'required|string|min:10|max:13',
+            'email' => 'required|email|max:255|unique:clubs,email',
+        ]);
+
+       
+        if ($request->hasFile('image')) {
+            // Delete the old picture if it exists
+            if ($ca->image && file_exists(public_path($ca->image))) {
+                unlink(public_path($ca->image));
+            }
+            // Generate a unique filename and store the picture in the public directory
+            $picture = $request->file('image');
+            $pictureName = time() . '_' . $picture->getClientOriginalName();
+            $picture->move(public_path('pictures'), $pictureName);
+            $ca->image = 'pictures/' . $pictureName;
+        }
+        // Update the team
+       $ca->name = $request->name;
+       $ca->role = $request->role;
+       $ca->email = $request->email;
+       $ca->phone = $request->phone;
+        
+        $ca->save();
+
+        // Redirect with a success message
+        return redirect()->route('club.dashboard')
+            ->with('success', 'Club administrator updated successfully.');
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $ca = CA::findOrFail($id);
+        $ca->status = !$ca->status; // Toggle status
+        $ca->save();
+
+        return back()->with('success', 'Club Administration status updated successfully.');
     }
 
     /**
@@ -128,27 +187,20 @@ class ClubAdministrator extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+   
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
-        //
+        $id = base64_decode($id);
+        $ca = CA::find($id);
+        User::where('id',$ca->user_id)->delete();
+        // dd($ca->user_id);
+        $ca->delete();
+        // Redirect back with a success message
+        return back()->with('success', 'Club Administrator deleted successfully.');
     }
 }

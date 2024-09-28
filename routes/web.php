@@ -21,10 +21,7 @@ Route::get('/about', [FrontController::class, 'about'])->name('front.about');
 Route::get('/join-now', [FrontController::class, 'join'])->name('front.join');
 Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
 
-Route::get('/club-management', [ClubAdministrator::class, 'clubDashboard'])->name('club.dashboard');
-Route::get('/create-club-administrator', [ClubAdministrator::class, 'create'])->name('club.admform');
-Route::post('/club-administrator-store', [ClubAdministrator::class, 'store'])->name('club.admstore');
-Route::get('/club-administrator', [ClubAdministrator::class, 'index'])->name('club.adm');
+
 
 
 Route::get('login', [LoginController::class, 'create'])->name('login');
@@ -52,6 +49,17 @@ Route::middleware('auth')->group(function () {
 	});
 
 	Route::middleware(['role:administrator,player,club,master'])->group(function () {
+
+		Route::get('/club-management', [ClubAdministrator::class, 'clubDashboard'])->name('club.dashboard');
+Route::get('/create-club-administrator', [ClubAdministrator::class, 'create'])->name('club.admform');
+Route::post('/club-administrator-store', [ClubAdministrator::class, 'store'])->name('club.admstore');
+Route::get('/club-administrator', [ClubAdministrator::class, 'index'])->name('club.adm');
+
+		Route::post('/club-admin/{id}/status', [ClubAdministrator::class, 'updateStatus'])->name('clubadm.updateStatus');
+		Route::put('/club-admin/update', [ClubAdministrator::class, 'update'])->name('clubadm.update');
+		Route::get('/club-admin/edit/{id}', [ClubAdministrator::class, 'edit'])->name('clubadm.edit');
+		Route::delete('/club-admin/destroy/{id}', [ClubAdministrator::class, 'destroy'])->name('clubadm.destroy');
+
 
 		Route::get('/club-administrator-form', [ClubAdministrator::class, 'create'])->name('club.admform');
 
