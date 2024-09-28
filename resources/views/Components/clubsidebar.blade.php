@@ -38,13 +38,17 @@
                         </ul>
                     </li>
 
-                    <!-- <li><a href="#" class="ai-icon" aria-expanded="false">
-                            <i class="flaticon-calendar-2"></i>
-                            <span class="nav-text">Roster</span>
+                    <li><a href="#" class="ai-icon has-arrow" aria-expanded="false">
+                            <!-- <i class="flaticon-calendar-2"></i> -->
+                            <i class="fa-solid fa-users"></i>
+                            <span class="nav-text">Players</span>
                         </a>
+                        <ul aria-expand="false">
+                            <li><a href="#">Player Administrator</a></li>
+                        </ul>
                     </li>
 
-                    <li><a href="#" class="ai-icon" aria-expanded="false">
+                   <!--  <li><a href="#" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-price-tag"></i>
                             <span class="nav-text">Payment</span>
                         </a>
