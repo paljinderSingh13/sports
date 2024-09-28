@@ -9,6 +9,7 @@ use App\Http\Controllers\Club\AdministratorController;
 use App\Http\Controllers\Club\ScheduleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\DesignController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -94,6 +95,8 @@ Route::middleware('auth')->group(function () {
 		Route::post('schedule/{id}/status', [ScheduleController::class, 'updateStatus'])->name('schedule.updateStatus');
 
 	});
+	Route::get('/design-players', [DesignController::class, 'players'])->name('design.players');
+	Route::get('/design-playerform', [DesignController::class, 'playerform'])->name('design.playerform');
 });
 
 
