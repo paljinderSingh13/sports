@@ -36,6 +36,16 @@
                             
                         </ul>
                     </li>
+                    <li><a href="javascript:void(0);" class="has-arrow" aria-expanded="false">
+                            <i class="flaticon-cms"></i>
+                            <span class="nav-text">Player</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('player.add')}}">Player administrator </a></li>
+                            <!-- <li><a href="#">List</a></li> -->
+                            
+                        </ul>
+                    </li>
 
                     <li><a href="#" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-calendar-2"></i>

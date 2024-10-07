@@ -6,6 +6,7 @@ use App\Http\Controllers\Club\ClubAdministrator;
 use App\Http\Controllers\Club\TeamController;
 use App\Http\Controllers\Club\PlayerController;
 use App\Http\Controllers\Club\AdministratorController;
+use App\Http\Controllers\Club\PlayerAdministratorController;
 use App\Http\Controllers\Club\ScheduleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FrontController;
@@ -18,8 +19,14 @@ use App\Http\Controllers\DesignController;
 
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/index2', [FrontController::class, 'index2'])->name('front.index2');
 Route::get('/about', [FrontController::class, 'about'])->name('front.about');
 Route::get('/join-now', [FrontController::class, 'join'])->name('front.join');
+Route::get('/pickup', [FrontController::class, 'pickup'])->name('front.pickup');
+Route::get('/events', [FrontController::class, 'events'])->name('front.events');
+Route::get('/locations', [FrontController::class, 'locations'])->name('front.locations');
+Route::get('/classes', [FrontController::class, 'classes'])->name('front.classes');
+Route::get('/professionals', [FrontController::class, 'professionals'])->name('front.professionals');
 Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
 
 
@@ -49,7 +56,7 @@ Route::middleware('auth')->group(function () {
 		Route::post('club/get-location', [ClubController::class, 'getLocation'])->name('club.get.location');
 	});
 
-	Route::middleware(['role:administrator,player,club,master'])->group(function () {
+	Route::middleware(['role:administrator,player,player_administrator,club,master'])->group(function () {
 
 		Route::get('/club-management', [ClubAdministrator::class, 'clubDashboard'])->name('club.dashboard');
 Route::get('/create-club-administrator', [ClubAdministrator::class, 'create'])->name('club.admform');
@@ -64,6 +71,8 @@ Route::get('/club-administrator', [ClubAdministrator::class, 'index'])->name('cl
 
 		Route::get('/club-administrator-form', [ClubAdministrator::class, 'create'])->name('club.admform');
 
+		Route::get('/team-management/team_administrator', [TeamController::class, 'teamDashboard'])->name('team.team_administrator');
+		Route::get('/team-management/schedule', [TeamController::class, 'teamDashboardSchedule'])->name('team.schedule');
 		Route::get('/team/create/{id}', [TeamController::class, 'create'])->name('team.create');
 		Route::post('/team/store/', [TeamController::class, 'store'])->name('team.store');
 		Route::get('/team-list/{id}', [TeamController::class, 'index'])->name('team.list');
@@ -77,11 +86,25 @@ Route::get('/club-administrator', [ClubAdministrator::class, 'index'])->name('cl
 
 	 });
 
-	Route::middleware(['role:player,administrator,club,master'])->group(function () {
+	Route::middleware(['role:player,player_administrator,administrator,club,master'])->group(function () {
 		Route::get('/players/create/{id}', [PlayerController::class, 'create'])->name('player.create');
+		Route::get('/players/add', [PlayerController::class, 'add'])->name('player.add');
 		Route::post('/players/store', [PlayerController::class, 'store'])->name('player.store');
+		Route::post('/players/save', [PlayerController::class, 'save'])->name('player.save');
 		Route::get('/players/edit/{id}', [PlayerController::class, 'edit'])->name('player.edit');
 		Route::put('/players/update/{id}', [PlayerController::class, 'update'])->name('player.update');
+
+		Route::get('/players/editplayer/{id}', [PlayerController::class, 'editPlayer'])->name('player.editPlayer');
+		Route::put('/players/updateplayer/{id}', [PlayerController::class, 'updatePlayer'])->name('player.updatePlayer');
+		Route::post('/add-admin', [PlayerController::class, 'storeAdmin'])->name('player.add.admin');
+		
+		Route::get('/players/administrator/list/', [PlayerAdministratorController::class, 'index'])->name('player.administrator.list');
+		Route::get('/players/administrator/edit/{id}', [PlayerAdministratorController::class, 'edit'])->name('player.administrator.edit');
+		Route::PUT('/players/administrator/update/{id}', [PlayerAdministratorController::class, 'update'])->name('player.administrator.update');
+		Route::delete('/players/administrator/destroy/{id}', [PlayerAdministratorController::class, 'destroy'])->name('player.administrator.destroy');
+		Route::get('/players/administrator/create', [PlayerAdministratorController::class, 'create'])->name('player.administrator.create');
+		Route::post('/players/administrator/store', [PlayerAdministratorController::class, 'store'])->name('player.administrator.store');
+
 		Route::delete('/players/destroy/{id}', [PlayerController::class, 'destroy'])->name('player.destroy');
 		Route::post('/player/{id}/status', [PlayerController::class, 'updateStatus'])->name('player.updateStatus');
 	 });
@@ -102,6 +125,8 @@ Route::get('/club-administrator', [ClubAdministrator::class, 'index'])->name('cl
 		Route::delete('schedule/destroy/{id}', [ScheduleController::class, 'destroy'])->name('schedule.destroy');
 		Route::post('schedule/{id}/status', [ScheduleController::class, 'updateStatus'])->name('schedule.updateStatus');
 
+		Route::get('schedule/add', [ScheduleController::class, 'add'])->name('schedule.add');
+		Route::post('schedule/ScheduleStore', [ScheduleController::class, 'ScheduleStore'])->name('schedule.ScheduleStore');
 	});
 	Route::get('/design-players', [DesignController::class, 'players'])->name('design.players');
 	Route::get('/design-playerform', [DesignController::class, 'playerform'])->name('design.playerform');

@@ -4,11 +4,10 @@ namespace App\Models\Club;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Schedule extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
     protected $fillable = [
         'type',
         'team',
@@ -27,5 +26,10 @@ class Schedule extends Model
     {
         return $this->belongsTo(Team::class);
     }
+     public function OpTeam()
+    {
+        return $this->belongsTo(Team::class,'opposing_team_id','id');
+    }
+
     protected $dates = ['deleted_at'];
 }

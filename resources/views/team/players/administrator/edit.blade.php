@@ -9,81 +9,46 @@
                 <div class="col-xl-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Create Club Administrator</h4>
+                            <h4 class="card-title">Edit Player Administrator</h4>
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form method="POST" enctype="multipart/form-data" action="{{ route('club.admstore') }}">
+                                <form method="POST" enctype="multipart/form-data" action="{{ route('player.administrator.update',base64_encode($playeradmin->id)) }}">
                                     @csrf
+                                    @method('PUT')
                                     <div class="row">
 
-                                        
 
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label">Name <span class="text-danger ms-1">*</span></label>
                                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                                name="name" placeholder="Name" value="{{ old('name') }}" required>
+                                                name="name" placeholder="Name" value="{{ $playeradmin->user->name}}" required>
                                             @error('name')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
-
-                                        <div class="mb-3 col-md-6">
-                                                <label class="form-label">Role</label>
-                                                <select id="inputState" name="role" class="default-select form-control wide @error('role') is-invalid @enderror">
-                                                    <option value="President">President</option>
-                                                    <option value="Senior Manager">Senior Manager</option>
-                                                    <option value="Assistant Manager" >Assistant Manager</option>
-                                                    <option value="Other">Other</option>
-                                                </select>
-                                                @error('role')
+                                       
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">Email <span class="text-danger ms-1">*</span></label>
+                                                <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                                    name="email" placeholder="Email" value="{{ old('email', $playeradmin->user->email) }}" required>
+                                                @error('email')
                                                     <small class="text-danger">{{ $message }}</small>
                                                 @enderror
-                                        </div>
-
-                                       
+                                            </div>
+                                            
                                     </div>
 
-                                   
-
-                                    <div class="row">
-                                        <div class="mb-3  col-md-6">
-                                            <label for="image" class="form-label">Image</label>
-                                            <input class="form-control @error('image') is-invalid @enderror" type="file"
-                                                name="image" id="image" >
-                                            @error('image')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                            <img id="preview-image" src="#" alt="Image Preview"
-                                                style="display: none; max-width: 300px; margin-top: 10px;">
-                                        </div>
-
+                                        <div class="row">
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label">Phone <span class="text-danger ms-1">*</span></label>
                                             <input type="text" class="form-control @error('phone') is-invalid @enderror"
-                                                name="phone" placeholder="Phone" value="{{ old('phone') }}" required>
+                                                name="phone" placeholder="Phone" value="{{ old('phone', $playeradmin->user->phone) }}" required>
                                             @error('phone')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="mb-3 col-md-6">
-                                            <label class="form-label">Email <span class="text-danger ms-1">*</span></label>
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                                name="email" placeholder="Email" value="{{ old('email') }}" required>
-                                            @error('email')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
                                         </div>
-                                        <div class="mb-3 col-md-6">
-                                            <label class="form-label">Password <span class="text-danger ms-1">*</span></label>
-                                            <input class="form-control " type="password" name="password" id="Password" placeholder="Password" min="8" max="20" value="{{ old('password') }}" required>
-                                            @error('password')
-                                                <small class="text-danger error">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                    </div>
 
                                    
 
@@ -102,6 +67,27 @@
     @endsection
     @section('js')
         <script>
+            function previewImage(event) {
+                var input = event.target;
+                var file = input.files[0];
+                var preview = document.getElementById('picturePreview');
+
+                if (file) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                    };
+
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.src = '#';
+                    preview.style.display = 'none';
+                }
+            }
+
+
             $(document).ready(function() {
                 // Event listener for file input change
                 $('#logo').change(function(event) {

@@ -450,6 +450,16 @@
 				</nav>
 			</div>
 		</div>
+
+
+ @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show position-absolute top-0 end-0 m-3" role="alert" style="z-index: 1051; background: white; padding: 2%; font-size: medium;">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+       
+    
+    @endif
 		<!--**********************************
             Header end ti-comment-alt
         ***********************************-->

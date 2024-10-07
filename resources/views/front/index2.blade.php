@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.front2')
 @section('content')
 <!-- Carousel Start -->
 <div class="carousel-header">
@@ -147,154 +147,94 @@
                               <div class="tab-content" id="pills-tabContent">
                                  
                                  <div class="tab-pane fade show active" id="games" role="tabpanel" aria-labelledby="games-tab">
-                                    
-                                   <div class="map-border">
+                                    <div class="row">
+                                     <div class="col-12 col-md-6 col-lg-6 col-xxl-4">
+                                        <a href="#" class="event_sec">
+                                            <div class="event_sec_date">11 Dec</div>
+                                            <div class="event_img"><img src="{{asset('front/img/team_logo_05.png')}}" /></div>
+                                            <div class="event_txt">
+                                                <h3>WASHINGTON WOLVES</h3>
+                                                <span>Sport Arean / 7:45PM</span>
+                                            </div>
+                                         
+                                        </a>
+                                     </div>
+                          
+                                     <div class="col-12 col-md-6 col-lg-6 col-xxl-4">
+                                        <a href="#" class="event_sec">
+                                            <div class="event_sec_date">11 Dec</div>
+                                            <div class="event_img"><img src="{{asset('front/img/team_logo_06.png')}}" /></div>
+                                            <div class="event_txt">
+                                                <h3>WASHINGTON WOLVES</h3>
+                                                <span>Sport Arean / 7:45PM</span>
+                                            </div>
+                                         
+                                        </a>
+                                     </div>
+
+
+                                     <div class="col-12 col-md-6 col-lg-6 col-xxl-4">
+                                        <a href="#" class="event_sec">
+                                            <div class="event_sec_date">11 Dec</div>
+                                            <div class="event_img"><img src="{{asset('front/img/team_logo_07.png')}}" /></div>
+                                            <div class="event_txt">
+                                                <h3>WASHINGTON WOLVES</h3>
+                                                <span>Sport Arean / 7:45PM</span>
+                                            </div>
+                                         
+                                        </a>
+                                     </div>
+
+
+                                     <div class="col-12 col-md-6 col-lg-6 col-xxl-4">
+                                        <a href="#" class="event_sec">
+                                            <div class="event_sec_date">11 Dec</div>
+                                            <div class="event_img"><img src="{{asset('front/img/team_logo_08.png')}}" /></div>
+                                            <div class="event_txt">
+                                                <h3>WASHINGTON WOLVES</h3>
+                                                <span>Sport Arean / 7:45PM</span>
+                                            </div>
+                                         
+                                        </a>
+                                     </div>
+
+
+                                     <div class="col-12 col-md-6 col-lg-6 col-xxl-4">
+                                        <a href="#" class="event_sec">
+                                            <div class="event_sec_date">11 Dec</div>
+                                            <div class="event_img"><img src="{{asset('front/img/team_logo_07.png')}}" /></div>
+                                            <div class="event_txt">
+                                                <h3>WASHINGTON WOLVES</h3>
+                                                <span>Sport Arean / 7:45PM</span>
+                                            </div>
+                                         
+                                        </a>
+                                     </div>
+
+
+                                     <div class="col-12 col-md-6 col-lg-6 col-xxl-4">
+                                        <a href="#" class="event_sec">
+                                            <div class="event_sec_date">11 Dec</div>
+                                            <div class="event_img"><img src="{{asset('front/img/team_logo_05.png')}}" /></div>
+                                            <div class="event_txt">
+                                                <h3>WASHINGTON WOLVES</h3>
+                                                <span>Sport Arean / 7:45PM</span>
+                                            </div>
+                                         
+                                        </a>
+                                     </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane fade" id="places" role="tabpanel" aria-labelledby="places-tab">
                                     <div class="ratio ratio-16x9">
                                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.860512519623!2d-122.47096561790035!3d37.76986874022927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858743acfb4421%3A0x1b8487cfc077cab9!2sCalifornia%20Academy%20of%20Sciences!5e0!3m2!1sen!2sin!4v1723110327498!5m2!1sen!2sin"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                     </div>
-                                 </div>
-
-                                    <div class="mt-3"></div>
-
-                    <div class="row justify-content-center">
-                        <div class="col-xl-12">
-                            <div class="first_row">
-                                <div class="row">
-                                    <div class="col-2 col-sm-1">
-                                        <h5></h5>
-                                    </div>
-                                    <div class="col-2 col-sm-3">
-                                        <h5>Game</h5>
-                                    </div>
-                                    <div class="col-3">
-                                        <h5>Location</h5>
-                                    </div>
-                                    <div class="col-3">
-                                        <h5>Age Group</h5>
-                                    </div>
-                                    <div class="col-2">
-                                        <h5>Gender</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="data_row">
-                                <div class="row">
-                                     <div class="col-2 col-sm-1">
-                                        <div class="tem_icon"><img src="{{asset('front/img/icon/team/basketball.png')}}"></div>
-                                    </div>
-                                    <div class="col-2 col-sm-3">
-                                        <p>Basketball</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>San Paolo Stadium</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>Adults</p>
-                                    </div>
-                                    <div class="col-2">
-                                        <p>Male</p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="data_row">
-                                <div class="row">
-                                     <div class="col-2 col-sm-1">
-                                        <div class="tem_icon"><img src="{{asset('front/img/icon/team/soccer.png')}}"></div>
-                                    </div>
-                                    <div class="col-2 col-sm-3">
-                                        <p>Soccer</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>60 East 65th Street, Minneapolis</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>Teens</p>
-                                    </div>
-                                    <div class="col-2">
-                                        <p>Male</p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="data_row">
-                                <div class="row">
-                                     <div class="col-2 col-sm-1">
-                                        <div class="tem_icon"><img src="{{asset('front/img/icon/team/football.png')}}"></div>
-                                    </div>
-                                    <div class="col-2 col-sm-3">
-                                        <p>Football</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>60 East 65th Street, Minneapolis</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>Kids</p>
-                                    </div>
-                                    <div class="col-2">
-                                        <p>Female</p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="data_row">
-                                <div class="row">
-                                     <div class="col-2 col-sm-1">
-                                        <div class="tem_icon"><img src="{{asset('front/img/icon/team/baseball.png')}}"></div>
-                                    </div>
-                                    <div class="col-2 col-sm-3">
-                                        <p>Baseball</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>60 East 65th Street, Minneapolis</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>Open for all ages</p>
-                                    </div>
-                                    <div class="col-2">
-                                        <p>Male</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="data_row">
-                                <div class="row">
-                                     <div class="col-2 col-sm-1">
-                                        <div class="tem_icon"><img src="{{asset('front/img/icon/team/hockey.png')}}"></div>
-                                    </div>
-                                    <div class="col-2 col-sm-3">
-                                        <p>Hockey</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>60 East 65th Street, Minneapolis</p>
-                                    </div>
-                                    <div class="col-3">
-                                        <p>Adults</p>
-                                    </div>
-                                    <div class="col-2">
-                                        <p>Female</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
 
                                 </div>
-
-
                                 <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
-                                        
-                                 <div class="map-border">
-                                    <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.860512519623!2d-122.47096561790035!3d37.76986874022927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858743acfb4421%3A0x1b8487cfc077cab9!2sCalifornia%20Academy%20of%20Sciences!5e0!3m2!1sen!2sin!4v1723110327498!5m2!1sen!2sin"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                    </div>
-                                 </div>
-
                                     <div class="row">
                                      <div class="col-12 col-md-6 col-lg-6 col-xxl-4">
                                         <a href="#" class="event_sec">
@@ -374,134 +314,7 @@
 
                                     </div>
                                 </div>
-
-                                <div class="tab-pane fade" id="places" role="tabpanel" aria-labelledby="places-tab">
-
-                                 <div class="map-border">
-                                    <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.860512519623!2d-122.47096561790035!3d37.76986874022927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858743acfb4421%3A0x1b8487cfc077cab9!2sCalifornia%20Academy%20of%20Sciences!5e0!3m2!1sen!2sin!4v1723110327498!5m2!1sen!2sin"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                    </div>
-                                </div>
-                                    
-                                    <div class="mt-3"></div>
-
-                                <div class="row justify-content-center">
-                                    <div class="col-12">
-                                        <div class="first_row">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <h5>Distance</h5>
-                                                </div>
-                                                <div class="col">
-                                                    <h5>Type</h5>
-                                                </div>
-                                                <div class="col">
-                                                    <h5>Address</h5>
-                                                </div>
-                                                <div class="col">
-                                                    <h5>Rating</h5>
-                                                </div>
-                                                <div class="col">
-                                                    <h5>Popularity</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="data_row">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p>5 Miles</p>
-                                                </div>
-                                                <div class="col">
-                                                    <p>Soccor Match</p>
-                                                </div>
-                                                <div class="col">
-                                                    <p>San Paolo Stadium</p>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="stars">
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <p>Most Popular</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="data_row">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p>2.5 Miles</p>
-                                                </div>
-                                                <div class="col">
-                                                    <p>Golf Match</p>
-                                                </div>
-                                                <div class="col">
-                                                    <p>60 East 65th Street, Minneapolis</p>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="stars">
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <p>Most Popular</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="data_row">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p>2.5 Miles</p>
-                                                </div>
-                                                <div class="col">
-                                                    <p>Golf Match</p>
-                                                </div>
-                                                <div class="col">
-                                                    <p>60 East 65th Street, Minneapolis</p>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="stars">
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <p>Most Popular</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                              </div>
-
-                                </div>
-                                
                                 <div class="tab-pane fade" id="teams" role="tabpanel" aria-labelledby="teams-tab">
-                                    
-                                    <div class="map-border">
-                                    <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.860512519623!2d-122.47096561790035!3d37.76986874022927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858743acfb4421%3A0x1b8487cfc077cab9!2sCalifornia%20Academy%20of%20Sciences!5e0!3m2!1sen!2sin!4v1723110327498!5m2!1sen!2sin"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                    </div>
-                                </div>
-                                    
-                                    <div class="mt-3"></div>
-
                                     <div class="teams_tab">
                                         <div class="row">
                                             <div class="col-6 col-md-3 col-xxl-2">
@@ -526,15 +339,6 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="professional" role="tabpanel" aria-labelledby="professional-tab">
-                                       
-                                       <div class="map-border">
-                                    <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.860512519623!2d-122.47096561790035!3d37.76986874022927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858743acfb4421%3A0x1b8487cfc077cab9!2sCalifornia%20Academy%20of%20Sciences!5e0!3m2!1sen!2sin!4v1723110327498!5m2!1sen!2sin"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                    </div>
-                                </div>
-                                    
-                                    <div class="mt-3"></div>
-
                                     <div class="team_tabs">
                                         <div class="row">
                                             <div class="col-12 col-md-6 col-xl-3">
@@ -570,20 +374,8 @@
                               </div>
                         </div>
                     </div>
-                    
-                     <!-- <div class="mt-4"></div>
-                    
-                    <div class="row justify-content-center">
-                      <div class="col-xl-10">
-                        <div class="map-border">
-                           <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.860512519623!2d-122.47096561790035!3d37.76986874022927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858743acfb4421%3A0x1b8487cfc077cab9!2sCalifornia%20Academy%20of%20Sciences!5e0!3m2!1sen!2sin!4v1723110327498!5m2!1sen!2sin"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                    </div>
-                        </div>
-                      </div>
-                    </div> -->
 
-                    <!-- <div class="mt-4"></div>
+                    <div class="mt-4"></div>
 
                     <div class="row justify-content-center">
                         <div class="col-xl-10">
@@ -688,7 +480,7 @@
                             </div>
 
                         </div>
-                    </div> -->
+                    </div>
 
                 </div>
               </div>
@@ -699,14 +491,13 @@
         <div class="span1">
 
             <div class="container">
-                <div class="row gx-3 gy-3 justify-content-center">
+                <div class="row gx-3">
                     <div class="col-6 col-md-4 col-lg-20">
                         <div class="box1">
                             <div class="box1_1">
                                 <img src="{{asset('front/img/icon/001-basket-ball.png')}}" />
                                 <div class="box1_11">
-                                    <h2>Pick-up Games</h2>
-                                    <a href="{{route('front.pickup')}}" class="d-md-none">Search Now</a>
+                                    <h2>Pick-up <br />Games</h2>
                                     <!-- <span>Football Leage</span> -->
                                 </div>
                             </div>
@@ -714,7 +505,7 @@
                                 <!-- <h4>International Games</h4> -->
                                 <img src="{{asset('front/img/icon/002-basketball.png')}}" />
                                 <!-- <h3>Wow-Games</h3> -->
-                                <a href="{{route('front.pickup')}}">Search Now</a>
+                                <a href="#">Search Now</a>
                             </div>
                         </div>
                     </div>
@@ -725,14 +516,14 @@
                                 <img src="{{asset('front/img/icon/calendar2.png')}}" />
                                 <div class="box1_11">
                                     <h2>Events</h2>
-                                    <a href="{{route('front.events')}}" class="d-md-none">Search Now</a>
+                                    
                                 </div>
                             </div>
                             <div class="box1_2">
                                 <!-- <h4>International Games</h4> -->
                                 <img src="{{asset('front/img/icon/002-olympics.png')}}" />
                                 <!-- <h3>Wow-Games</h3> -->
-                                <a href="{{route('front.events')}}">Search Now</a>
+                                <a href="#">Search Now</a>
                             </div>
                         </div>
                     </div>
@@ -744,7 +535,6 @@
                                 <img src="{{asset('front/img/icon/location-pin.png')}}" />
                                 <div class="box1_11">
                                     <h2>Locations</h2>
-                                    <a href="{{route('front.locations')}}" class="d-md-none">Search Now</a>
                                     <!-- <span>Rubgy Leage</span> -->
                                 </div>
                             </div>
@@ -752,7 +542,7 @@
                                 <!-- <h4>International Games</h4> -->
                                 <img src="{{asset('front/img/icon/003-event.png')}}" />
                                 <!-- <h3>Wow-Games</h3> -->
-                                <a href="{{route('front.locations')}}">Search Now</a>
+                                <a href="#">Search Now</a>
                             </div>
                         </div>
                     </div>
@@ -764,7 +554,6 @@
                                 <img src="{{asset('front/img/icon/classes.png')}}" />
                                 <div class="box1_11">
                                     <h2>Classes</h2>
-                                     <a href="{{route('front.classes')}}" class="d-md-none">Search  Now</a>
                                     <!-- <span>Tennis Leage</span> -->
                                 </div>
                             </div>
@@ -772,7 +561,7 @@
                                 <!-- <h4>International Games</h4> -->
                                 <img src="{{asset('front/img/icon/classes-1.png')}}" />
                                 <!-- <h3>Wow-Games</h3> -->
-                                <a href="{{route('front.classes')}}">Search  Now</a>
+                                <a href="#">Search  Now</a>
                             </div>
                         </div>
                     </div>
@@ -785,14 +574,13 @@
                                 <div class="box1_11">
                                     <h2>Professionals</h2>
                                     <!-- <span>Golf Leage</span> -->
-                                    <a href="{{route('front.professionals')}}" class="d-md-none">Search Now</a>
                                 </div>
                             </div>
                             <div class="box1_2">
                                 <!-- <h4>International Games</h4> -->
                                 <img src="{{asset('front/img/icon/005-coach.png')}}" />
                                 <!-- <h3>Wow-Games</h3> -->
-                                <a href="{{route('front.professionals')}}">Search Now</a>
+                                <a href="#">Search Now</a>
                             </div>
                         </div>
                     </div>

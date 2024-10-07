@@ -27,7 +27,13 @@
                                     @foreach ($club_administrator as $admin)
                                             <tr>
                                            
-                                                <td><img src="{{ asset($admin->image) }}" /> </td>
+                                                <td>
+                                                    @if($admin->image && File::exists(public_path($admin->image)))        
+                                                    <img src="{{ asset($admin->image) }}" /> 
+                                                    @else
+                                                    <img class="rounded-circle" width="35" src="{{ asset('assets/images/dummyUser.jpg') }}" alt="logo">
+                                                    @endif
+                                                </td>
                                                 <td>{{ $admin->name }}</td>
                                                 <td>{{ $admin->role }}</td>
                                                 <td>{{ $admin->phone }}</td>
@@ -78,3 +84,4 @@
             </div>
         </div>
     </div>
+    @endsection

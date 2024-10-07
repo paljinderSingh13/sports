@@ -2,7 +2,7 @@
         <div class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-12 col-xl-3">
+                    <div class="col-12 col-md-12 col-xl-3 text-center text-md-start">
                         <img src="front/img/logo_new.png" />
                         <p class="my-3">Use RecStep to power your business and instantly get all of the perks for none of the cost.</p>
                         <ul class="social">

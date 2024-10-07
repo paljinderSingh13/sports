@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\Club\Club;
-use App\Models\User;
 use App\Models\Club\Team;
 use App\Models\Club\Player;
 use App\Models\Club\Administrator;
@@ -105,12 +104,8 @@ class LoginController extends Controller
             'password' => 'required|min:8',
         ]);
 
-        $user = User::where('email', $request->email)
-                        ->where('status', 1) // Check if status is 1
-                        ->first();
-
         // Attempt login
-        if ($user && Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+        if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
             $request->session()->regenerate();
             if(auth()->user()->role == 'administrator'){
                 $adminstId = Administrator::where('user_id',auth()->user()->id)->first();
@@ -127,16 +122,13 @@ class LoginController extends Controller
 
             }elseif(in_array(auth()->user()->role, ["player","player_administrator"])){
                 if(auth()->user()->role == 'player_administrator'){
-                    $player = PlayerMetaAdministrator::with('player')->where('user_id',auth()->user()->id)->first();
-                    // dd( $player->player->club_id );
-                    session(['club_id' => $player->player->club_id]);
+                    $player = PlayerMetaAdministrator::where('user_id',auth()->user()->id)->first();
 
                 }else{
 
                     $player = Player::where('user_id',auth()->user()->id)->first();
-                    session(['club_id' => $player->club_id]);
                 }
-
+                session(['club_id' => $player->club_id]);
                 return redirect()->route('club.dashboard');
 
             }elseif(auth()->user()->role == 'master'){

@@ -116,6 +116,32 @@
 }
 
 
+.select-teams .selected a:hover,
+    .select-teams .selected a{
+      background-color: #23b56f;
+      color:#ffffff;
+    }
+    .bootstrap-select .dropdown-menu{
+      border-radius: 0px;
+    }
+    .bootstrap-select.select-teams .dropdown-menu .dropdown-item{
+      padding: 10px 10px;
+      font-size: 16px;
+    }
+    .bootstrap-select.select-teams .bs-ok-default:after{
+      margin-top: 6px;
+    }
+    .bootstrap-select.select-teams .btn:hover {
+      color:#ffffff!important;
+    }    
+    .bootstrap-select.select-teams .btn {
+      background: #23b56f;
+      border-radius: 0;
+      color: #ffffff;
+      font-size: 16px;
+      border-color: #23b56f
+    }
+
 img
   
 {

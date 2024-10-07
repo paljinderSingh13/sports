@@ -111,6 +111,7 @@ class ClubController extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'role' => 'club',
+                'status' => $request->status,
                 'password' => $pass,
 
         ]);
@@ -192,7 +193,9 @@ class ClubController extends Controller
 
         // Update the club data
         $club->update($validatedData);
-
+        $user = User::findOrFail($club->user_id);
+        $user->status = !$user->status; // Toggle status
+        $user->save();
         // Redirect back with a success message
         return redirect()->route('club.list')->with('success', 'Club details updated successfully!');
     }
@@ -203,6 +206,9 @@ class ClubController extends Controller
         $club->status = !$club->status; // Toggle status
         $club->save();
 
+        $user = User::findOrFail($club->user_id);
+        $user->status = !$user->status; // Toggle status
+        $user->save();
         return redirect()->route('club.list')->with('success', 'Club status updated successfully.');
     }
 

@@ -13,38 +13,41 @@
                         </a>
                         
                     </li>
+                    @if(auth()->user()->role != 'player' && auth()->user()->role != 'player_administrator')
                      <li><a href="{{ route('club.adm') }}" class="" aria-expanded="false">
                             <!-- <i class="flaticon flaticon-user-1"></i> -->
                             <i class="fa-solid fa-user-tie"></i>
                             <span class="nav-text">Club Administrators</span>
                         </a>                        
                     </li>
-
+                    @endif
                     <li><a href="javascript:void(0);" class="has-arrow" aria-expanded="false">
                             <!-- <i class="flaticon flaticon-user"></i> -->
                             <i class="fa-solid fa-people-group"></i>
                             <span class="nav-text">Teams</span>
                         </a>
                         <ul aria-expand="false">
-                            <li><a href="#">Team Administrator</a></li>
-                            <li><a href="#" class="has-arrow" aria-expanded="false">Players</a>
+                            <li><a href="{{route('team.allTeamDashboard')}}">All Teams</a></li>
+                            <li><a href="{{route('team.team_administrator')}}">All Team Administrator</a></li>
+                            <!-- <li><a href="#" class="has-arrow" aria-expanded="false">Players</a>
                                 <ul aria-expanded="false">
                                     <li><a href="#">Player Administrator</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                         <li><a href="#">Roster</a></li>
-                        <li><a href="#">Schedules</a></li>
+                        <li><a href="{{route('team.schedule')}}">All Schedules</a></li>
                             
                         </ul>
                     </li>
-
-                    <li><a href="#" class="ai-icon has-arrow" aria-expanded="false">
-                            <!-- <i class="flaticon-calendar-2"></i> -->
+                     <li><a href="javascript:void(0);" class="has-arrow" aria-expanded="false">
+                            <!-- <i class="flaticon-cms"></i> -->
                             <i class="fa-solid fa-users"></i>
                             <span class="nav-text">Players</span>
                         </a>
-                        <ul aria-expand="false">
-                            <li><a href="#">Player Administrator</a></li>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('player.add')}}">New Player </a></li><li><a href="{{route('player.administrator.list')}}">Player administrator </a></li>
+                            <!-- <li><a href="#">List</a></li> -->
+                            
                         </ul>
                     </li>
 

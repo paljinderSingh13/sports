@@ -9,6 +9,7 @@ use App\Models\Club\Club;
 use App\Models\Club\ClubAdministrator as CA;
 use App\Models\Club\Player;
 use App\Models\User;
+use App\Models\Club\PlayerMetaTeam;
 use App\Models\Club\Schedule;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -24,18 +25,34 @@ class ClubAdministrator extends Controller
        //echo session('club_id');
        //dump($id);
        $club_administrator = CA::where('club_id',$id)->get();
-       $teams = Team::where('club_id',$id)->get();
-       //dd($teams);
+       $teams = Team::withCount('players')->where('club_id',$id)->get();
+       // dd($teams);
        $pluck_teams = Team::where('club_id',$id)->pluck('id');
     //    dd($pluck_teams->all());
        
-        $players = Player::with('team')->whereIn('team_id', $pluck_teams)->get();
+        $players = Player::with(['teamMeta.team','administrator.user'])->where('club_id', $id)->get();
+
+         //dd($players);
        
         $scheduleTournaments = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Tournaments')->get();
 
         $scheduleGame = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Game')->get();
         $schedulePractice = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Practice')->get();
         $title = "Management";
+
+
+
+        if(auth()->user()->role == 'player' || auth()->user()->role == 'player_administrator'){
+            $playerMetaTeam = PlayerMetaTeam::where('user_id',auth()->user()->id)->pluck('team_id');
+            $teams = Team::withCount('players')->whereIn('id',$playerMetaTeam)->get();
+            $pluck_teams = Team::where('club_id',$id)->whereIn('id',$playerMetaTeam)->pluck('id');
+            $teamPlayersGet = PlayerMetaTeam::whereIn('team_id',$pluck_teams)->pluck('player_id');
+            $players = Player::with(['teamMeta.team','administrator.user'])->whereIn('id',$teamPlayersGet)->get();
+            $scheduleTournaments = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Tournaments')->get();
+            $scheduleGame = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Game')->get();
+            $schedulePractice = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Practice')->get();
+            $title = "Player Management";
+        }
 
         return view('club.dashboard', compact('id','title','teams','club_administrator' , 'players', 'scheduleTournaments', 'scheduleGame','schedulePractice'));
     }
@@ -92,7 +109,9 @@ class ClubAdministrator extends Controller
        $ca->phone = $request->phone;
         
         $ca->save();
-
+        $user = User::findOrFail($ca->user_id);
+        $user->status = !$user->status; // Toggle status
+        $user->save();
         // Redirect with a success message
         return redirect()->route('club.dashboard')
             ->with('success', 'Club administrator updated successfully.');
@@ -104,6 +123,10 @@ class ClubAdministrator extends Controller
         $ca->status = !$ca->status; // Toggle status
         $ca->save();
 
+        $user = User::findOrFail($ca->user_id);
+        $user->status = !$user->status; // Toggle status
+        $user->save();
+
         return back()->with('success', 'Club Administration status updated successfully.');
     }
 
@@ -113,11 +136,11 @@ class ClubAdministrator extends Controller
     public function create()
     {
         //
-        echo "club administrator";
-        echo session('club_id');
+        // echo "club administrator";
+        // echo session('club_id');
 
-       
-        return view('club.administrator.create');
+       $title = "Club Administrator";
+        return view('club.administrator.create',compact('title'));
     }
 
     /**
@@ -159,6 +182,7 @@ class ClubAdministrator extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'role' => 'club',
+                'status' => $request->status,
                 'password' => $pass,
 
         ]);

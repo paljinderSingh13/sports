@@ -11,7 +11,7 @@
                             </div>
                             <div class="col-sm-6 mb-4 text-sm-end">
                                  <a href="javascript:voit(0);" class="btn btn-outline-secondary">Add Task</a>
-                                <a href="javascript:voit(0);" class="btn btn-primary ms-2">Create a Project</a>
+                                <a href="javascript:voit(0);" class="btn btn-primary ms-2 cbtn">Create a Project</a>
                             </div>
                         </div>
                     </div> -->
@@ -23,7 +23,7 @@
                         <div class="card-header">
                             <h4 class="card-title">Administrator List</h4>
                             <a href="{{ route('administrator.create', base64_encode($id)) }}"
-                                class="btn btn-primary ms-2">Create Administrator</a>
+                                class="btn btn-primary ms-2 cbtn">Create Administrator</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -93,7 +93,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Players</h4>
-                            <a href="{{ route('player.create', base64_encode($id)) }}" class="btn btn-primary ms-2">Create
+                            <a href="{{ route('player.create', base64_encode($id)) }}" class="btn btn-primary ms-2 cbtn">Create
                                 Player</a>
                         </div>
                         <div class="card-body">
@@ -281,7 +281,7 @@
                         <div class="card-header">
                             <h4 class="card-title">Schedule</h4>
                             <a href="{{ route('schedule.create', base64_encode($id)) }}"
-                                class="btn btn-primary ms-2">Create Schedule</a>
+                                class="btn btn-primary ms-2 cbtn">Create Schedule</a>
                         </div>
                         <div class="card-body">
                             <h3>Tournament</h3>

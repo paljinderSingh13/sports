@@ -30,6 +30,15 @@ class ScheduleController extends Controller
         return view('team.schedule.create',compact('id','teams'));
     }
 
+    public function add()
+    {
+        //
+        $club_id = session('club_id');
+        $teams = Team::where('club_id',$club_id)->get();
+        $opTeams = Team::whereNot('club_id',$club_id)->get();
+        return view('team.schedule.add',compact('teams','opTeams'));
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -67,6 +76,68 @@ class ScheduleController extends Controller
    
     }
 
+     public function ScheduleStore(Request $request)
+    {
+           $rules = [
+            'team_id' => 'required',
+                'type' => 'required|in:Tournaments,Game,Practice',
+                'status' => 'required',
+            ];
+
+            // Add validation rules based on type
+            switch ($request->input('type')) {
+                case 'Tournaments':
+                    $rules['opposing_team_id'] = 'required';
+                    $rules['location'] = 'required|string|max:255';
+                    $rules['city'] = 'required|string|max:255';
+                    $rules['date'] = 'required';
+                    $rules['time'] = 'required';
+                    break;
+
+                case 'Game':
+                    $rules['date'] = 'required';
+                    $rules['time'] = 'required';
+                    $rules['purpose_detail'] = 'required|string|max:255';
+                    break;
+
+                case 'Practice':
+                    $rules['purpose_detail'] = 'required|string|max:255';
+                    $rules['date_from'] = 'required';
+                    $rules['date_to'] = 'required';
+                    $rules['time_from'] = 'required';
+                    $rules['time_to'] = 'required';
+                    break;
+            }
+            // Validate the request data
+            $validatedData = $request->validate($rules);
+
+            // Create a new schedule record
+           $schedule = new Schedule();
+
+            // Assign request data to the model fields
+            $schedule->team_id = $request->input('team_id');
+            $schedule->name = $request->input('name');
+            $schedule->type = $request->input('type');
+            $schedule->opposing_team_id = $request->input('opposing_team_id');
+            $schedule->purpose_detail = $request->input('purpose_detail');
+            $schedule->timing_from = $request->input('time_from');
+            $schedule->timing_to = $request->input('time_to');
+            $schedule->location = $request->input('location');
+            $schedule->city = $request->input('city');
+            $schedule->date = $request->input('date');
+            $schedule->time = $request->input('time');
+            $schedule->date_from = $request->input('date_from');
+            $schedule->date_to = $request->input('date_to');
+            $schedule->status = $request->input('status');
+
+            // Save the data to the database
+            $schedule->save();
+        // Redirect to a route with a success message
+        return redirect()->route('club.dashboard')->with('success', 'Schedule created successfully.');
+
+   
+    }
+
     /**
      * Display the specified resource.
      */
@@ -93,7 +164,38 @@ class ScheduleController extends Controller
     public function update(Request $request, $id)
     {
         $id = base64_decode($id);
+        $rules = [
+            'team_id' => 'required',
+                'type' => 'required|in:Tournaments,Game,Practice',
+                'status' => 'required',
+            ];
 
+            // Add validation rules based on type
+            switch ($request->input('type')) {
+                case 'Tournaments':
+                    $rules['opposing_team_id'] = 'required';
+                    $rules['location'] = 'required|string|max:255';
+                    $rules['city'] = 'required|string|max:255';
+                    $rules['date'] = 'required';
+                    $rules['time'] = 'required';
+                    break;
+
+                case 'Game':
+                    $rules['date'] = 'required';
+                    $rules['time'] = 'required';
+                    $rules['purpose_detail'] = 'required|string|max:255';
+                    break;
+
+                case 'Practice':
+                    $rules['purpose_detail'] = 'required|string|max:255';
+                    $rules['date_from'] = 'required';
+                    $rules['date_to'] = 'required';
+                    $rules['time_from'] = 'required';
+                    $rules['time_to'] = 'required';
+                    break;
+            }
+            // Validate the request data
+            $validatedData = $request->validate($rules);
          $schedule = Schedule::findOrFail($id);
 
         // Update the schedule with validated data
@@ -113,7 +215,7 @@ class ScheduleController extends Controller
         ]);
 
         // Redirect back with a success message
-        return redirect()->route('team.info',base64_encode($schedule->team_id))->with('success', 'Schedule updated successfully.');
+        return redirect()->back()->with('success', 'Schedule updated successfully.');
     
     }
 

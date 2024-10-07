@@ -8,6 +8,7 @@ use App\Models\Club\Club;
 use App\Models\Club\Player;
 use App\Models\Club\Administrator;
 use App\Models\Club\Schedule;
+use App\Models\Club\ClubAdministrator as CA;
 use App\Models\User;
 use Hash;
 use Illuminate\Http\Request;
@@ -17,6 +18,121 @@ class TeamController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function allTeamDashboard(){
+
+        $id =  session('club_id');
+       //echo session('club_id');
+       //dump($id);\
+       $teams = Team::withCount('players')->where('club_id',$id)->get();
+       // dd($teams);
+       $pluck_teams = Team::where('club_id',$id)->pluck('id');
+    //    dd($pluck_teams->all());
+       
+        $players = Player::with(['teamMeta.team','administrator.user'])->where('club_id', $id)->get();
+
+         //dd($players);
+       
+        $scheduleTournaments = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Tournaments')->get();
+
+        $scheduleGame = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Game')->get();
+        $schedulePractice = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Practice')->get();
+        $title = "Team Management";
+
+
+
+        if(auth()->user()->role == 'player' || auth()->user()->role == 'player_administrator'){
+            $playerMetaTeam = PlayerMetaTeam::where('user_id',auth()->user()->id)->pluck('team_id');
+            $teams = Team::withCount('players')->whereIn('id',$playerMetaTeam)->get();
+            $pluck_teams = Team::where('club_id',$id)->whereIn('id',$playerMetaTeam)->pluck('id');
+            $teamPlayersGet = PlayerMetaTeam::whereIn('team_id',$pluck_teams)->pluck('player_id');
+            $players = Player::with(['teamMeta.team','administrator.user'])->whereIn('id',$teamPlayersGet)->get();
+            $scheduleTournaments = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Tournaments')->get();
+            $scheduleGame = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Game')->get();
+            $schedulePractice = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Practice')->get();
+            $title = "Player Management";
+        }
+
+        return view('team.allTeam', compact('id','title','teams' , 'players', 'scheduleTournaments', 'scheduleGame','schedulePractice'));
+    }
+
+    public function teamDashboard(){
+
+        $id =  session('club_id');
+       //echo session('club_id');
+       //dd($id);
+       $club_administrator = CA::where('club_id',$id)->get();
+       $teams = Team::withCount('players')->where('club_id',$id)->get();
+       // dd($teams);
+       $pluck_teams = Team::with('')->where('club_id',$id)->pluck('id');
+    //    dd($pluck_teams->all());
+       
+        $players = Player::with(['teamMeta.team','administrator.user'])->where('club_id', $id)->get();
+
+         //dd($players);
+       
+        $scheduleTournaments = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Tournaments')->get();
+
+        $scheduleGame = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Game')->get();
+        $schedulePractice = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Practice')->get();
+        $title = "Management";
+        $administrators = Administrator::with('teamAdmin')->whereIn('team_id',$pluck_teams)->get();
+
+
+        if(auth()->user()->role == 'player' || auth()->user()->role == 'player_administrator'){
+            $playerMetaTeam = PlayerMetaTeam::where('user_id',auth()->user()->id)->pluck('team_id');
+            $teams = Team::withCount('players')->whereIn('id',$playerMetaTeam)->get();
+            $pluck_teams = Team::where('club_id',$id)->whereIn('id',$playerMetaTeam)->pluck('id');
+            $teamPlayersGet = PlayerMetaTeam::whereIn('team_id',$pluck_teams)->pluck('player_id');
+            $players = Player::with(['teamMeta.team','administrator.user'])->whereIn('id',$teamPlayersGet)->get();
+            $scheduleTournaments = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Tournaments')->get();
+            $scheduleGame = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Game')->get();
+            $schedulePractice = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Practice')->get();
+            $title = "Player Management";
+        }
+
+        return view('team.teamDashboard', compact('id','title','teams','club_administrator' ,'administrators', 'players', 'scheduleTournaments', 'scheduleGame','schedulePractice'));
+    }
+
+    public function teamDashboardSchedule(){
+
+        $id =  session('club_id');
+       //echo session('club_id');
+       //dump($id);
+       $club_administrator = CA::where('club_id',$id)->get();
+       $teams = Team::withCount('players')->where('club_id',$id)->get();
+       // dd($teams);
+       $pluck_teams = Team::where('club_id',$id)->pluck('id');
+    //    dd($pluck_teams->all());
+       
+        $players = Player::with(['teamMeta.team','administrator.user'])->where('club_id', $id)->get();
+
+         //dd($players);
+       
+        $scheduleTournaments = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Tournaments')->get();
+
+        $scheduleGame = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Game')->get();
+        $schedulePractice = Schedule::with('team')->whereIn('team_id',$pluck_teams)->where('type','Practice')->get();
+        $title = "Management";
+
+
+
+        if(auth()->user()->role == 'player' || auth()->user()->role == 'player_administrator'){
+            $playerMetaTeam = PlayerMetaTeam::where('user_id',auth()->user()->id)->pluck('team_id');
+            $teams = Team::withCount('players')->whereIn('id',$playerMetaTeam)->get();
+            $pluck_teams = Team::where('club_id',$id)->whereIn('id',$playerMetaTeam)->pluck('id');
+            $teamPlayersGet = PlayerMetaTeam::whereIn('team_id',$pluck_teams)->pluck('player_id');
+            $players = Player::with(['teamMeta.team','administrator.user'])->whereIn('id',$teamPlayersGet)->get();
+            $scheduleTournaments = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Tournaments')->get();
+            $scheduleGame = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Game')->get();
+            $schedulePractice = Schedule::with('team','OpTeam')->whereIn('team_id',$pluck_teams)->where('type','Practice')->get();
+            $title = "Player Management";
+        }
+
+        return view('team.teamSchedule', compact('id','title','teams','club_administrator' , 'players', 'scheduleTournaments', 'scheduleGame','schedulePractice'));
+    }
+
+
+
     public function index($id)
     {
         $id = base64_decode($id);

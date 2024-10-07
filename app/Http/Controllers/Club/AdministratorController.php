@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Club;
 use App\Http\Controllers\Controller;
 use App\Models\Club\Administrator;
 use App\Models\User;
+use App\Models\Club\Team;
 use Illuminate\Http\Request;
 use Hash;
 
@@ -33,6 +34,14 @@ class AdministratorController extends Controller
          return view('team.administrator.create',compact('id'));
     }
 
+    public function add()
+    {
+        //
+        $club_id = session('club_id');
+        $teams = Team::where('club_id',$club_id)->get();
+         return view('team.administrator.add',compact('teams'));
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -55,6 +64,7 @@ class AdministratorController extends Controller
                 'email' => $request->input('email'),
                 'role' => 'administrator',
                 'password' => $pass,
+                'status' => $request->status,
 
         ]);
         $validatedData['user_id'] = $user->id;
@@ -64,6 +74,38 @@ class AdministratorController extends Controller
         $tId = base64_encode($request->team_id);
         return redirect()->route('team.info',$tId) // Assuming you have a route named 'administrators.index'
             ->with('success', 'Administrator created successfully.');
+    }
+
+
+
+    public function save(Request $request)
+    {
+          // Validate incoming request data
+        $validatedData = $request->validate([
+            'team_id' => 'required|exists:teams,id', // Assumes there is a 'teams' table
+            'name' => 'required|string|max:255',
+            'type' => 'required|string|max:50', // Customize as needed (e.g., 'admin', 'super-admin')
+            'phone' => 'required|string|max:15',
+            'email' => 'required|email|max:255|unique:administrators,email',
+            'status' => 'required|in:1,0',
+        ]);
+
+        // Create a new administrator record
+         $pass = Hash::make($request->password);
+        $user = User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'role' => 'administrator',
+                'password' => $pass,
+                'status' => $request->status,
+
+        ]);
+        $validatedData['user_id'] = $user->id;
+        $administrator = Administrator::create($validatedData);
+
+        // Redirect or return a response (customize as needed)
+        $tId = base64_encode($request->team_id);
+        return redirect()->route('team.team_administrator')->with('success', 'Administrator created successfully.');
     }
 
     /**
@@ -125,6 +167,9 @@ class AdministratorController extends Controller
         $administrator = Administrator::findOrFail($id);
         $administrator->status = !$administrator->status; // Toggle status
         $administrator->save();
+        $user = User::findOrFail($administrator->user_id);
+        $user->status = !$user->status; // Toggle status
+        $user->save();
 
         return back()->with('success', 'Administrator status updated successfully.');
     }

@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Club\Team;
 use App\Models\Club\Club;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -32,6 +34,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password','role',
     ];
 
@@ -68,6 +71,6 @@ class User extends Authenticatable
         return $this->belongsTo(Team::class);
     }
 
-
+protected $dates = ['deleted_at'];
     
 }

@@ -4,11 +4,10 @@ namespace App\Models\Club;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Administrator extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
     protected $fillable = [
         'team_id',
         'user_id',
@@ -19,5 +18,11 @@ class Administrator extends Model
         'status',
     ];
 
+    public function teamAdmin()
+    {
+        return $this->belongsTo(Team::class,'team_id','id');
+    }
+
     protected $dates = ['deleted_at'];
+
 }

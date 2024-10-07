@@ -4,12 +4,10 @@ namespace App\Models\Club;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-
 class ClubAdministrator extends Model
 {
    
-    use HasFactory, SoftDeletes;
+    use HasFactory;
     protected $fillable = [
         'club_id',
         'user_id',
@@ -20,6 +18,5 @@ class ClubAdministrator extends Model
         'email',
         'status'
     ];
-
-    protected $dates = ['deleted_at'];
+protected $dates = ['deleted_at'];
 }
